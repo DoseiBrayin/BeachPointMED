@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export async function fetchInstagram() {
-    const token = process.env.VITE_APP_INSTAGRAM_ACCESS_TOKEN;
+    const token = import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN;
     try {
         const response = await axios.get('https://graph.instagram.com/me/media', {
             params: {
@@ -11,6 +11,7 @@ export async function fetchInstagram() {
         });
         return response;
     } catch (error) {
+        console.log(token); // Imprime la respuesta
         console.error(error); // Imprime el error completo
     }
 };
