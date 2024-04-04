@@ -11,7 +11,6 @@ export async function fetchInstagram() {
         });
         return response;
     } catch (error) {
-        console.log(token); // Imprime la respuesta
         console.error(error); // Imprime el error completo
     }
 };
