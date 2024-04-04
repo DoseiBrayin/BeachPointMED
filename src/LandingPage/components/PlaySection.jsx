@@ -1,6 +1,7 @@
 import React from "react";
+import { PlayCard } from "./PlayCard";
 
-export function PlayCard({ img, header, paragraph }) {
+export function PlaySection({ img, header, paragraph }) {
   return (
     <>
     <div 
