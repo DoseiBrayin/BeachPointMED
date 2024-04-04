@@ -12,6 +12,7 @@ export const Main = () => {
                 <h1>asdasdasdsd</h1>
                 <h1>bobo</h1>
                 <h3>Date selector</h3>
+                <h1>tonto</h1>
             </main>
         </section>
     </div>
