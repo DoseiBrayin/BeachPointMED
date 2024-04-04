@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="*" element={<Page404 />} />
