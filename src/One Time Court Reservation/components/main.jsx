@@ -9,7 +9,8 @@ export const Main = () => {
             </header>
             <main>
                 <h1>Select Playing Time</h1>   
-                <h1></h1>
+                <h1>asdasdasdsd</h1>
+                <h1>bobo</h1>
                 <h3>Date selector</h3>
             </main>
         </section>
