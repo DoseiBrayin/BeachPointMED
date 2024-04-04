@@ -9,7 +9,7 @@ export const Landing = () => {
   return (
     <div>
 
-        
+    <PlaySection />
     <BookingSection />
 
     </div>
