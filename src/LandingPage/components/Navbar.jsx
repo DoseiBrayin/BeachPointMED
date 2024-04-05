@@ -18,22 +18,22 @@ export const HamburguerMenu = ({ isVisible, close }) => {
           </button>
         </div>
         <div className="flex flex-col mt-[20px] ml-[20px] gap-2">
-          <NavLink className={navLinkStyle} to="/home" onClick={close}>
+          <NavLink className={navLinkStyle} to="/" onClick={close}>
             Home
           </NavLink>
           <NavLink className={navLinkStyle} to="/selectlocation" onClick={close}>
             Reserve Now
           </NavLink>
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             My Reservations
           </NavLink>
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             About Us
           </NavLink>
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             Contact Us
           </NavLink>
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             Sign In
           </NavLink>
         </div>
@@ -53,19 +53,19 @@ export const Navbar = () => {
       {/* este es el diseno que se ve en pantallas grandes */}
       <div className="hidden gap-3 md:flex">
         <div className="flex gap-[30px]">
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             Home
           </NavLink>
           <NavLink className={navLinkStyle} to="/selectlocation">
             Reserve Now
           </NavLink>
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             About Us
           </NavLink>
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             Contact Us
           </NavLink>
-          <NavLink className={navLinkStyle} to="/home">
+          <NavLink className={navLinkStyle} to="/">
             My Reservations
           </NavLink>
         </div>
