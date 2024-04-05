@@ -5,7 +5,7 @@ export const Main = () => {
     <div>
         <section>
             <header>
-
+              <p>hola</p>
             </header>
             <main>
                 <h1>Select Playing Time</h1>   
@@ -19,10 +19,6 @@ export const Main = () => {
                 <h1>asdasdasdsd</h1>
                 <h1>asdasdasdsd</h1>
                 <h1>asdasdasdsd</h1>
-
-
-                <h1>Cambios</h1>
-                <p>hola mundo</p>
             </main>
         </section>
     </div>
