@@ -3,6 +3,7 @@ import React from 'react'
 export const Main = () => {
   return (
     <div>
+<<<<<<< HEAD
         <section>
             <header>
               <p>hola</p>
@@ -22,6 +23,9 @@ export const Main = () => {
                 <h2>bobp</h2>
             </main>
         </section>
+=======
+      <h1>One Time Court Reservation</h1>
+>>>>>>> JuanCardona
     </div>
   )
 }
