@@ -46,7 +46,7 @@ export const Navbar = () => {
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
       <button className="w-[30px] h-[45px]">
-        <img src={"public/LandingImages/LogoBP.webp"} />
+        <img src={"public/LandingImages/LogoBP.webp"} alt='BeachPointMED'/>
       </button>
       {/* este es el diseno que se ve en pantallas grandes */}
       <div className="hidden gap-3 md:flex">
@@ -68,10 +68,10 @@ export const Navbar = () => {
           </NavLink>
         </div>
         <button className="w-[24px] h-[24px]">
-          <img src="public/LandingImages/spanish.webp" alt="" />
+          <img src="public/LandingImages/spanish.webp" alt="Spanish" />
         </button>
         <button className="w-[24px] h-[24px]">
-          <img src="public/LandingImages/profile.webp" alt="" />
+          <img src="public/LandingImages/profile.webp" alt="Spanish" />
         </button>
       </div>
       {/* Este es el diseno qeu se ve en pantallas pequenas */}
