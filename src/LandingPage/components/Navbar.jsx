@@ -46,7 +46,7 @@ export const Navbar = () => {
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
       <button className="w-[30px] h-[45px]">
-        <img src="public/LandingImages/LogoBP.webp" />
+        <img src={"public/LandingImages/LogoBP.webp"} />
       </button>
       {/* este es el diseno que se ve en pantallas grandes */}
       <div className="hidden gap-3 md:flex">
