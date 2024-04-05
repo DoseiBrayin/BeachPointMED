@@ -15,7 +15,6 @@ export const Landing = () => {
       <Instagram />
       <WhoWeAre />
       <Footer />
-      <h1>brayan es gei</h1>
     </div>
   )
 }
