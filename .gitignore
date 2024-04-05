@@ -1,1 +1,5 @@
+# Vite Project
 node_modules/
+dist/
+.cache/
+.env
