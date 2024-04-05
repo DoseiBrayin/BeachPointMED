@@ -24,7 +24,16 @@ export const LenguageSelector = () => {
   const ImageStyle = 'w-[31px] h-[31px] md:w-[40px] md:h-[40px]'
 
   return (
-    <div className={`flex items-center w-[47px] md:w-[60px] flex-col ${selectedLanguage.open ? 'bg-[#EAEAEA] w-[47px] md:w-[60px] py-[10px] rounded-t-[5px]' : ''}`}>
+    <div className={`
+    flex 
+    items-center 
+    w-[47px] 
+    md:w-[60px] 
+    flex-col 
+    ${selectedLanguage.open
+    ? 'bg-[#EAEAEA] w-[47px] md:w-[60px] py-[8px] md:py-[10px] rounded-t-[5px]'
+    : ''}`}
+    >
       <img onClick={() => handleLanguageSelection(selectedLanguage.src)} src={selectedLanguage.src} className={ImageStyle} alt="" />
       {selectedLanguage.open && (
         <div className="absolute items-center mt-[35px] md:mt-[40px] gap-[10px] pt-[10px] w-[47px] md:w-[60px] bg-[#EAEAEA] rounded-[5px] h-[340px] md:h-[410px] flex flex-col">

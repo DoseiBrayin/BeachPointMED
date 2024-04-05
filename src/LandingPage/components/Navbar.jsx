@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { NavHooks } from "../hooks/NavHooks";
-import { useState } from "react";
 import { LenguageSelector } from "./LenguageSelector";
 
 const navLinkStyle = "text-[#2E2E2E]";
