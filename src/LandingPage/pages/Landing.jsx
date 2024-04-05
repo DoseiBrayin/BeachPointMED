@@ -10,6 +10,7 @@ export const Landing = () => {
     <div>
     <PlaySection />
     <BookingSection />
+    <h1>brayan es gei</h1>
     </div>
   )
 }
