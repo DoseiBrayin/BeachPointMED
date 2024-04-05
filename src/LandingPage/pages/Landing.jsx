@@ -1,16 +1,20 @@
 import React from 'react'
-import {BookingSection} from "../components/BookingSection"
-import { Hero } from "../components/Hero"
-import { Instagram } from "../components/Instagram"
-import { PlaySection } from "../components/PlaySection"
-import { WhoWeAre } from "../components/WhoWeAre"
+import { PlaySection } from '../components/PlaySection'
+import { Hero } from '../components/Hero'
+import { BookingSection } from '../components/BookingSection'
+import { Instagram } from '../components/Instagram'
+import { WhoWeAre } from '../components/WhoWeAre'
+import { Footer } from '../components/Footer'
 
 export const Landing = () => {
   return (
     <div>
-    <PlaySection />
-    <BookingSection />
-    <h1>brayan es gei</h1>
+      <Hero />
+      <PlaySection />
+      <BookingSection />
+      <Instagram />
+      <WhoWeAre />
+      <Footer />
     </div>
   )
 }
