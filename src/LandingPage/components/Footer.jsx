@@ -1,9 +1,9 @@
-import { NavLink } from "react-router-dom"
-import { BookYourCourtButton } from "./BookYourCourtButton"
-import { ManageReservationButton } from "./ManageReservationButton"
+import { NavLink } from 'react-router-dom'
+import { BookYourCourtButton } from './BookYourCourtButton'
+import { ManageReservationButton } from './ManageReservationButton'
 
 export const Footer = () => {
-    const NavLinkStyles = "text-white font-[200] text-[15px] md:text-[26px]"
+  const NavLinkStyles = 'text-white font-[200] text-[15px] md:text-[26px]'
   return (
     <div className=" h-[315px]  px-[15px] bg-[#000] flex flex-col justify-end gap-10 pb-3 md:h-[340px] md:items-center lg:px-[115px] md:gap-20">
         <div className="flex flex-col justify-between w-full gap-8 md:flex-row md:items-center">

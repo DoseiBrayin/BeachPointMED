@@ -1,6 +1,6 @@
-import React from "react";
-import { BookYourCourtButton } from "./BookYourCourtButton";
-import { ManageReservationButton } from "./ManageReservationButton";
+import React from 'react'
+import { BookYourCourtButton } from './BookYourCourtButton'
+import { ManageReservationButton } from './ManageReservationButton'
 
 export const BookingSection = () => {
   return (
@@ -9,5 +9,5 @@ export const BookingSection = () => {
       <BookYourCourtButton />
       <ManageReservationButton backgroundBlack={true} />
     </div>
-  );
-};
+  )
+}
