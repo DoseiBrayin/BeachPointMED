@@ -1,3 +1,32 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.scrollMenu {
+    animation: scrollMenu .2s linear forwards;
+}
+
+.scrollMenuClose {
+    animation: scrollMenuClose .2s linear forwards;
+}
+
+@keyframes scrollMenu {
+    from {
+        transform: translate(0%);
+    }
+    to {
+        transform: translate(-100%);
+    }
+}
+
+@keyframes scrollMenuClose {
+    to {
+        transform: translate(100%);
+    }
+}
+
+@layer components{
+    .bold-heading-mobile{
+        @apply font-inter font-bold text-[25px]
+    }
+}

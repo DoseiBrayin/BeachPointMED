@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 
-export function WhoWeAre() {
+export function WhoWeAre () {
   return (
     <section className="w-full flex flex-col justify-center items-center mt-5">
       <header className="flex flex-col items-center">
         <h1 className="bold-heading-mobile">Who We Are</h1>
         <span className="text-center font-normal font-inter text-[15px]">
-          We're More than just numbers
+          We&apos;re More than just numbers
         </span>
       </header>
       <main className="flex w-full justify-center items-center p-10 md:gap-10 md:justify-between">
@@ -14,10 +14,10 @@ export function WhoWeAre() {
           <p
             className="text-center w-[62%] font-inter text-black
             md:block md:text-[18px]
-            lg:text-[22px] lg:leading-tight 
+            lg:text-[22px] lg:leading-tight
             xl:text-[28px]"
           >
-            At Beach Point we're more than just a volleyball court rental
+            At Beach Point we&apos;re more than just a volleyball court rental
             service.
           </p>
           <br />
@@ -26,7 +26,7 @@ export function WhoWeAre() {
             lg:text-[22px] lg:leading-tight
             xl:text-[28px]"
           >
-            We're a passionate community dedicated to providing the ultimate
+            We&apos;re a passionate community dedicated to providing the ultimate
             beach experience. Learn more about who we are and what sets us
             apart.
           </p>
@@ -87,5 +87,5 @@ export function WhoWeAre() {
         </div>
       </main>
     </section>
-  );
+  )
 }
