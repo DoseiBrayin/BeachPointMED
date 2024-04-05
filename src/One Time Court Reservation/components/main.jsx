@@ -19,6 +19,10 @@ export const Main = () => {
                 <h1>asdasdasdsd</h1>
                 <h1>asdasdasdsd</h1>
                 <h1>asdasdasdsd</h1>
+
+
+                <h1>Cambios</h1>
+                <p>hola mundo</p>
             </main>
         </section>
     </div>
