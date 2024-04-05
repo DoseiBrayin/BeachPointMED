@@ -45,11 +45,11 @@ export const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
-      <button className="w-[30px] h-[45px]">
-        <img src={"public/LandingImages/logo.webp"} alt='BeachPointMED'/>
+      <button className="w-[30px] h-[45px] md:w-[56px] md:h-[84px]">
+        <img src={'public/LandingImages/logo.webp'} alt='BeachPointMED'/>
       </button>
       {/* este es el diseno que se ve en pantallas grandes */}
-      <div className="hidden gap-3 md:flex">
+      <div className="hidden gap-7 md:flex justify-center items-center ">
         <div className="flex gap-[30px]">
           <NavLink className={navLinkStyle} to="/">
             Home
@@ -67,10 +67,10 @@ export const Navbar = () => {
             My Reservations
           </NavLink>
         </div>
-        <button className="w-[24px] h-[24px]">
+        <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
           <img src="public/LandingImages/spanish_flag.webp" alt="Spanish" />
         </button>
-        <button className="w-[24px] h-[24px]">
+        <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
           <img src="public/LandingImages/profile.webp" alt="Spanish" />
         </button>
       </div>
