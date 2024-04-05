@@ -12,7 +12,7 @@ export const Hero = () => {
       bg-cover
       bg-center
       h-[485px]
-      md:bg-[url('public/LandingImages/HeroDesktop.webp')]
+      md:bg-[url('public/LandingImages/herodesktop.webp')]
       px-4
       md:justify-start
       lg:px-[115px]
