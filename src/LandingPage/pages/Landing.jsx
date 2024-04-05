@@ -1,12 +1,12 @@
 import React from 'react'
-import { BookingSection } from '../components/BookingSection'
 import { PlaySection } from '../components/PlaySection'
+import { Hero } from '../components/Hero'
 
 export const Landing = () => {
   return (
     <div>
-    <PlaySection />
-    <BookingSection />
+      <Hero />
+    
     </div>
   )
 }
