@@ -68,7 +68,7 @@ export const Navbar = () => {
           </NavLink>
         </div>
         <button className="w-[24px] h-[24px]">
-          <img src="public/LandingImages/spanish.webp" alt="Spanish" />
+          <img src="public/LandingImages/spanish_flag.webp" alt="Spanish" />
         </button>
         <button className="w-[24px] h-[24px]">
           <img src="public/LandingImages/profile.webp" alt="Spanish" />
@@ -77,7 +77,7 @@ export const Navbar = () => {
       {/* Este es el diseno qeu se ve en pantallas pequenas */}
       <div className="flex gap-3 justify-center items-center md:hidden">
         <button className="w-[31px] h-[31px]">
-          <img src="public/LandingImages/spanish.webp" alt="" />
+          <img src="public/LandingImages/spanish_flag.webp" alt="" />
         </button>
         <button onClick={handleOpen} className="w-[24px] h-[24px]">
           <img src="public/LandingImages/menu.webp" alt="" />
