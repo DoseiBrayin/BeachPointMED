@@ -13,7 +13,7 @@ export const BookYourCourtButton = () => {
       gap-2
       md:border-[#fff]
       ">
-          <img className="w-[33px] h-[33px]" src="../../../../public/LandingImages/BookYourCourt.webp" alt="" />
+          <img className="w-[33px] h-[33px]" src="/LandingImages/BookYourCourt.webp" alt="" />
           Book Your Court
       </button>
   )
