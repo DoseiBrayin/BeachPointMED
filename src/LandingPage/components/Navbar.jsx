@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/react-in-jsx-scope */
 import { NavLink } from 'react-router-dom'
 import { NavHooks } from '../hooks/NavHooks'
 

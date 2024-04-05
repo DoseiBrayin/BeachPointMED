@@ -1,13 +1,13 @@
-import { BookYourCourtButton } from "./BookYourCourtButton"
-import { ManageReservationButton } from "./ManageReservationButton"
+import { BookYourCourtButton } from './BookYourCourtButton'
+import { ManageReservationButton } from './ManageReservationButton'
 
 export const Hero = () => {
-    return (
+  return (
       <div className="
-      flex 
-      items-center 
+      flex
+      items-center
       justify-center
-      w-full 
+      w-full
       bg-[url('../../../../public/LandingImages/HeroMobile.webp')]
       bg-cover
       bg-center
@@ -31,5 +31,5 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-    )
-  }
+  )
+}
