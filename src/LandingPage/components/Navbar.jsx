@@ -1,7 +1,9 @@
-import { NavLink } from 'react-router-dom'
-import { NavHooks } from '../hooks/NavHooks'
+import { NavLink } from "react-router-dom";
+import { NavHooks } from "../hooks/NavHooks";
+import { useState } from "react";
+import { LenguageSelector } from "./LenguageSelector";
 
-const navLinkStyle = 'text-[#2E2E2E]'
+const navLinkStyle = "text-[#2E2E2E]";
 
 export const HamburguerMenu = ({ isVisible, close }) => {
   return (
@@ -19,7 +21,11 @@ export const HamburguerMenu = ({ isVisible, close }) => {
           <NavLink className={navLinkStyle} to="/" onClick={close}>
             Home
           </NavLink>
-          <NavLink className={navLinkStyle} to="/selectlocation" onClick={close}>
+          <NavLink
+            className={navLinkStyle}
+            to="/selectlocation"
+            onClick={close}
+          >
             Reserve Now
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
@@ -37,19 +43,19 @@ export const HamburguerMenu = ({ isVisible, close }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const Navbar = () => {
-  const { handleOpen, handleClose, isVisible } = NavHooks()
+  const { handleOpen, handleClose, isVisible } = NavHooks();
 
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
       <button className="w-[30px] h-[45px] md:w-[56px] md:h-[84px]">
-        <img src={'/LandingImages/logo.webp'} alt='BeachPointMED'/>
+        <img src={"/LandingImages/logo.webp"} alt="BeachPointMED" />
       </button>
       {/* este es el diseno que se ve en pantallas grandes */}
-      <div className="hidden gap-7 md:flex justify-center items-center ">
+      <div className="hidden gap-4 md:flex justify-center items-center ">
         <div className="flex gap-[30px]">
           <NavLink className={navLinkStyle} to="/">
             Home
@@ -67,9 +73,7 @@ export const Navbar = () => {
             My Reservations
           </NavLink>
         </div>
-        <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
-          <img src="public/LandingImages/spanish_flag.webp" alt="Spanish" />
-        </button>
+        <LenguageSelector />
         <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
           <img src="public/LandingImages/profile.webp" alt="Spanish" />
         </button>
@@ -79,11 +83,14 @@ export const Navbar = () => {
         <button className="w-[31px] h-[31px]">
           <img src="public/LandingImages/spanish_flag.webp" alt="" />
         </button>
-        <button onClick={handleOpen} className="w-[24px] h-[24px]">
-          <img src="public/LandingImages/menu.webp" alt="" />
-        </button>
+        <div className="flex items-center gap-2">
+          <LenguageSelector />
+          <button onClick={handleOpen} className="w-[24px] h-[24px]">
+            <img src="public/LandingImages/menu.webp" alt="" />
+          </button>
+        </div>
+        <HamburguerMenu isVisible={isVisible} close={handleClose} />
       </div>
-      <HamburguerMenu isVisible={isVisible} close={handleClose} />
     </nav>
-  )
-}
+  );
+};
