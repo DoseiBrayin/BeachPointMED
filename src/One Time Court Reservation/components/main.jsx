@@ -20,6 +20,7 @@ export const Main = () => {
                 <h1>asdasdasdsd</h1>
                 <h1>asdasdasdsd</h1>
                 <h2>bobp</h2>
+                <h1>cambio de jj</h1>
             </main>
         </section>
     </div>
