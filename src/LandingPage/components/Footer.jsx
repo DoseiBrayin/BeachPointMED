@@ -19,10 +19,10 @@ export const Footer = () => {
                 </div>
                 <div className="flex flex-col items-center">
                     <p className="text-white font-[200] text-[15px] md:text-[26px]">Contact Us</p>
-                    <img className="w-[39px] h-[39px] md:w-[76px] md:h-[76px]" src="../../../../public/LandingImages/WhatsappLogo.webp" alt="" />
+                    <img className="w-[39px] h-[39px] md:w-[76px] md:h-[76px]" src="/LandingImages/WhatsappLogo.webp" alt="" />
                 </div>
                 <button>
-                    <img className="w-[47px] h-[71px] md:w-[78px] md:h-[117px]" src="../../../../public/LandingImages/Logo.webp" alt="" />
+                    <img className="w-[47px] h-[71px] md:w-[78px] md:h-[117px]" src="/LandingImages/logo.webp" alt="" />
                 </button>
             </div>
         </div>
