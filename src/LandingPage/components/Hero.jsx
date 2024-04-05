@@ -1,5 +1,3 @@
-
-
 import { BookYourCourtButton } from "./BookYourCourtButton"
 import { ManageReservationButton } from "./ManageReservationButton"
 

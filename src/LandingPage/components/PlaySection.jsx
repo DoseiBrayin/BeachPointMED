@@ -4,29 +4,8 @@ import { PlayCard } from "./PlayCard";
 export function PlaySection({ img, header, paragraph }) {
   return (
     <>
-    <div 
-    className="w-[80%] h-[17rem] rounded-xl p-6 flex flex-col items-center justify-around bg-[#EAEAEA] 
-    min-[530px]:h-[20rem]
-    md:w-[100%]
-    md:h-[14rem]
-    lg:h-[16rem]
-    ">
-      <img
-        className="w-[50%] 
-        sm:w-[40%] 
-        md:w-[30%] 
-        lg:w-[8rem] lg:h-[8rem]"
-        src={`/LandingImages/Play_with_us/${img}`}
-        alt=""
-      />
-      <div className="flex flex-col items-center">
-        <h2 className="text-xl font-semibold">{header}</h2>
-        <p className="text-center">{paragraph}</p>
-      </div>
-    </div>
-    
       <section className="flex flex-col items-center mt-[25px]">
-      <h2 className="bold-heading-mobile">Why Play With Us?</h2>
+      <h2 className="bold-heading-mobile font-[700] text-[25px] md:text-[32px]">Why Play With Us?</h2>
       <h3 className="font-inter font-normal text-[16px] w-[60%] text-center mt-5">Here's what sets beach point apart from the rest.</h3>
       <main className="w-full flex justify-center items-center mt-[25px]">
         <div
