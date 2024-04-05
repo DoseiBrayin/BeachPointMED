@@ -8,11 +8,11 @@ export const Hero = () => {
       items-center
       justify-center
       w-full
-      bg-[url('../../../../public/LandingImages/HeroMobile.webp')]
+      bg-[url('public/LandingImages/HeroMobile.webp')]
       bg-cover
       bg-center
       h-[485px]
-      md:bg-[url('../../../../public/LandingImages/HeroDesktop.webp')]
+      md:bg-[url('public/LandingImages/HeroDesktop.webp')]
       px-4
       md:justify-start
       lg:px-[115px]
