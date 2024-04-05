@@ -75,18 +75,18 @@ export const Navbar = () => {
         </div>
         <LenguageSelector />
         <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
-          <img src="public/LandingImages/profile.webp" alt="Spanish" />
+          <img src="/LandingImages/profile.webp" alt="Spanish" />
         </button>
       </div>
       {/* Este es el diseno qeu se ve en pantallas pequenas */}
       <div className="flex gap-3 justify-center items-center md:hidden">
         <button className="w-[31px] h-[31px]">
-          <img src="public/LandingImages/spanish_flag.webp" alt="" />
+          <img src="/LandingImages/spanish_flag.webp" alt="" />
         </button>
         <div className="flex items-center gap-2">
           <LenguageSelector />
           <button onClick={handleOpen} className="w-[24px] h-[24px]">
-            <img src="public/LandingImages/menu.webp" alt="" />
+            <img src="/LandingImages/menu.webp" alt="" />
           </button>
         </div>
         <HamburguerMenu isVisible={isVisible} close={handleClose} />
