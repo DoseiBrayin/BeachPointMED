@@ -1,0 +1,39 @@
+{
+    "mockCourts": [
+    {
+      "location": "Ciudad Del Rio",
+      "date": "10.08.23",
+      "time": "2-3pm",
+      "court": "1",
+      "cost": "60000"
+    },
+    {
+      "location": "Ciudad Del Rio",
+      "date": "10.08.23",
+      "time": "5-6pm",
+      "court": "1",
+      "cost": "85000"
+    },
+    {
+      "location": "Ciudad Del Rio",
+      "date": "10.08.23",
+      "time": "6-7pm",
+      "court": "2",
+      "cost": "85000"
+    },
+    {
+      "location": "Ciudad Del Rio",
+      "date": "10.08.23",
+      "time": "7-8pm",
+      "court": "2",
+      "cost": "85000"
+    },
+    {
+      "location": "Ciudad Del Rio",
+      "date": "10.08.23",
+      "time": "9-10pm",
+      "court": "2",
+      "cost": "60000"
+    }
+  ]
+}
