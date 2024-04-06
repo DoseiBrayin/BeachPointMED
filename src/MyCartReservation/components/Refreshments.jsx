@@ -1,9 +1,10 @@
-import { getTotalsCOP } from '../hooks/getTotalPrice'
 import { mockRefreshments } from '../mocks/refreshments.json'
 import { useCart } from '../hooks/useCart'
+import { useFormatePrices } from '../hooks/useFormatPrices'
 
 export const Refreshments = () => {
   const { handleMinus, handlePlus, refreshments } = useCart()
+  const { formatPrice, getTotalPrice } = useFormatePrices()
 
   return (
         <div className='px-[5%] mt-4 w-full max-w-[52.5rem]'>
@@ -30,7 +31,7 @@ export const Refreshments = () => {
                   </th>
               </tr>
             </thead>
-            <tbody className='border-[1px] text-center'>
+            <tbody className='border-[1px] text-center rounded-lg'>
             {
                   refreshments.map((item, index) => {
                     return (
@@ -39,7 +40,7 @@ export const Refreshments = () => {
                           <td className={'font-inter text-[14px] hidden md:table-cell'}>{item.varient}</td>
                           <td className={'font-inter text-[14px] md:hidden'}>{item.item} {item.varient}</td>
 
-                          <td className={'font-inter text-[14px]table-cell'}>
+                          <td className={'font-inter text-[14px] table-cell'}>
                             <div className="flex gap-2 border-[0.031rem] w-fit px-1 border-[#000] justify-center rounded-xl">
                                 <button onClick={(e) => handleMinus(e)}>
                                   <img src="/MyCartReservationImages/minus.svg" alt="" />
@@ -51,7 +52,7 @@ export const Refreshments = () => {
                             </div>
                           </td>
 
-                          <td className={'font-inter text-[14px]'}>{item.cost} COP</td>
+                          <td className={'font-inter text-[14px]'}>{formatPrice(item.cost)} COP</td>
                           <td><img src="/MyCartReservationImages/trash.svg" className="w-[12px] h-[12px] " alt="" /></td>
                       </tr>
                     )
@@ -61,7 +62,7 @@ export const Refreshments = () => {
           </table>
           <div className="flex justify-end gap-5 pr-5 mt-2">
             <h1 className="font-[600] text-[14px]">Subtotal</h1>
-            <p className="text-[14px] font-[400]">{getTotalsCOP({ list: mockRefreshments })} COP</p>
+            <p className="text-[14px] font-[400]">{getTotalPrice({ list: mockRefreshments })} COP</p>
         </div>
         </div>
   )

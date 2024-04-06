@@ -2,9 +2,10 @@ import React from 'react'
 import { Courts } from '../components/Courts'
 import { ProgressBar } from '../../components/ProgressBar'
 import { Refreshments } from '../components/Refreshments'
-import { getGrandTotalPrice } from '../hooks/getGrandTotalPrice'
+import { useFormatePrices } from '../hooks/useFormatPrices'
 
 export const MyCartReservationPage = () => {
+  const { getGrandTotalPrice } = useFormatePrices()
   return (
     <div className='flex flex-col items-center md:px-5'>
         <div className='w-[100%] flex items-center justify-center'>

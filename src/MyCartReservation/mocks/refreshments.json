@@ -5,21 +5,21 @@
           "item": "Gatorade",
           "varient": "Red",
           "quantity": "0",
-          "cost": 9000
+          "cost": 9000.0
         },
         {
           "id": "2",
           "item": "Gatorade",
-          "varient": "Red",
+          "varient": "Blue",
           "quantity": "0",
-          "cost": 9000
+          "cost": 9000.0
         },
         {
           "id": "3",
           "item": "Gatorade",
-          "varient": "Red",
+          "varient": "Orange",
           "quantity": "0",
-          "cost": 9000
+          "cost": 9000.0
         }
       ]      
 }
