@@ -13,7 +13,9 @@ export const Refreshments = () => {
           <table className='w-full shadow-lg'>
             <thead className='text-left'>
               <tr>
-                  <th className={thStyle}>Item/Varient</th>
+                  <th className={`${thStyle} hidden md:table-cell`}>Item</th>
+                  <th className={`${thStyle} hidden md:table-cell`}>Varient</th>
+                  <th className={`${thStyle} md:hidden`}>Item/Varient</th>
                   <th className={thStyle}>Quantity</th>
                   <th className={thStyle}>Cost</th>
                   <th></th>
@@ -25,7 +27,9 @@ export const Refreshments = () => {
                     const price = formatPrice(item.cost)
                     return (
                       <tr key={index} className={trStyle}>
-                          <td className={`${tdStyle}`}>{item.item}</td>
+                          <td className={`${tdStyle} hidden md:table-cell`}>{item.item}</td>
+                          <td className={`${tdStyle} hidden md:table-cell`}>{item.varient}</td>
+                          <td className={`${tdStyle} md:hidden`}>{item.item} {item.varient}</td>
                           <td className={`${tdStyle} table-cell`}>
                             <div className="flex gap-2 border-[0.031rem] w-fit px-1 border-[#000] justify-center rounded-xl">
                                 <button><img src="/MyCartReservationImages/minus.svg" alt="" /></button>

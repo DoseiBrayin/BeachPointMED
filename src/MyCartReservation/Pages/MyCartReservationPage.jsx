@@ -8,7 +8,7 @@ export const MyCartReservationPage = () => {
   return (
     <div className='flex flex-col items-center md:px-5'>
         <div className='w-[100%] flex items-center justify-center'>
-            <ProgressBar />
+            <ProgressBar percentage='33%'/>
         </div>
         <div className='max-w-[64.75rem] w-[100%] flex justify-center md:justify-start'>
             <h1 className='font-inter text-[#2E2E2E] text-[24px] font-[800] text-center mt-5 md:text-[45px] md:font-[700]'>Confirm Your Selections</h1>
