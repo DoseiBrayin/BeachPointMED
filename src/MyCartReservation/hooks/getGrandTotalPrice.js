@@ -1,18 +1,14 @@
 import { mockCourts } from '../mocks/courts.json'
 import { mockRefreshments } from '../mocks/refreshments.json'
-import { formatPrice } from './formatPrice'
 
 export const getGrandTotalPrice = () => {
   const totalCourts = mockCourts.map(court => {
-    const listOfPrises = parseInt(court.cost)
-    return listOfPrises
+    return parseInt(court.cost)
   })
   const totalRefreshments = mockRefreshments.map(refreshment => {
-    const listOfPrises = parseInt(refreshment.cost)
-    return listOfPrises
+    return parseInt(refreshment.cost)
   })
   const court = totalCourts.reduce((acc, value) => acc + value, 0)
   const refreshment = totalRefreshments.reduce((acc, value) => acc + value, 0)
-  const grandTotal = court + refreshment
-  return formatPrice(grandTotal.toString())
+  return court + refreshment
 }

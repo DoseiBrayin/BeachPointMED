@@ -1,22 +1,25 @@
 {
     "mockRefreshments" : [
         {
+          "id": "1",
           "item": "Gatorade",
           "varient": "Red",
-          "quantity": "8",
-          "cost": "9000"
+          "quantity": "0",
+          "cost": 9000
         },
         {
+          "id": "2",
           "item": "Gatorade",
           "varient": "Red",
-          "quantity": "2",
-          "cost": "9000"
+          "quantity": "0",
+          "cost": 9000
         },
         {
+          "id": "3",
           "item": "Gatorade",
           "varient": "Red",
-          "quantity": "6",
-          "cost": "9000"
+          "quantity": "0",
+          "cost": 9000
         }
       ]      
 }

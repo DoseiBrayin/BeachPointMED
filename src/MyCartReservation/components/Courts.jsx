@@ -1,4 +1,3 @@
-import { formatPrice } from '../hooks/formatPrice'
 import { getTotalsCOP } from '../hooks/getTotalPrice'
 import { mockCourts } from '../mocks/courts.json'
 
@@ -24,14 +23,13 @@ export const Courts = () => {
           <tbody className='border-[1px] text-center'>
             {
                 mockCourts.map((court, index) => {
-                  const price = formatPrice(court.cost)
                   return (
                       <tr key={index} className={trStyle}>
                         <td className={`${tdStyle} hidden md:table-cell`}>{court.location}</td>
                         <td className={tdStyle}>{court.date}</td>
                         <td className={tdStyle}>{court.time}</td>
                         <td className={tdStyle}>{court.court}</td>
-                        <td className={tdStyle}>{price} COP</td>
+                        <td className={tdStyle}>{court.cost} COP</td>
                         <td><img src="/MyCartReservationImages/trash.svg" className="w-[12px] h-[12px] " alt="" /></td>
                     </tr>
                   )
