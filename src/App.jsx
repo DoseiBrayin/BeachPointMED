@@ -6,7 +6,7 @@ import { Landing } from './LandingPage/pages/Landing.jsx'
 import { MyCartReservationPage } from './MyCartReservation/Pages/MyCartReservationPage.jsx'
 import { Navbar } from './LandingPage/components/Navbar.jsx'
 
-function App () {
+function App() {
   return (
     <>
       <BrowserRouter>
@@ -18,7 +18,7 @@ function App () {
         </Routes>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
