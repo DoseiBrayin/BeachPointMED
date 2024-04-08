@@ -1,0 +1,55 @@
+{   
+    "Navbar": {
+        "Home": "Home",
+        "ReserveNow": "Reserve Now",
+        "AboutUs": "About Us",
+        "ContactUs": "Contact Us",
+        "MyReservations": "My Reservations",
+        "SignIn": "Sign In"
+    },
+    "Footer": {
+        "Home": "Home",
+        "AboutUs": "About Us",
+        "MyReservations": "My Reservations",
+        "ContactUs": "Contact Us"
+    },
+    "LandingPage": {
+        "Hero": {
+            "MakeA": "Make A",
+            "Splash": "SPLASH",
+            "HeroSlogan": "Experience the ultimate in beach sports fun and excitement at our premium facilities."
+        },
+        "BookYourCourtButton": {
+            "BookYourCourt": "Book Your Court"
+        },
+        "ManageReservationButton": {
+            "ManageReservation": "Manage Reservation"
+        },
+        "WhyPlayWithUs": {
+            "title": "Why Play With Us?",
+            "Subtitle": "Here's what sets beach point apart from the rest.",
+            "BookOnline": {
+                "title": "Book Online",
+                "description": "Choose your prefered time and place to play."
+            },
+            "PayOnlineOrAtArrival": {
+                "title": "Pay Online or at Arrival",
+                "description": "We offer flexible payment options that meet your needs."
+            },
+            "QualityCourts": {
+                "title": "Quality Courts",
+                "description": "We're proud to offer the best facilities in the city."
+            },
+            "ExeptionalService": {
+                "title": "Exceptional Service",
+                "description": "Our staff are committed to offering a smooth, memorable experience."
+            }
+        },
+        "WhoWeAreSection": {
+            "title": "Who We Are",
+            "slogan": "We're More than just numbers",
+            "subtitle": "At Beach Point we're more than just a volleyball court rental service.",
+            "description": "We're a passionate community dedicated to providing the ultimate beach experience. Learn more about who we are and what sets us apart."
+        }
+    }
+}

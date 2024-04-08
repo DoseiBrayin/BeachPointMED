@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import { NavHooks } from '../hooks/NavHooks'
 import { LenguageSelector } from './LenguageSelector'
+import { useTranslation } from 'react-i18next'
 
 const navLinkStyle = 'text-[#2E2E2E]'
 
 export const HamburguerMenu = ({ isVisible, close }) => {
+  const { t } = useTranslation('global')
+
   return (
     <div className={`${isVisible}  w-full h-[100%] bg-[#EAEAEA]`}>
       <div className="w-full h-[100%] flex">
@@ -18,26 +21,26 @@ export const HamburguerMenu = ({ isVisible, close }) => {
         </div>
         <div className="flex flex-col mt-[20px] ml-[20px] gap-2">
           <NavLink className={navLinkStyle} to="/" onClick={close}>
-            Home
+            {t('Navbar.Home')}
           </NavLink>
           <NavLink
             className={navLinkStyle}
             to="/selectlocation"
             onClick={close}
           >
-            Reserve Now
+            {t('Navbar.ReserveNow')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
-            My Reservations
+            {t('Navbar.MyReservations')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
-            About Us
+            {t('Navbar.AboutUs')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
-            Contact Us
+            {t('Navbar.ContactUs')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
-            Sign In
+            {t('Navbar.SignIn')}
           </NavLink>
         </div>
       </div>
@@ -47,6 +50,7 @@ export const HamburguerMenu = ({ isVisible, close }) => {
 
 export const Navbar = () => {
   const { handleOpen, handleClose, isVisible } = NavHooks()
+  const { t } = useTranslation('global')
 
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
@@ -57,19 +61,19 @@ export const Navbar = () => {
       <div className="hidden gap-4 md:flex justify-center items-center ">
         <div className="flex gap-[30px]">
           <NavLink className={navLinkStyle} to="/">
-            Home
+            {t('Navbar.Home')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/selectlocation">
-            Reserve Now
+            {t('Navbar.ReserveNow')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
-            About Us
+            {t('Navbar.AboutUs')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
-            Contact Us
+            {t('Navbar.ContactUs')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
-            My Reservations
+            {t('Navbar.MyReservations')}
           </NavLink>
         </div>
         <LenguageSelector />
