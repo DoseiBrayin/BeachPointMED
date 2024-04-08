@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
-import { NavHooks } from "../hooks/NavHooks";
-import { LenguageSelector } from "./LenguageSelector";
+import { NavLink } from 'react-router-dom'
+import { NavHooks } from '../hooks/NavHooks'
+import { LenguageSelector } from './LenguageSelector'
 
-const navLinkStyle = "text-[#2E2E2E]";
+const navLinkStyle = 'text-[#2E2E2E]'
 
 export const HamburguerMenu = ({ isVisible, close }) => {
   return (
@@ -42,16 +42,16 @@ export const HamburguerMenu = ({ isVisible, close }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const Navbar = () => {
-  const { handleOpen, handleClose, isVisible } = NavHooks();
+  const { handleOpen, handleClose, isVisible } = NavHooks()
 
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
       <button className="w-[30px] h-[45px] md:w-[56px] md:h-[84px]">
-        <img src={"/LandingImages/logo.webp"} alt="BeachPointMED" />
+        <img src={'/LandingImages/logo.webp'} alt="BeachPointMED" />
       </button>
       {/* este es el diseno que se ve en pantallas grandes */}
       <div className="hidden gap-4 md:flex justify-center items-center ">
@@ -91,5 +91,5 @@ export const Navbar = () => {
         <HamburguerMenu isVisible={isVisible} close={handleClose} />
       </div>
     </nav>
-  );
-};
+  )
+}
