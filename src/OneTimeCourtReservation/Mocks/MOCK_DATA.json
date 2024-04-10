@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "time": "2-3pm",
+    "price": "$60.000",
+    "court": true,
+    "court2": false
+  },
+  {
+    "id": 2,
+    "time": "3-4pm",
+    "price": "$72.000",
+    "court": false,
+    "court2": false
+  },
+  {
+    "id": 3,
+    "time": "4-5pm",
+    "price": "$60.000",
+    "court": false,
+    "court2": true
+  },
+  {
+    "id": 4,
+    "time": "5-6pm",
+    "price": "$60.000",
+    "court": true,
+    "court2": false
+  },
+  {
+    "id": 5,
+    "time": "7-8pm",
+    "price": "$70.000",
+    "court": false,
+    "court2": true
+  },
+  {
+    "id": 6,
+    "time": "8-9pm",
+    "price": "$60.000",
+    "court": false,
+    "court2": true
+  },
+  {
+    "id": 7,
+    "time": "9-10pm",
+    "price": "$70.000",
+    "court": false,
+    "court2": false
+  },
+  {
+    "id": 8,
+    "time": "10-11pm",
+    "price": "$60.000",
+    "court": true,
+    "court2": true
+  },
+  {
+    "id": 9,
+    "time": "10-12pm",
+    "price": "$70.000",
+    "court": false,
+    "court2": false
+  }
+  
+]
