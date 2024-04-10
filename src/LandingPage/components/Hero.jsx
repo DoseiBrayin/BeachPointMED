@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next'
 import { BookYourCourtButton } from './BookYourCourtButton'
 import { ManageReservationButton } from './ManageReservationButton'
 
 export const Hero = () => {
+  const { t } = useTranslation('global')
   return (
       <div className="
       flex
@@ -19,11 +21,11 @@ export const Hero = () => {
       ">
         <div className="max-w-[588px] flex flex-col">
           <div className="flex flex-col gap-0 items-center">
-            <p className="text-[32px] text-black md:text-white font-[300]">Make A</p>
-            <h1 className="text-[60px] font-[700] leading-[70px] text-[#FB741A]">SPLASH</h1>
+            <p className="text-[32px] text-black md:text-white font-[300]">{t('LandingPage.Hero.MakeA')}</p>
+            <h1 className="text-[60px] font-[700] leading-[70px] text-[#FB741A]">{t('LandingPage.Hero.Splash')}</h1>
           </div>
           <div className="w-full mt-5">
-            <p className="text-[18px] text-center text-black font-[300] md:text-[#fff] md:text-[28px]">Experience the ultimate in beach sports fun and excitement at our premium facilities.</p>
+            <p className="text-[18px] text-center text-black font-[300] md:text-[#fff] md:text-[28px]">{t('LandingPage.Hero.HeroSlogan')}</p>
             <div className="flex flex-col gap-3 mt-10 items-center md:flex-row ">
               <BookYourCourtButton />
               <ManageReservationButton />

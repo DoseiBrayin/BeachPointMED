@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next'
+
 export const BookYourCourtButton = () => {
+  const { t } = useTranslation('global')
   return (
       <button className="
       max-w-[279px]
@@ -14,7 +17,7 @@ export const BookYourCourtButton = () => {
       md:border-[#fff]
       ">
           <img className="w-[33px] h-[33px]" src="/LandingImages/BookYourCourt.webp" alt="" />
-          Book Your Court
+          {t('LandingPage.BookYourCourtButton.BookYourCourt')}
       </button>
   )
 }

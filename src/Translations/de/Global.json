@@ -1,0 +1,56 @@
+{
+    "Navbar": {
+      "Home": "Startseite",
+      "ReserveNow": "Jetzt reservieren",
+      "AboutUs": "Über uns",
+      "ContactUs": "Kontaktiere uns",
+      "MyReservations": "Meine Reservierungen",
+      "SignIn": "Anmelden"
+    },
+    "Footer": {
+      "Home": "Startseite",
+      "AboutUs": "Über uns",
+      "MyReservations": "Meine Reservierungen",
+      "ContactUs": "Kontaktiere uns"
+    },
+    "LandingPage": {
+      "Hero": {
+        "MakeA": "Machen Sie einen",
+        "Splash": "SPRITZER",
+        "HeroSlogan": "Erleben Sie das Maximum an Spaß und Aufregung im Beach-Sport auf unseren Premium-Anlagen."
+      },
+      "BookYourCourtButton": {
+        "BookYourCourt": "Buchen Sie Ihren Platz"
+      },
+      "ManageReservationButton": {
+        "ManageReservation": "Verwalten Sie Ihre Reservierung"
+      },
+      "WhyPlayWithUs": {
+        "title": "Warum bei uns spielen?",
+        "Subtitle": "Das zeichnet Beach Point aus.",
+        "BookOnline": {
+          "title": "Online buchen",
+          "description": "Wählen Sie Ihre bevorzugte Zeit und Ihren bevorzugten Ort zum Spielen aus."
+        },
+        "PayOnlineOrAtArrival": {
+          "title": "Online oder bei der Ankunft bezahlen",
+          "description": "Wir bieten flexible Zahlungsoptionen, die Ihren Bedürfnissen entsprechen."
+        },
+        "QualityCourts": {
+          "title": "Qualitätsplätze",
+          "description": "Wir sind stolz darauf, die besten Einrichtungen der Stadt anzubieten."
+        },
+        "ExeptionalService": {
+          "title": "Außergewöhnlicher Service",
+          "description": "Unser Personal ist bestrebt, Ihnen ein reibungsloses und unvergessliches Erlebnis zu bieten."
+        }
+      },
+      "WhoWeAreSection": {
+        "title": "Wer wir sind",
+        "slogan": "Wir sind mehr als nur Zahlen",
+        "subtitle": "Bei Beach Point sind wir mehr als nur ein Volleyballplatzvermietungsservice.",
+        "description": "Wir sind eine leidenschaftliche Gemeinschaft, die sich der Bereitstellung des ultimativen Strand-Erlebnisses verschrieben hat. Erfahren Sie mehr über uns und was uns auszeichnet."
+      }
+    }
+  }
+  
