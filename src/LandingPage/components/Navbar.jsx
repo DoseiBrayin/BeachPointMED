@@ -63,7 +63,7 @@ export const Navbar = () => {
           <NavLink className={navLinkStyle} to="/">
             {t('Navbar.Home')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/selectlocation">
+          <NavLink className={navLinkStyle} to="/">
             {t('Navbar.ReserveNow')}
           </NavLink>
           <NavLink className={navLinkStyle} to="/">
