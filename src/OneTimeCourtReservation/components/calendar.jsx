@@ -10,7 +10,7 @@ export const Calendar = ({ month, year, handlePastMonth, handleNextMonth, left, 
       <ol className="w-full h-full grid grid-cols-7 grid-rows-8">
         <li className="flex col-span-full items-center justify-between w-[95%] ">
           <img
-            className={`w-5 h-5 ${left ? "" : "w-0"} `}
+            className={`w-5 h-5 ${left ? "" :"h-0"} `}
             src="/OneTimeCourReservation/ArrowLeft.svg"
             alt=""
             onClick={handlePastMonth}
@@ -20,7 +20,7 @@ export const Calendar = ({ month, year, handlePastMonth, handleNextMonth, left, 
             {months[month]} { year }
           </h1>
           <img
-            className= {`w-5 h-5 rotate-180 ${right? "" : "w-0"} `}
+            className= {`w-5 h-5 rotate-180 ${right? "" :"h-0"} `}
             src="/OneTimeCourReservation/ArrowLeft.svg"
             alt=""
             onClick={handleNextMonth}
