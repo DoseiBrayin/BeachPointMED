@@ -14,8 +14,8 @@ function App() {
       <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/reserve" element={<Main />} />
           <Route path="/MyCart" element={<MyCartReservationPage />} />
-          <Route path="/LocationSelection" element={<LocationSelection />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </BrowserRouter>
