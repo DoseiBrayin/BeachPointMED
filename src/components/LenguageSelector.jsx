@@ -15,7 +15,6 @@ export const LenguageSelector = () => {
     const handleClickOutside = (e) => {
       if (!e.target.closest('#selector')) {
         setSelectedLanguage({ ...selectedLanguage, open: false })
-        console.log('cerrado')
       }
     }
 
