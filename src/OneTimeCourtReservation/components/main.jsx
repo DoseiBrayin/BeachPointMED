@@ -1,69 +1,17 @@
 import fakeData from "../Mocks/MOCK_DATA.json";
-import "/src/index.css";
 import { ButtonAddCart } from "./ButtonAddCart";
 import { ButtonUnavailable } from "./ButtonUnavailable";
 import "../CourtReservation.modules.css";
-import { generateDate } from "../Hooks/Calendar";
-import dayjs from "dayjs";
-import condition from "../Hooks/CssConditions";
+import { Calendar } from "./calendar";
+import { calendarHooks } from "../Hooks/calendarHooks";
 
-const Calendar = () => {
-  const days = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-
-  return (
-    <>
-      <ol className="w-full h-full grid grid-cols-7 grid-rows-8">
-
-        <li className="flex col-span-full justify-between w-[50%] ">
-            <img className="w-5 h-5" src="/OneTimeCourReservation/ArrowLeft.svg" alt="" />
-            {dayjs().date()}
-        </li>
-        {
-          //Getting the days, you can use a similar approach to make the months and you just get the current month - 1 and display it
-          days.map((day, index) => {
-            return (
-              <li
-                key={`item-${index}`}
-                className=" text-[#616161] font-[450] font-inter list-none w-[2rem] flex items-center justify-center text-center h-[2rem"
-              >
-                {day}
-              </li>
-            );
-          })
-        }
-        {generateDate().map(({ date, currentMonth, today }, index) => {
-          return (
-            <li
-              key={`item-${index}`}
-              className={condition(
-                today == true
-                  ? "bg-black my-1 rounded-full w-[2rem] h-[2rem] flex items-center justify-center text-center text-white list-none"
-                  : " my-1 list-none w-[2rem] flex items-center justify-center text-center h-[2rem]",
-                currentMonth ? "" : "text-gray-400  text-sm"
-              )}
-            >
-              {date.date()}
-            </li>
-          );
-        })}
-      </ol>
-    </>
-  );
-};
-//De esta forma puedo conseguir la fecha del momento del año que le pase como parametro
-// console.log(dayjs().year(2024).month(3).day(4).minute(58).second())
-
-//El objeto dayjs contiene el momento actual y a partir de él se puede acceder a todas las funciones que brinda
-// console.log(dayjs())
-
-//En este se pueden acceder a distintos momentos también de esta forma
-// dayjs('2018-04-04T16:00:00.000Z')
-// dayjs('2018-04-13 19:18:17.040+02:00')
-// dayjs('2018-04-13 19:18')
-
-generateDate();
 
 export const Main = () => {
+
+  const {todayState, handlePastMonth, handleNextMonth } = calendarHooks()
+
+  console.log(todayState.month(), todayState.year())
+ 
   return (
     <section className="flex justify-center items-center">
       <div className="w-[80%] h-full">
@@ -88,8 +36,9 @@ export const Main = () => {
         "
         >
           <div className="my-3 md:hidden">Aqui va un calendario de chill</div>
-          <aside className="hidden md:w-[30%] md:h-full  md:flex md:mt-4 ">
-            {<Calendar />}
+          <aside className="hidden md:w-[30%] md:h-full  md:flex md:flex-col md:mt-4 ">
+            <Calendar left={true} month={todayState.month()} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth}  />
+            <Calendar right={true} month={todayState.month()+1} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth}  />
           </aside>
           <div
             className="flex flex-col items-center pb-3

@@ -2,8 +2,7 @@ import dayjs from "dayjs";
 
 //the dayjs library allow us to get the current date and to transform it
 
-
-//pass the current year and month as a default if nothing is send 
+//pass the current year and month as a default if nothing is send
 export const generateDate = (
   month = dayjs().month(),
   year = dayjs().year()
@@ -16,7 +15,7 @@ export const generateDate = (
 
   const arrayOfDate = [];
 
-  //the frist days that are not of the month in every calendar 
+  //the frist days that are not of the month in every calendar
 
   for (let i = 0; i < firstDateOfMonth.day(); i++) {
     //is goes as an object to be able to apply different styles if are not of the current month in react
@@ -32,8 +31,9 @@ export const generateDate = (
     arrayOfDate.push({
       currentMonth: true,
       date: firstDateOfMonth.date(i),
-      today: firstDateOfMonth.date(i).toDate().toDateString() ===
-      dayjs().toDate().toDateString()
+      today:
+        firstDateOfMonth.date(i).toDate().toDateString() ===
+        dayjs().toDate().toDateString(),
     });
   }
 
@@ -56,3 +56,19 @@ export const generateDate = (
 
   return arrayOfDate;
 };
+
+export const days = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
