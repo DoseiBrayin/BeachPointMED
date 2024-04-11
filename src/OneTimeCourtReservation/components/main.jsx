@@ -1,17 +1,15 @@
-import fakeData from "../Mocks/MOCK_DATA.json";
-import { ButtonAddCart } from "./ButtonAddCart";
-import { ButtonUnavailable } from "./ButtonUnavailable";
-import "../CourtReservation.modules.css";
-import { Calendar } from "./calendar";
-import { calendarHooks } from "../Hooks/calendarHooks";
-
+import fakeData from '../Mocks/MOCK_DATA.json'
+import { ButtonAddCart } from './ButtonAddCart'
+import { ButtonUnavailable } from './ButtonUnavailable'
+import '../CourtReservation.modules.css'
+import { Calendar } from './calendar'
+import { calendarHooks } from '../Hooks/calendarHooks'
 
 export const Main = () => {
-
-  const {todayState, handlePastMonth, handleNextMonth } = calendarHooks()
+  const { todayState, handlePastMonth, handleNextMonth } = calendarHooks()
 
   console.log(todayState.month(), todayState.year())
- 
+
   return (
     <section className="flex justify-center items-center">
       <div className="w-[80%] h-full">
@@ -31,14 +29,14 @@ export const Main = () => {
         </header>
         <main
           className="flex flex-col items-center
-              md:flex-row md:justify-between md:items-start 
+              md:flex-row md:justify-between md:items-start
               md:h-full
         "
         >
           <div className="my-3 md:hidden">Aqui va un calendario de chill</div>
           <aside className="hidden md:w-[30%] md:h-full  md:flex md:flex-col md:mt-4 ">
-            <Calendar left={true} month={todayState.month()} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth}  />
-            <Calendar right={true} month={todayState.month()+1} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth}  />
+            <Calendar left={true} month={todayState.month()} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth} />
+            <Calendar right={true} month={todayState.month() + 1} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth} />
           </aside>
           <div
             className="flex flex-col items-center pb-3
@@ -85,5 +83,5 @@ export const Main = () => {
         </main>
       </div>
     </section>
-  );
-};
+  )
+}
