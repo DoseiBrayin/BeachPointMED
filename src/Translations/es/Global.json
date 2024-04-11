@@ -1,0 +1,77 @@
+{
+    "Navbar": {
+        "Home": "Inicio",
+        "ReserveNow": "Reservar Ahora",
+        "AboutUs": "Acerca de Nosotros",
+        "ContactUs": "Contactanos",
+        "MyReservations": "Mis Reservaciones",
+        "SignIn": "Iniciar Sesión"
+    }, 
+    "Footer": {
+        "Home": "Inicio",
+        "AboutUs": "Acerca de Nosotros",
+        "MyReservations": "Mis Reservaciones",
+        "ContactUs": "Contactanos"
+      },
+    "LandingPage": {
+        "Hero": {
+            "MakeA": "Haz un",
+            "Splash": "SPLASH",
+            "HeroSlogan": "Experimente lo último en diversión y emoción en deportes de playa en nuestras instalaciones premium."
+        },
+        "BookYourCourtButton": {
+            "BookYourCourt": "Reserva tu cancha"
+        },
+        "ManageReservationButton": {
+            "ManageReservation": "Gestiona tu reserva"
+        },
+        "WhyPlayWithUs": {
+            "title": "¿Por qué jugar con nosotros?",
+            "Subtitle": "Esto es lo que diferencia a Beach Point del resto.",
+            "BookOnline": {
+              "title": "Reserva en línea",
+              "description": "Elige tu hora y lugar preferidos para jugar."
+            },
+            "PayOnlineOrAtArrival": {
+              "title": "Paga en línea o a la llegada",
+              "description": "Ofrecemos opciones de pago flexibles que se adaptan a tus necesidades."
+            },
+            "QualityCourts": {
+              "title": "Canchas de calidad",
+              "description": "Estamos orgullosos de ofrecer las mejores instalaciones de la ciudad."
+            },
+            "ExeptionalService": {
+              "title": "Servicio excepcional",
+              "description": "Nuestro personal está comprometido a ofrecer una experiencia fluida y memorable."
+            }
+          },
+          "WhoWeAreSection": {
+            "title": "Quiénes Somos",
+            "slogan": "Somos más que solo números",
+            "subtitle": "En Beach Point somos más que un servicio de alquiler de canchas de voleibol.",
+            "description": "Somos una comunidad apasionada dedicada a proporcionar la máxima experiencia en la playa. Aprende más sobre quiénes somos y qué nos diferencia."
+          }
+    },
+    "MyCartReservation": {
+        "Progress": "Progreso",
+        "ConfirmYourSelections": "Confirma Tus Selecciones",
+        "Courts": "Canchas",
+        "Refreshments": "Refrescos",
+        "Subtotal": "Subtotal",
+        "Grandtotal": "Gran Total",
+        "CourtTableItems": {
+            "Location": "Ubicación",
+            "Date": "Fecha",
+            "Time": "Hora",
+            "Court": "Cancha #",
+            "Cost": "Costo"
+        },
+        "RefreshmentTableItems": {
+            "Item": "Ítem",
+            "Varient": "Variante",
+            "Quantity": "Cantidad",
+            "Cost": "Costo"
+        }
+    }
+  
+}

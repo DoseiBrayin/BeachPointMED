@@ -1,0 +1,77 @@
+{
+    "Navbar": {
+      "Home": "主页",
+      "ReserveNow": "立即预订",
+      "AboutUs": "关于我们",
+      "ContactUs": "联系我们",
+      "MyReservations": "我的预订",
+      "SignIn": "登录"
+    },
+    "Footer": {
+      "Home": "主页",
+      "AboutUs": "关于我们",
+      "MyReservations": "我的预订",
+      "ContactUs": "联系我们"
+    },
+    "LandingPage": {
+      "Hero": {
+        "MakeA": "来一次",
+        "Splash": "狂欢",
+        "HeroSlogan": "在我们的高端设施中体验最大的海滩运动乐趣和刺激。"
+      },
+      "BookYourCourtButton": {
+        "BookYourCourt": "预订您的场地"
+      },
+      "ManageReservationButton": {
+        "ManageReservation": "管理您的预订"
+      },
+      "WhyPlayWithUs": {
+        "title": "为什么选择我们？",
+        "Subtitle": "这是什么让海滩点与众不同。",
+        "BookOnline": {
+          "title": "在线预订",
+          "description": "选择您喜欢的时间和地点进行游戏。"
+        },
+        "PayOnlineOrAtArrival": {
+          "title": "在线支付或到达时支付",
+          "description": "我们提供满足您需求的灵活支付选项。"
+        },
+        "QualityCourts": {
+          "title": "优质场地",
+          "description": "我们自豪地提供城市最佳设施。"
+        },
+        "ExeptionalService": {
+          "title": "优质服务",
+          "description": "我们的员工致力于提供流畅、难忘的体验。"
+        }
+      },
+      "WhoWeAreSection": {
+        "title": "我们是谁",
+        "slogan": "我们不仅仅是数字",
+        "subtitle": "在海滩点，我们不仅仅是一家排球场出租服务。",
+        "description": "我们是一个充满激情的社区，致力于提供极致的海滩体验。了解更多关于我们和我们的区别。"
+      }
+    },
+    "MyCartReservation": {
+      "Progress": "进度",
+      "ConfirmYourSelections": "确认您的选择",
+      "Courts": "球场",
+      "Refreshments": "饮品",
+      "Subtotal": "小计",
+      "Grandtotal": "总计",
+      "CourtTableItems": {
+          "Location": "位置",
+          "Date": "日期",
+          "Time": "时间",
+          "Court": "球场 #",
+          "Cost": "费用"
+      },
+      "RefreshmentTableItems": {
+          "Item": "项目",
+          "Varient": "变种",
+          "Quantity": "数量",
+          "Cost": "费用"
+      }
+  }
+  }
+  

@@ -1,6 +1,10 @@
+import { useTranslation } from 'react-i18next'
+import { NavLink } from 'react-router-dom'
+
 export const BookYourCourtButton = () => {
+  const { t } = useTranslation('global')
   return (
-      <button className="
+      <NavLink className="
       max-w-[279px]
       w-full
       text-white
@@ -12,9 +16,11 @@ export const BookYourCourtButton = () => {
       items-center
       gap-2
       md:border-[#fff]
-      ">
-          <img className="w-[33px] h-[33px]" src="../../../../public/LandingImages/BookYourCourt.webp" alt="" />
-          Book Your Court
-      </button>
+      "
+      to={'/LocationSelection'}
+      >
+          <img className="w-[33px] h-[33px]" src="/LandingImages/BookYourCourt.webp" alt="" />
+          {t('LandingPage.BookYourCourtButton.BookYourCourt')}
+      </NavLink>
   )
 }

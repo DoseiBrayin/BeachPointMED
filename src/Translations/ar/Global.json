@@ -1,0 +1,77 @@
+{
+    "Navbar": {
+      "Home": "الصفحة الرئيسية",
+      "ReserveNow": "احجز الآن",
+      "AboutUs": "من نحن",
+      "ContactUs": "اتصل بنا",
+      "MyReservations": "حجوزاتي",
+      "SignIn": "تسجيل الدخول"
+    },
+    "Footer": {
+      "Home": "الصفحة الرئيسية",
+      "AboutUs": "من نحن",
+      "MyReservations": "حجوزاتي",
+      "ContactUs": "اتصل بنا"
+    },
+    "LandingPage": {
+      "Hero": {
+        "MakeA": "اجعل",
+        "Splash": "رش",
+        "HeroSlogan": "استمتع بأقصى قدر من المرح والإثارة في الرياضات الشاطئية على منشآتنا الفاخرة."
+      },
+      "BookYourCourtButton": {
+        "BookYourCourt": "احجز ملعبك"
+      },
+      "ManageReservationButton": {
+        "ManageReservation": "إدارة حجوزاتك"
+      },
+      "WhyPlayWithUs": {
+        "title": "لماذا تلعب معنا؟",
+        "Subtitle": "هذا ما يميز بيتش بوينت عن الآخرين.",
+        "BookOnline": {
+          "title": "احجز عبر الإنترنت",
+          "description": "اختر الوقت والمكان المفضلين لديك للعب."
+        },
+        "PayOnlineOrAtArrival": {
+          "title": "ادفع عبر الإنترنت أو عند الوصول",
+          "description": "نحن نقدم خيارات دفع مرنة تلبي احتياجاتك."
+        },
+        "QualityCourts": {
+          "title": "ملاعب ذات جودة عالية",
+          "description": "نحن فخورون بتقديم أفضل المرافق في المدينة."
+        },
+        "ExeptionalService": {
+          "title": "خدمة استثنائية",
+          "description": "موظفونا ملتزمون بتقديم تجربة سلسة ولا تُنسى."
+        }
+      },
+      "WhoWeAreSection": {
+        "title": "من نحن",
+        "slogan": "نحن أكثر من مجرد أرقام",
+        "subtitle": "في بيتش بوينت، نحن أكثر من مجرد خدمة تأجير ملاعب الكرة الطائرة.",
+        "description": "نحن مجتمع متحمس ملتزم بتقديم أقصى تجربة على الشاطئ. تعرف على المزيد عننا وما يميزنا."
+      }
+    },
+    "MyCartReservation": {
+      "Progress": "تقدم",
+      "ConfirmYourSelections": "تأكيد اختياراتك",
+      "Courts": "ملاعب",
+      "Refreshments": "المرطبات",
+      "Subtotal": "المجموع الفرعي",
+      "Grandtotal": "المجموع الكلي",
+      "CourtTableItems": {
+          "Location": "الموقع",
+          "Date": "التاريخ",
+          "Time": "الوقت",
+          "Court": "الملعب #",
+          "Cost": "التكلفة"
+      },
+      "RefreshmentTableItems": {
+          "Item": "العنصر",
+          "Varient": "التباين",
+          "Quantity": "الكمية",
+          "Cost": "التكلفة"
+      }
+  }
+  }
+  

@@ -1,12 +1,14 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 export function WhoWeAre () {
+  const { t } = useTranslation('global')
   return (
     <section className="w-full flex flex-col justify-center items-center mt-5">
       <header className="flex flex-col items-center">
-        <h1 className="bold-heading-mobile">Who We Are</h1>
+        <h1 className="bold-heading-mobile">{t('LandingPage.WhoWeAreSection.title')}</h1>
         <span className="text-center font-normal font-inter text-[15px]">
-          We&apos;re More than just numbers
+        {t('LandingPage.WhoWeAreSection.slogan')}
         </span>
       </header>
       <main className="flex w-full justify-center items-center p-10 md:gap-10 md:justify-between">
@@ -17,8 +19,7 @@ export function WhoWeAre () {
             lg:text-[22px] lg:leading-tight
             xl:text-[28px]"
           >
-            At Beach Point we&apos;re more than just a volleyball court rental
-            service.
+            {t('LandingPage.WhoWeAreSection.subtitle')}
           </p>
           <br />
           <p
@@ -26,9 +27,7 @@ export function WhoWeAre () {
             lg:text-[22px] lg:leading-tight
             xl:text-[28px]"
           >
-            We&apos;re a passionate community dedicated to providing the ultimate
-            beach experience. Learn more about who we are and what sets us
-            apart.
+            {t('LandingPage.WhoWeAreSection.description')}
           </p>
         </div>
         <div className="w-[100%] md:w-[50%] grid grid-cols-2 grid-rows-2 gap-2">

@@ -1,0 +1,77 @@
+{
+    "Navbar": {
+      "Home": "Início",
+      "ReserveNow": "Reservar Agora",
+      "AboutUs": "Sobre Nós",
+      "ContactUs": "Contate-nos",
+      "MyReservations": "Minhas Reservas",
+      "SignIn": "Entrar"
+    },
+    "Footer": {
+      "Home": "Início",
+      "AboutUs": "Sobre Nós",
+      "MyReservations": "Minhas Reservas",
+      "ContactUs": "Contate-nos"
+    },
+    "LandingPage": {
+      "Hero": {
+        "MakeA": "Faça um",
+        "Splash": "SALTO",
+        "HeroSlogan": "Experimente o máximo de diversão e emoção nos esportes de praia em nossas instalações premium."
+      },
+      "BookYourCourtButton": {
+        "BookYourCourt": "Reserve sua quadra"
+      },
+      "ManageReservationButton": {
+        "ManageReservation": "Gerencie sua reserva"
+      },
+      "WhyPlayWithUs": {
+        "title": "Por que jogar conosco?",
+        "Subtitle": "Veja o que diferencia Beach Point dos outros.",
+        "BookOnline": {
+          "title": "Reserve online",
+          "description": "Escolha sua hora e local preferidos para jogar."
+        },
+        "PayOnlineOrAtArrival": {
+          "title": "Pague online ou na chegada",
+          "description": "Oferecemos opções de pagamento flexíveis que atendem às suas necessidades."
+        },
+        "QualityCourts": {
+          "title": "Quadras de qualidade",
+          "description": "Estamos orgulhosos de oferecer as melhores instalações da cidade."
+        },
+        "ExeptionalService": {
+          "title": "Serviço excepcional",
+          "description": "Nossa equipe está comprometida em oferecer uma experiência fluída e memorável."
+        }
+      },
+      "WhoWeAreSection": {
+        "title": "Quem Somos",
+        "slogan": "Somos mais do que apenas números",
+        "subtitle": "Na Beach Point, somos mais do que um serviço de aluguel de quadras de vôlei.",
+        "description": "Somos uma comunidade apaixonada dedicada a proporcionar a máxima experiência na praia. Saiba mais sobre quem somos e o que nos diferencia."
+      }
+    },
+    "MyCartReservation": {
+      "Progress": "Progresso",
+      "ConfirmYourSelections": "Confirmar Suas Seleções",
+      "Courts": "Quadras",
+      "Refreshments": "Refrescos",
+      "Subtotal": "Subtotal",
+      "Grandtotal": "Total Geral",
+      "CourtTableItems": {
+          "Location": "Localização",
+          "Date": "Data",
+          "Time": "Hora",
+          "Court": "Quadra #",
+          "Cost": "Custo"
+      },
+      "RefreshmentTableItems": {
+          "Item": "Item",
+          "Varient": "Variante",
+          "Quantity": "Quantidade",
+          "Cost": "Custo"
+      }
+  }
+  }
+  

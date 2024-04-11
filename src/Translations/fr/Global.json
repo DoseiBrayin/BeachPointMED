@@ -1,0 +1,77 @@
+{
+    "Navbar": {
+      "Home": "Accueil",
+      "ReserveNow": "Réservez Maintenant",
+      "AboutUs": "À Propos de Nous",
+      "ContactUs": "Nous Contacter",
+      "MyReservations": "Mes Réservations",
+      "SignIn": "Se Connecter"
+    },
+    "Footer": {
+      "Home": "Accueil",
+      "AboutUs": "À Propos de Nous",
+      "MyReservations": "Mes Réservations",
+      "ContactUs": "Nous Contacter"
+    },
+    "LandingPage": {
+      "Hero": {
+        "MakeA": "Faites un",
+        "Splash": "PLONGEON",
+        "HeroSlogan": "Vivez le summum du plaisir et de l'excitation dans les sports de plage sur nos installations haut de gamme."
+      },
+      "BookYourCourtButton": {
+        "BookYourCourt": "Réservez votre terrain"
+      },
+      "ManageReservationButton": {
+        "ManageReservation": "Gérez votre réservation"
+      },
+      "WhyPlayWithUs": {
+        "title": "Pourquoi jouer avec nous?",
+        "Subtitle": "Voici ce qui distingue Beach Point du reste.",
+        "BookOnline": {
+          "title": "Réservez en ligne",
+          "description": "Choisissez votre heure et votre lieu de prédilection pour jouer."
+        },
+        "PayOnlineOrAtArrival": {
+          "title": "Payez en ligne ou à l'arrivée",
+          "description": "Nous proposons des options de paiement flexibles qui répondent à vos besoins."
+        },
+        "QualityCourts": {
+          "title": "Terrains de qualité",
+          "description": "Nous sommes fiers de proposer les meilleures installations de la ville."
+        },
+        "ExeptionalService": {
+          "title": "Service exceptionnel",
+          "description": "Notre personnel s'engage à offrir une expérience fluide et mémorable."
+        }
+      },
+      "WhoWeAreSection": {
+        "title": "Qui Sommes-Nous",
+        "slogan": "Nous sommes plus que juste des chiffres",
+        "subtitle": "Chez Beach Point, nous sommes plus qu'un simple service de location de terrains de volleyball.",
+        "description": "Nous sommes une communauté passionnée dédiée à offrir l'expérience ultime sur la plage. Apprenez-en plus sur qui nous sommes et ce qui nous différencie."
+      }
+    },
+    "MyCartReservation": {
+      "Progress": "Avancement",
+      "ConfirmYourSelections": "Confirmez Vos Sélections",
+      "Courts": "Tribunaux",
+      "Refreshments": "Rafraîchissements",
+      "Subtotal": "Sous-total",
+      "Grandtotal": "Total général",
+      "CourtTableItems": {
+          "Location": "Emplacement",
+          "Date": "Date",
+          "Time": "Heure",
+          "Court": "Tribunal #",
+          "Cost": "Coût"
+      },
+      "RefreshmentTableItems": {
+          "Item": "Article",
+          "Varient": "Variante",
+          "Quantity": "Quantité",
+          "Cost": "Coût"
+      }
+  }
+  }
+  
