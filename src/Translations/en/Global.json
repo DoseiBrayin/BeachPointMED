@@ -72,5 +72,8 @@
             "Quantity": "Quantity",
             "Cost": "Cost"
         }
+    },
+    "LocationSelection":  {
+        "title": "Select Location"
     }
 }
