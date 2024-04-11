@@ -51,6 +51,27 @@
         "subtitle": "Bei Beach Point sind wir mehr als nur ein Volleyballplatzvermietungsservice.",
         "description": "Wir sind eine leidenschaftliche Gemeinschaft, die sich der Bereitstellung des ultimativen Strand-Erlebnisses verschrieben hat. Erfahren Sie mehr über uns und was uns auszeichnet."
       }
-    }
+    },
+    "MyCartReservation": {
+      "Progress": "Fortschritt",
+      "ConfirmYourSelections": "Bestätigen Sie Ihre Auswahl",
+      "Courts": "Plätze",
+      "Refreshments": "Erfrischungen",
+      "Subtotal": "Zwischensumme",
+      "Grandtotal": "Gesamtsumme",
+      "CourtTableItems": {
+          "Location": "Ort",
+          "Date": "Datum",
+          "Time": "Zeit",
+          "Court": "Platz #",
+          "Cost": "Kosten"
+      },
+      "RefreshmentTableItems": {
+          "Item": "Artikel",
+          "Varient": "Variante",
+          "Quantity": "Menge",
+          "Cost": "Kosten"
+      }
+  }
   }
   

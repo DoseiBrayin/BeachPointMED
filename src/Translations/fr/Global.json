@@ -51,6 +51,27 @@
         "subtitle": "Chez Beach Point, nous sommes plus qu'un simple service de location de terrains de volleyball.",
         "description": "Nous sommes une communauté passionnée dédiée à offrir l'expérience ultime sur la plage. Apprenez-en plus sur qui nous sommes et ce qui nous différencie."
       }
-    }
+    },
+    "MyCartReservation": {
+      "Progress": "Avancement",
+      "ConfirmYourSelections": "Confirmez Vos Sélections",
+      "Courts": "Tribunaux",
+      "Refreshments": "Rafraîchissements",
+      "Subtotal": "Sous-total",
+      "Grandtotal": "Total général",
+      "CourtTableItems": {
+          "Location": "Emplacement",
+          "Date": "Date",
+          "Time": "Heure",
+          "Court": "Tribunal #",
+          "Cost": "Coût"
+      },
+      "RefreshmentTableItems": {
+          "Item": "Article",
+          "Varient": "Variante",
+          "Quantity": "Quantité",
+          "Cost": "Coût"
+      }
+  }
   }
   

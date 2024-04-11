@@ -51,6 +51,27 @@
         "subtitle": "在海滩点，我们不仅仅是一家排球场出租服务。",
         "description": "我们是一个充满激情的社区，致力于提供极致的海滩体验。了解更多关于我们和我们的区别。"
       }
-    }
+    },
+    "MyCartReservation": {
+      "Progress": "进度",
+      "ConfirmYourSelections": "确认您的选择",
+      "Courts": "球场",
+      "Refreshments": "饮品",
+      "Subtotal": "小计",
+      "Grandtotal": "总计",
+      "CourtTableItems": {
+          "Location": "位置",
+          "Date": "日期",
+          "Time": "时间",
+          "Court": "球场 #",
+          "Cost": "费用"
+      },
+      "RefreshmentTableItems": {
+          "Item": "项目",
+          "Varient": "变种",
+          "Quantity": "数量",
+          "Cost": "费用"
+      }
+  }
   }
   

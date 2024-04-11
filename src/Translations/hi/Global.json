@@ -51,6 +51,27 @@
         "subtitle": "बीच पॉइंट पर हम वॉलीबॉल कोर्ट किराया सेवा से अधिक हैं।",
         "description": "हम एक उत्साही समुदाय हैं जो अधिकतम समुद्र अनुभव प्रदान करने के लिए समर्पित हैं। हमारे बारे में और हमें क्या अलग करता है इसके बारे में अधिक जानें।"
       }
-    }
+    },
+    "MyCartReservation": {
+      "Progress": "प्रगति",
+      "ConfirmYourSelections": "अपने चयनों की पुष्टि करें",
+      "Courts": "अदालतें",
+      "Refreshments": "ताजगी",
+      "Subtotal": "उप-योग",
+      "Grandtotal": "कुल योग",
+      "CourtTableItems": {
+          "Location": "स्थान",
+          "Date": "तारीख",
+          "Time": "समय",
+          "Court": "अदालत #",
+          "Cost": "लागत"
+      },
+      "RefreshmentTableItems": {
+          "Item": "वस्तु",
+          "Varient": "परिवर्तन",
+          "Quantity": "मात्रा",
+          "Cost": "लागत"
+      }
+  }
   }
   
