@@ -51,6 +51,27 @@
         "subtitle": "في بيتش بوينت، نحن أكثر من مجرد خدمة تأجير ملاعب الكرة الطائرة.",
         "description": "نحن مجتمع متحمس ملتزم بتقديم أقصى تجربة على الشاطئ. تعرف على المزيد عننا وما يميزنا."
       }
-    }
+    },
+    "MyCartReservation": {
+      "Progress": "تقدم",
+      "ConfirmYourSelections": "تأكيد اختياراتك",
+      "Courts": "ملاعب",
+      "Refreshments": "المرطبات",
+      "Subtotal": "المجموع الفرعي",
+      "Grandtotal": "المجموع الكلي",
+      "CourtTableItems": {
+          "Location": "الموقع",
+          "Date": "التاريخ",
+          "Time": "الوقت",
+          "Court": "الملعب #",
+          "Cost": "التكلفة"
+      },
+      "RefreshmentTableItems": {
+          "Item": "العنصر",
+          "Varient": "التباين",
+          "Quantity": "الكمية",
+          "Cost": "التكلفة"
+      }
+  }
   }
   

@@ -1,31 +1,33 @@
 import { mockRefreshments } from '../mocks/refreshments.json'
 import { useCart } from '../hooks/useCart'
 import { useFormatePrices } from '../hooks/useFormatPrices'
+import { useTranslation } from 'react-i18next'
 
 export const Refreshments = () => {
   const { handleMinus, handlePlus, refreshments } = useCart()
   const { formatPrice, getTotalPrice } = useFormatePrices()
+  const { t } = useTranslation('global')
 
   return (
         <div className='px-[5%] mt-4 w-full max-w-[52.5rem]'>
-          <h1 className="text-[#2E2E2E] font-[700] text-[20px] md:text-[28px] md:text-[#000]">Refreshments</h1>
+          <h1 className="text-[#2E2E2E] font-[700] text-[20px] md:text-[28px] md:text-[#000]">{t('MyCartReservation.Refreshments')}</h1>
           <table className='w-full shadow-lg rounded-lg'>
             <thead className='text-left'>
               <tr>
                   <th className={'font-[600] font-inter text-[14px] text-center hidden md:table-cell'}>
-                    Item
+                    {t('MyCartReservation.RefreshmentTableItems.Item')}
                   </th>
                   <th className={'font-[600] font-inter text-[14px] text-center hidden md:table-cell'}>
-                    Varient
+                    {t('MyCartReservation.RefreshmentTableItems.Varient')}
                   </th>
                   <th className={'font-[600] font-inter text-[14px] text-center md:hidden'}>
-                    Item/Varient
+                    {t('MyCartReservation.RefreshmentTableItems.Item')}/{t('MyCartReservation.RefreshmentTableItems.Varient')}
                   </th>
                   <th className={'font-[600] font-inter text-[14px] text-center'}>
-                    Quantity
+                    {t('MyCartReservation.RefreshmentTableItems.Quantity')}
                   </th>
                   <th className={'font-[600] font-inter text-[14px] text-center'}>
-                    Cost
+                    {t('MyCartReservation.RefreshmentTableItems.Cost')}
                   </th>
                   <th>
                   </th>
@@ -61,7 +63,7 @@ export const Refreshments = () => {
             </tbody>
           </table>
           <div className="flex justify-end gap-5 pr-5 mt-2">
-            <h1 className="font-[600] text-[14px]">Subtotal</h1>
+            <h1 className="font-[600] text-[14px]">{t('MyCartReservation.Subtotal')}</h1>
             <p className="text-[14px] font-[400]">{getTotalPrice({ list: mockRefreshments })} COP</p>
         </div>
         </div>

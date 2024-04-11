@@ -51,5 +51,26 @@
             "subtitle": "At Beach Point we're more than just a volleyball court rental service.",
             "description": "We're a passionate community dedicated to providing the ultimate beach experience. Learn more about who we are and what sets us apart."
         }
+    },
+    "MyCartReservation": {
+        "Progress": "Progress",
+        "ConfirmYourSelections": "Confirm Your Selections",
+        "Courts": "Courts",
+        "Refreshments": "Refreshments",
+        "Subtotal": "Subtotal",
+        "Grandtotal": "Grand Total",
+        "CourtTableItems": {
+            "Location": "Location",
+            "Date": "Date",
+            "Time": "Time",
+            "Court": "Court #",
+            "Cost": "Cost"
+        },
+        "RefreshmentTableItems": {
+            "Item": "Item",
+            "Varient": "Varient",
+            "Quantity": "Quantity",
+            "Cost": "Cost"
+        }
     }
 }

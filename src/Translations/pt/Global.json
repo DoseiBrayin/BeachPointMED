@@ -51,6 +51,27 @@
         "subtitle": "Na Beach Point, somos mais do que um serviço de aluguel de quadras de vôlei.",
         "description": "Somos uma comunidade apaixonada dedicada a proporcionar a máxima experiência na praia. Saiba mais sobre quem somos e o que nos diferencia."
       }
-    }
+    },
+    "MyCartReservation": {
+      "Progress": "Progresso",
+      "ConfirmYourSelections": "Confirmar Suas Seleções",
+      "Courts": "Quadras",
+      "Refreshments": "Refrescos",
+      "Subtotal": "Subtotal",
+      "Grandtotal": "Total Geral",
+      "CourtTableItems": {
+          "Location": "Localização",
+          "Date": "Data",
+          "Time": "Hora",
+          "Court": "Quadra #",
+          "Cost": "Custo"
+      },
+      "RefreshmentTableItems": {
+          "Item": "Item",
+          "Varient": "Variante",
+          "Quantity": "Quantidade",
+          "Cost": "Custo"
+      }
+  }
   }
   
