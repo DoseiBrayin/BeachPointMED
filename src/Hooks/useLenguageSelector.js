@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocalStorage } from '../../Hooks/useLocalStorage'
+import { useLocalStorage } from './useLocalStorage'
 import i18next from 'i18next'
 
 export const useLeguageSelector = () => {
