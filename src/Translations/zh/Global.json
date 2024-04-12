@@ -72,6 +72,10 @@
           "Quantity": "数量",
           "Cost": "费用"
       }
+    },
+    "LocationSelection": {
+      "title": "选择位置"
   }
+  
   }
   
