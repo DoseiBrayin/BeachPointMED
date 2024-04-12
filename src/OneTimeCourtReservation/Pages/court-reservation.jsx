@@ -2,7 +2,7 @@ import React from "react";
 import { Main } from "../components/main";
 import { Calendar } from "../components/calendar";
 
-export const CourtReservation = () => {
+export const CourtReservationMobile = () => {
   return (
     <>
     <div className="hidden md:block">
