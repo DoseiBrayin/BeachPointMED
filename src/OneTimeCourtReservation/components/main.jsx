@@ -1,14 +1,15 @@
-import fakeData from '../Mocks/MOCK_DATA.json'
-import { ButtonAddCart } from './ButtonAddCart'
-import { ButtonUnavailable } from './ButtonUnavailable'
-import '../CourtReservation.modules.css'
-import { Calendar } from './calendar'
-import { calendarHooks } from '../Hooks/calendarHooks'
+import fakeData from "../Mocks/MOCK_DATA.json";
+import { ButtonAddCart } from "./ButtonAddCart";
+import { ButtonUnavailable } from "./ButtonUnavailable";
+import "../CourtReservation.modules.css";
+import { Calendar } from "./calendar";
+import { calendarHooks } from "../Hooks/calendarHooks";
+import { generateDate, months, days } from "../Hooks/Calendar";
+import dayjs from "dayjs";
 
 export const Main = () => {
-  const { todayState, handlePastMonth, handleNextMonth } = calendarHooks()
 
-  console.log(todayState.month(), todayState.year())
+  const {todayState} = calendarHooks()
 
   return (
     <section className="flex justify-center items-center">
@@ -33,19 +34,21 @@ export const Main = () => {
               md:h-full
         "
         >
-          <div className="my-3 md:hidden">Aqui va un calendario de chill</div>
-          <aside className="hidden md:w-[30%] md:h-full  md:flex md:flex-col md:mt-4 ">
-            <Calendar left={true} month={todayState.month()} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth} />
-            <Calendar right={true} month={todayState.month() + 1} year={todayState.year()} handlePastMonth={handlePastMonth} handleNextMonth={handleNextMonth} />
+          <div className="my-3 md:hidden border border-black h-[1rem] w-[100%] rounded-full flex items-center justify-center">
+            <span className="text-xs">{days[todayState.day()]} {months[todayState.month()]} {todayState.day()} {todayState.year()}</span>
+          </div>
+          <aside className="hidden md:w-[25%] md:h-fit md:flex md:flex-col items-center m-2 md:mt-4 md:rounded-2xl shadow-lg md:border md:border-gray-200">
+            <Calendar />
           </aside>
           <div
             className="flex flex-col items-center pb-3
              min-h-[4rem]
              max-h-[100%] overflow-y-scroll
              sm:w-[100%]
-             md:w-[60%]"
+             md:w-[60%]
+             md:h-[28rem]"
           >
-            <table className="w-full">
+            <table className="w-full h-full">
               <thead>
                 <tr>
                   <th className="text-sm font-[600] font-inter text-center ">
@@ -83,5 +86,5 @@ export const Main = () => {
         </main>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -7,6 +7,7 @@ import { MyCartReservationPage } from './MyCartReservation/Pages/MyCartReservati
 import { Navbar } from './components/Navbar.jsx'
 import { LocationSelection } from './LocationSelection/pages/LocationSelection.jsx'
 import { Main } from './OneTimeCourtReservation/components/main.jsx'
+import { CourtReservation } from './OneTimeCourtReservation/Pages/court-reservation.jsx'
 
 function App () {
   return (
