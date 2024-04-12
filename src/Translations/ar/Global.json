@@ -72,6 +72,10 @@
           "Quantity": "الكمية",
           "Cost": "التكلفة"
       }
-  }
+    },
+    "LocationSelection": {
+      "title": "اختر الموقع"
+    }
+
   }
   

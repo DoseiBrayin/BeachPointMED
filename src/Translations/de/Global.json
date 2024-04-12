@@ -72,6 +72,9 @@
           "Quantity": "Menge",
           "Cost": "Kosten"
       }
+    },
+    "LocationSelection": {
+      "title": "Wähle den Standort"
   }
   }
   
