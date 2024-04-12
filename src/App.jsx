@@ -9,6 +9,7 @@ import { LocationSelection } from './LocationSelection/pages/LocationSelection.j
 import { BookYourCourtProvider } from './context/BookYourCourtContext.jsx'
 import { CourtReservation } from './OneTimeCourtReservation/Pages/CourtReservation.jsx'
 import { Main } from './OneTimeCourtReservation/components/main.jsx'
+import { CourtReservation } from './OneTimeCourtReservation/Pages/court-reservation.jsx'
 
 function App () {
   return (
