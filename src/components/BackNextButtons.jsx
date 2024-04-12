@@ -3,12 +3,6 @@ import { useBookYourCourtContext } from '../context/BookYourCourtContext'
 
 export const BackNextButtons = ({ backURL, nextURL }) => {
   const { bookCourt } = useBookYourCourtContext()
-  console.log(bookCourt)
-
-  // const emptyLocation = () => {
-  //   if (!bookCourt.location) return
-  //   return nextURL
-  // }
 
   const emptyLocation = bookCourt.location ? nextURL : '#'
 
