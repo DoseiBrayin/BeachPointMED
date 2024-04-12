@@ -34,7 +34,7 @@ export function WhoWeAre () {
           <div className="w-[100%] relative">
             <img
               className="w-[100%] md:w-[100%rem] rounded-2xl"
-              src="/LandingImages/Who_we_are/volley-1.svg"
+              src="/LandingImages/Who_we_are/volley-2.svg"
               alt=""
             />
             <div className="absolute top-0 left-0 p-2 xl:pt-8 xl:pl-5">
@@ -47,7 +47,7 @@ export function WhoWeAre () {
           <div className="w-[100%] relative">
             <img
               className="w-[100%] md:w-[100%rem] rounded-2xl"
-              src="/LandingImages/Who_we_are/volley-1.svg"
+              src="/LandingImages/Who_we_are/volley-4.svg"
               alt=""
             />
             <div className="absolute top-0 left-0 p-2 xl:pt-8 xl:pl-5">
@@ -73,7 +73,7 @@ export function WhoWeAre () {
           <div className="w-[100%] relative">
             <img
               className="w-[100%] md:w-[100%rem] rounded-2xl"
-              src="/LandingImages/Who_we_are/volley-1.svg"
+              src="/LandingImages/Who_we_are/volley-3.svg"
               alt=""
             />
             <div className="absolute top-0 left-0 p-2 xl:pt-8 xl:pl-5">
