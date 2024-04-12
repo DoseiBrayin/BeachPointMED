@@ -72,6 +72,9 @@
           "Quantity": "मात्रा",
           "Cost": "लागत"
       }
+    },
+    "LocationSelection": {
+      "title": "स्थान चुनें"
   }
   }
   
