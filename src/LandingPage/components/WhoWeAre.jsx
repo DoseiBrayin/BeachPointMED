@@ -51,9 +51,9 @@ export function WhoWeAre () {
               alt=""
             />
             <div className="absolute top-0 left-0 p-2 xl:pt-8 xl:pl-5">
-              <h2 className="font-[900] font-inter text-[25px] lg:text-3xl xl:text-[3rem]">110k</h2>
+              <h2 className="font-[900] font-inter text-[25px] lg:text-3xl xl:text-[3rem]">15k +</h2>
               <span className="font-[600] font-inter text-[16px] lg:text-xl xl:text-2xl">
-                Revervations
+                Customers
               </span>
             </div>
           </div>
@@ -64,9 +64,9 @@ export function WhoWeAre () {
               alt=""
             />
             <div className="absolute top-0 left-0 p-2 xl:pt-8 xl:pl-5">
-              <h2 className="font-[900] font-inter text-[25px] lg:text-3xl xl:text-[3rem]">110k</h2>
+              <h2 className="font-[900] font-inter text-[25px] lg:text-3xl xl:text-[3rem]">Four</h2>
               <span className="font-[600] font-inter text-[16px] lg:text-xl xl:text-2xl">
-                Revervations
+                Sports
               </span>
             </div>
           </div>
@@ -77,9 +77,9 @@ export function WhoWeAre () {
               alt=""
             />
             <div className="absolute top-0 left-0 p-2 xl:pt-8 xl:pl-5">
-              <h2 className="font-[900] font-inter text-[25px] lg:text-3xl xl:text-[3rem]">110k</h2>
+              <h2 className="font-[900] font-inter text-[25px] lg:text-3xl xl:text-[3rem]">1 Priority</h2>
               <span className="font-[600] font-inter text-[16px] lg:text-xl xl:text-2xl">
-                Revervations
+                You!
               </span>
             </div>
           </div>
