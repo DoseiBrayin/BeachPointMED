@@ -12,7 +12,7 @@ export const Instagram = () => {
         '>
         {
           data && data.slice(0, 8).map((item, index) => (
-            <img key={index} className={`max-h-[298px] ${index > 3 ? 'hidden md:block' : ''}`} src={item.media_url} alt="" />
+            <img key={index} className={`${index > 3 ? 'hidden md:block' : ''} h-[167px] md:h-[298px] w-[167px] md:w-[298px]`} src={item.media_url} alt="" />
           ))
         }
       </div>
