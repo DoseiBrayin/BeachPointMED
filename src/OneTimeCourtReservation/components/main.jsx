@@ -1,29 +1,21 @@
-import fakeData from "../Mocks/MOCK_DATA.json";
-import { ButtonAddCart } from "./ButtonAddCart";
-import { ButtonUnavailable } from "./ButtonUnavailable";
-import "../CourtReservation.modules.css";
-import { Calendar } from "./calendar";
-import { calendarHooks } from "../Hooks/calendarHooks";
-import { generateDate, months, days } from "../Hooks/Calendar";
-import dayjs from "dayjs";
+import fakeData from '../Mocks/MOCK_DATA.json'
+import { ButtonAddCart } from './ButtonAddCart'
+import { ButtonUnavailable } from './ButtonUnavailable'
+import '../CourtReservation.modules.css'
+import { Calendar } from './calendar'
+import { calendarHooks } from '../Hooks/calendarHooks'
+import { generateDate, months, days } from '../Hooks/Calendar'
+import dayjs from 'dayjs'
+import { ProgressBar } from '../../components/ProgressBar'
 
 export const Main = () => {
-
-  const {todayState} = calendarHooks()
+  const { todayState } = calendarHooks()
 
   return (
     <section className="flex justify-center items-center">
-      <div className="w-[80%] h-full">
+      <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
-          <div className="flex w-full justify-between mb-5">
-            <h2 className="text-3xl font-semibold">Progress</h2>
-            <h3 className="text-2xl font-semibold">4:59</h3>
-          </div>
-          <img
-            className="w-full"
-            src="OneTimeCourReservation/progress.svg"
-            alt=""
-          />
+          <ProgressBar />
           <h1 className="text-[24px] text-[#2E2E2E] font-inter font-[800] mt-5">
             Select Playing Time
           </h1>
@@ -86,5 +78,5 @@ export const Main = () => {
         </main>
       </div>
     </section>
-  );
-};
+  )
+}
