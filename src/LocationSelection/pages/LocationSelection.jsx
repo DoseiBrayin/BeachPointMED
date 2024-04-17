@@ -5,10 +5,18 @@ import { BackNextButtons } from '../../components/BackNextButtons'
 import { Selector } from '../components/Selector'
 import { useSelectorLocation } from '../Hooks/useSelectorLocation'
 import { SomethingWentWrong } from '../../components/SomethingWentWrong'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export const LocationSelection = () => {
   const { t } = useTranslation('global')
   const { error } = useSelectorLocation()
+  const { bookCourt } = useBookYourCourtContext()
+
+  // Set the location to null when the component is loaded
+  window.addEventListener('load', () => {
+    bookCourt.location = null
+  })
+
   return (
     error
       ? <SomethingWentWrong />
