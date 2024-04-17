@@ -1,6 +1,6 @@
-import React from "react";
-import { Main } from "../components/main";
-import { Calendar } from "../components/calendar";
+import React from 'react'
+import { Main } from '../components/main'
+import { Calendar } from '../components/calendar'
 
 export const CourtReservationMobile = () => {
   return (
@@ -14,5 +14,5 @@ export const CourtReservationMobile = () => {
         </main>
       </div>
     </>
-  );
-};
+  )
+}
