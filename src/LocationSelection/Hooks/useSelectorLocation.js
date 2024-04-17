@@ -4,10 +4,8 @@ import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export const useSelectorLocation = () => {
   // Define the url to make the request
-  // const token = import.meta.env.VITE_BEACHPOINT_API_URL
-  localStorage.setItem('apiUrl', import.meta.env.VITE_BEACHPOINT_API_URL)
-  const url = 'https://beachpointmed-back.onrender.com/locations/locations/'
-  const { data, loading, error } = useAxios({ url })
+  const token = import.meta.env.VITE_BEACHPOINT_API_URL
+  const { data, loading, error } = useAxios({ url: `${token}/locations/locations ` })
 
   // Get the bookCourt state and the setBookCourt function from the context
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
