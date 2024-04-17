@@ -7,7 +7,7 @@ export const Selector = () => {
       ? <div className='w-[90%] h-[300px] flex justify-center items-center'><p>Loading...</p></div>
       : <div className='border-[1px] shadow-md px-3 py-3 rounded-lg w-[99%] max-w-[600px]'>
           <div className='flex px-3 items-center gap-1 border-[1px] h-[32px] rounded-md'>
-            <img src='../../../public/LocationSelectionImages/Prefix.svg' className='w-5 h-5' alt="" />
+            <img src='/LocationSelectionImages/Prefix.svg' className='w-5 h-5' alt="" />
             <input type="text" placeholder='Search' value={search} onChange={(e) => setSearch(e.target.value)} className='w-full outline-none' />
           </div>
           <div className='mt-3 flex flex-col gap-2'>
