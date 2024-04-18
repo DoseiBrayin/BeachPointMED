@@ -24,7 +24,7 @@ export const Footer = () => {
                     <img className="w-[39px] h-[39px] md:w-[76px] md:h-[76px]" src="/LandingImages/WhatsappLogo.webp" alt="" />
                 </div>
                 <button>
-                    <img className="w-[47px] h-[71px] md:w-[78px] md:h-[117px]" src="/LandingImages/logo.webp" alt="" />
+                    <img className="w-[47px] h-[71px] md:w-[78px] md:h-[117px]" src="https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/BP-logo.webp" alt="" />
                 </button>
             </div>
         </div>
