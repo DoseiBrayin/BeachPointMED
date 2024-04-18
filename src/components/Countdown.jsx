@@ -1,7 +1,7 @@
-import { useCountdown } from '../Hooks/useCountdown'
+import { useCountdownContext } from '../context/CountdownContext'
 
 export const Countdown = () => {
-  const { countdown, countValue } = useCountdown(600)
+  const { countdown, countValue } = useCountdownContext()
 
   return (
     <div>

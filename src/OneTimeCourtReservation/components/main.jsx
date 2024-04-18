@@ -4,8 +4,7 @@ import { ButtonUnavailable } from './ButtonUnavailable'
 import '../CourtReservation.modules.css'
 import { Calendar } from './calendar'
 import { calendarHooks } from '../Hooks/calendarHooks'
-import { generateDate, months, days } from '../Hooks/Calendar'
-import dayjs from 'dayjs'
+import { months, days } from '../Hooks/Calendar'
 import { ProgressBar } from '../../components/ProgressBar'
 
 export const Main = () => {

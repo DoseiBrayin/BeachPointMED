@@ -1,33 +1,41 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export const useCountdown = (initialCount = 10) => {
-  // The countValue state is used to store the countdown value and the firstTime state
-  const [countValue, setCountValue] = useState({ countValue: initialCount, firstTime: true })
+export const useCountdown = () => {
+  // Obtener y establecer el estado del contador en localStorage
+  const storedCountdown = localStorage.getItem('countdown')
+  const initialCountdown = storedCountdown ? JSON.parse(storedCountdown) : { value: 190, firstTime: false }
 
-  // The formatTime function is used to format the countdown value
+  // Inicializar el estado del contador
+  const [countVal, setCountVal] = useState(initialCountdown)
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      // Lógica del contador
+      if (countVal.value > 0 && !countVal.firstTime) {
+        setCountVal((prevState) => ({ value: prevState.value - 1, firstTime: false }))
+      } else if (countVal.value === 0 && !countVal.firstTime) {
+        setCountVal({ value: 10, firstTime: true })
+      } else if (countVal.firstTime && countVal.value > 0) {
+        setCountVal((prevState) => ({ value: prevState.value - 1, firstTime: true }))
+      }
+    }, 1000)
+
+    // Guardar el estado del contador en localStorage
+    localStorage.setItem('countdown', JSON.stringify(countVal))
+
+    // Limpiar el temporizador cuando el componente se desmonta
+    return () => clearTimeout(timerId)
+  }, [countVal])
+
+  // Formatear el tiempo para mostrarlo
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60)
     const remainingSeconds = seconds % 60
     return `${minutes}:${remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds}`
   }
 
-  // The setTimeout function is used to decrease the countdown value by 1 every second
-  if (countValue.countValue > 0) {
-    setTimeout(() => {
-      setCountValue({ ...countValue, countValue: countValue.countValue - 1 })
-    }, 1000)
-  } else {
-    setTimeout(() => {
-      if (countValue.firstTime) {
-        setCountValue({ ...countValue, countValue: 60, firstTime: false })
-      }
-    }, 1000)
+  return {
+    countdown: formatTime(countVal.value),
+    countValue: countVal.value
   }
-
-  if (countValue.countValue === 0 && countValue.firstTime === false) {
-    // Do something when the countdown reaches 0
-  }
-
-  // The useCountdown hook returns the countdown value and the formatted countdown value
-  return { countdown: formatTime(countValue.countValue), countValue: countValue.countValue }
 }

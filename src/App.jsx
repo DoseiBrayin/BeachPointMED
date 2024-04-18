@@ -9,11 +9,13 @@ import { LocationSelection } from './LocationSelection/pages/LocationSelection.j
 import { BookYourCourtProvider } from './context/BookYourCourtContext.jsx'
 import { CourtReservation } from './OneTimeCourtReservation/Pages/CourtReservation.jsx'
 import { Main } from './OneTimeCourtReservation/components/main.jsx'
+import { CountdownContextProvider } from './context/CountdownContext.jsx'
 
 function App () {
   return (
     <>
     <BookYourCourtProvider>
+      <CountdownContextProvider>
       <BrowserRouter>
       <Navbar />
         <Routes>
@@ -25,6 +27,7 @@ function App () {
           <Route path="*" element={<Page404 />} />
         </Routes>
       </BrowserRouter>
+      </CountdownContextProvider>
     </BookYourCourtProvider>
     </>
   )
