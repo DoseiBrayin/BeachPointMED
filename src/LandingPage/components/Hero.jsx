@@ -7,7 +7,7 @@ export const Hero = () => {
   return (
       <div className="
       w-full
-      bg-[url('/LandingImages/HeroImage.webp')]
+      bg-[url('https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/HeroImage.webp')]
       bg-cover
       bg-center
       h-[485px]
