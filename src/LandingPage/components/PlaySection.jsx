@@ -18,28 +18,28 @@ export function PlaySection ({ img, header, paragraph }) {
           <PlayCard
             header={t('LandingPage.WhyPlayWithUs.BookOnline.title')}
             paragraph={t('LandingPage.WhyPlayWithUs.BookOnline.description')}
-            img={'Book_online.svg'}
+            img={'PlayWithUs-computer.webp'}
           />
           <PlayCard
             header={t('LandingPage.WhyPlayWithUs.PayOnlineOrAtArrival.title')}
             paragraph={
               t('LandingPage.WhyPlayWithUs.PayOnlineOrAtArrival.description')
             }
-            img={'courts.svg'}
+            img={'PlayWithUs-wallet.webp'}
           />
           <PlayCard
             header={ t('LandingPage.WhyPlayWithUs.QualityCourts.title')}
             paragraph={
               t('LandingPage.WhyPlayWithUs.QualityCourts.description')
             }
-            img={'payment.svg'}
+            img={'PlayWithUs-courts.svg'}
           />
           <PlayCard
             header={t('LandingPage.WhyPlayWithUs.ExeptionalService.title')}
             paragraph={
               t('LandingPage.WhyPlayWithUs.ExeptionalService.description')
             }
-            img={'stars.svg'}
+            img={'PlayWithUs-stars.svg'}
           />
         </div>
       </main>

@@ -16,7 +16,7 @@ export const HamburguerMenu = ({ isVisible, close }) => {
             onClick={close}
             className="w-[24px] h-[24px] mt-[20px] mx-[30px]"
           >
-            <img src="/LandingImages/menu.webp" alt="" />
+            <img src="https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/BP-logo.webp" alt="" />
           </button>
         </div>
         <div className="flex flex-col mt-[20px] ml-[20px] gap-2">
