@@ -1,21 +1,22 @@
 import React from 'react'
 import { ProgressBar } from '../../components/ProgressBar'
 import { useTranslation } from 'react-i18next'
-import { BackNextButtons } from '../../components/BackNextButtons'
 import { Selector } from '../components/Selector'
 import { useSelectorLocation } from '../Hooks/useSelectorLocation'
 import { SomethingWentWrong } from '../../components/SomethingWentWrong'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { Link } from 'react-router-dom'
 
 export const LocationSelection = () => {
   const { t } = useTranslation('global')
   const { error } = useSelectorLocation()
   const { bookCourt } = useBookYourCourtContext()
 
-  // Set the location to null when the component is loaded
   window.addEventListener('load', () => {
     bookCourt.location = null
   })
+
+  const locationId = bookCourt.location?.id
 
   return (
     error
@@ -30,7 +31,12 @@ export const LocationSelection = () => {
                 </div>
           </div>
     </div>
-    <BackNextButtons backURL={'/'} nextURL={'/reserve'} />
+    <div className='w-full flex justify-end max-w-[64.75rem]'>
+        <div className='flex gap-3 '>
+            <Link className='border-[1px] rounded-md px-2 py-1' to={'/'}>back</Link>
+            <Link className='border-[1px] rounded-md px-2 py-1' to={`/reserve/${locationId}`}>next</Link>
+        </div>
+    </div>
   </div>
   )
 }
