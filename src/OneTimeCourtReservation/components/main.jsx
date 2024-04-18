@@ -9,7 +9,6 @@ export const Main = () => {
   const { todayState } = calendarHooks()
 
   const { data } = useTimeCourts()
-  console.log(data)
 
   return (
     <section className="flex justify-center items-center">
@@ -91,21 +90,6 @@ export const Main = () => {
                     )
                   })
                 }
-                {/* {timeCourts.map((court) => (
-                  // <tr key={row.id} className="rounded-tl-xl rounded-tr-xl">
-                  //   <td className="text-xs p-2 text-center min-[425px]:text-[15px]">
-                  //     {row.time}
-                  //   </td>
-                  //   <td className="text-xs p-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${row.price}COP`}</td>
-                  //   <td className="text-xs p-2 text-center min-[425px]:text-[15px]">
-                  //     {row.court ? <ButtonAddCart /> : <ButtonUnavailable />}
-                  //   </td>
-                  //   <td className="text-xs p-2 text-center min-[425px]:text-[15px]">
-                  //     {row.court2 ? <ButtonAddCart /> : <ButtonUnavailable />}
-                  //   </td>
-                  // </tr>
-                  <p key={court.price}>{court.price}</p>
-                ))} */}
               </tbody>
             </table>
           </div>
