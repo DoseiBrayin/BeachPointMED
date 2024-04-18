@@ -10,13 +10,23 @@ import { Link } from 'react-router-dom'
 export const LocationSelection = () => {
   const { t } = useTranslation('global')
   const { error } = useSelectorLocation()
-  const { bookCourt } = useBookYourCourtContext()
+  const { bookCourt, setBookCourt } = useBookYourCourtContext()
 
   window.addEventListener('load', () => {
     bookCourt.location = null
+    setBookCourt({ ...bookCourt, location: null })
   })
 
-  const locationId = bookCourt.location?.id
+  const empty = () => {
+    let urlToGo = '/reserve'
+    if (bookCourt.location === null) {
+      return
+    } else {
+      urlToGo = `/reserve/${bookCourt.location.id}`
+    }
+
+    return urlToGo
+  }
 
   return (
     error
@@ -33,8 +43,8 @@ export const LocationSelection = () => {
     </div>
     <div className='w-full flex justify-end max-w-[64.75rem]'>
         <div className='flex gap-3 '>
-            <Link className='border-[1px] rounded-md px-2 py-1' to={'/'}>back</Link>
-            <Link className='border-[1px] rounded-md px-2 py-1' to={`/reserve/${locationId}`}>next</Link>
+            <Link className='border-[1px] rounded-md px-2 py-1' to={'/'}>Back</Link>
+            <Link className='border-[1px] rounded-md px-2 py-1' onClick={() => empty()} to={empty()}>Next</Link>
         </div>
     </div>
   </div>
