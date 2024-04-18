@@ -4,8 +4,7 @@ import { ButtonUnavailable } from './ButtonUnavailable'
 import '../CourtReservation.modules.css'
 import { Calendar } from './calendar'
 import { calendarHooks } from '../Hooks/calendarHooks'
-import { generateDate, months, days } from '../Hooks/Calendar'
-import dayjs from 'dayjs'
+import { months, days } from '../Hooks/Calendar'
 import { ProgressBar } from '../../components/ProgressBar'
 
 export const Main = () => {
@@ -15,7 +14,7 @@ export const Main = () => {
     <section className="flex justify-center items-center">
       <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
-          <ProgressBar />
+          <ProgressBar percentage='30%' />
           <h1 className="text-[24px] text-[#2E2E2E] font-inter font-[800] mt-5">
             Select Playing Time
           </h1>

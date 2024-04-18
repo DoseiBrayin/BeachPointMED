@@ -2,7 +2,12 @@ import { useState } from 'react'
 
 export const useCountdown = (initialCount = 10) => {
   // The countValue state is used to store the countdown value and the firstTime state
+  const [countVisible, setCountVisible] = useState(false)
   const [countValue, setCountValue] = useState({ countValue: initialCount, firstTime: true })
+
+  if (!countVisible) {
+    return { countdown: '0:00', countValue: 0, countVisible, setCountVisible }
+  }
 
   // The formatTime function is used to format the countdown value
   const formatTime = (seconds) => {
@@ -29,5 +34,5 @@ export const useCountdown = (initialCount = 10) => {
   }
 
   // The useCountdown hook returns the countdown value and the formatted countdown value
-  return { countdown: formatTime(countValue.countValue), countValue: countValue.countValue }
+  return { countdown: formatTime(countValue.countValue), countValue: countValue.countValue, countVisible, setCountVisible }
 }
