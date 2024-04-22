@@ -6,7 +6,8 @@ export const useSelectorLocation = () => {
   // Define the url to make the request
   const token = import.meta.env.VITE_BEACHPOINT_API_URL
   const url = `${token}locations/locations/`
-  const { data, loading, error } = useAxios({ url })
+  const apiToken = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+  const { data, loading, error } = useAxios({ url, token: apiToken })
 
   // Get the bookCourt state and the setBookCourt function from the context
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
