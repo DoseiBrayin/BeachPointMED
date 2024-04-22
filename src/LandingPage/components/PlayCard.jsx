@@ -14,7 +14,7 @@ export function PlayCard ({ img, header, paragraph }) {
         sm:w-[40%]
         md:w-[30%]
         lg:w-[8rem] lg:h-[8rem]"
-        src={`/LandingImages/Play_with_us/${img}`}
+        src={`https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/${img}`}
         alt=""
       />
       <div className="flex flex-col items-center">

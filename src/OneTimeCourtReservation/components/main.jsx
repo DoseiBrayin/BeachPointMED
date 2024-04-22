@@ -1,29 +1,20 @@
-import fakeData from "../Mocks/MOCK_DATA.json";
-import { ButtonAddCart } from "./ButtonAddCart";
-import { ButtonUnavailable } from "./ButtonUnavailable";
-import "../CourtReservation.modules.css";
-import { Calendar } from "./calendar";
-import { calendarHooks } from "../Hooks/calendarHooks";
-import { generateDate, months, days } from "../Hooks/Calendar";
-import dayjs from "dayjs";
+import '../CourtReservation.modules.css'
+import { Calendar } from './calendar'
+import { calendarHooks } from '../Hooks/calendarHooks'
+import { months, days } from '../Hooks/Calendar'
+import { ProgressBar } from '../../components/ProgressBar'
+import { useTimeCourts } from '../Hooks/useTimeCourts'
 
 export const Main = () => {
+  const { todayState } = calendarHooks()
 
-  const {todayState} = calendarHooks()
+  const { data } = useTimeCourts()
 
   return (
     <section className="flex justify-center items-center">
-      <div className="w-[80%] h-full">
+      <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
-          <div className="flex w-full justify-between mb-5">
-            <h2 className="text-3xl font-semibold">Progress</h2>
-            <h3 className="text-2xl font-semibold">4:59</h3>
-          </div>
-          <img
-            className="w-full"
-            src="OneTimeCourReservation/progress.svg"
-            alt=""
-          />
+          <ProgressBar />
           <h1 className="text-[24px] text-[#2E2E2E] font-inter font-[800] mt-5">
             Select Playing Time
           </h1>
@@ -66,25 +57,44 @@ export const Main = () => {
                 </tr>
               </thead>
               <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB] border border-gray-50  shadow-gray-300 rounded-2xl">
-                {fakeData.map((row) => (
-                  <tr key={row.id} className="rounded-tl-xl rounded-tr-xl">
-                    <td className="text-xs p-2 text-center min-[425px]:text-[15px]">
-                      {row.time}
-                    </td>
-                    <td className="text-xs p-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${row.price}COP`}</td>
-                    <td className="text-xs p-2 text-center min-[425px]:text-[15px]">
-                      {row.court ? <ButtonAddCart /> : <ButtonUnavailable />}
-                    </td>
-                    <td className="text-xs p-2 text-center min-[425px]:text-[15px]">
-                      {row.court2 ? <ButtonAddCart /> : <ButtonUnavailable />}
-                    </td>
-                  </tr>
-                ))}
+                {
+                  data?.data.map((court) => {
+                    function formatPrice (numero) {
+                      // Convertir el número a una cadena de texto y separar la parte entera de la decimal
+                      const partes = numero.toString().split('.')
+
+                      // Formatear la parte entera
+                      const parteEntera = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+
+                      // Si hay parte decimal
+                      if (partes.length === 2) {
+                        let parteDecimal = partes[1]
+
+                        // Añadir ceros adicionales si la parte decimal tiene menos de tres dígitos
+                        parteDecimal = parteDecimal.padEnd(3, '0')
+
+                        return `${parteEntera}.${parteDecimal}`
+                      } else {
+                        // Si no hay parte decimal, agregar '.000'
+                        return `${parteEntera}.000`
+                      }
+                    }
+
+                    return (
+                    <tr key={court.id} className="rounded-tl-xl rounded-tr-xl">
+                      <td className='text-sx p-2 text-center min-[425px]:text-[15px]'>
+                        {court.hour}
+                      </td>
+                      <td className="text-xs p-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(court.price)} COP`}</td>
+                    </tr>
+                    )
+                  })
+                }
               </tbody>
             </table>
           </div>
         </main>
       </div>
     </section>
-  );
-};
+  )
+}

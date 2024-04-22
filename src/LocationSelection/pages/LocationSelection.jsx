@@ -1,14 +1,33 @@
 import React from 'react'
 import { ProgressBar } from '../../components/ProgressBar'
 import { useTranslation } from 'react-i18next'
-import { BackNextButtons } from '../../components/BackNextButtons'
 import { Selector } from '../components/Selector'
 import { useSelectorLocation } from '../Hooks/useSelectorLocation'
 import { SomethingWentWrong } from '../../components/SomethingWentWrong'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { Link } from 'react-router-dom'
 
 export const LocationSelection = () => {
   const { t } = useTranslation('global')
   const { error } = useSelectorLocation()
+  const { bookCourt, setBookCourt } = useBookYourCourtContext()
+
+  window.addEventListener('load', () => {
+    bookCourt.location = null
+    setBookCourt({ ...bookCourt, location: null })
+  })
+
+  const empty = () => {
+    let urlToGo = '/reserve'
+    if (bookCourt.location === null) {
+      return
+    } else {
+      urlToGo = `/reserve/${bookCourt.location.id}`
+    }
+
+    return urlToGo
+  }
+
   return (
     error
       ? <SomethingWentWrong />
@@ -22,7 +41,12 @@ export const LocationSelection = () => {
                 </div>
           </div>
     </div>
-    <BackNextButtons backURL={'/'} nextURL={'/reserve'} />
+    <div className='w-full flex justify-end max-w-[64.75rem]'>
+        <div className='flex gap-3 '>
+            <Link className='border-[1px] rounded-md px-2 py-1' to={'/'}>Back</Link>
+            <Link className='border-[1px] rounded-md px-2 py-1' onClick={() => empty()} to={empty()}>Next</Link>
+        </div>
+    </div>
   </div>
   )
 }

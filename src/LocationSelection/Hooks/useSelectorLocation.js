@@ -18,8 +18,9 @@ export const useSelectorLocation = () => {
   const [isSelected, setIsSelected] = useState({ selected: false, location: {} })
 
   // Filter the locations that match the search and are active
-  const filteredLocations = data?.data.filter((location) => location.description.toLowerCase().includes(search.toLocaleLowerCase()) && location.active === true)
-
+  const filteredLocations = data?.data
+    ? data.data.filter((location) => location.description.toLowerCase().includes(search.toLocaleLowerCase()) && location.active === true)
+    : []
   // Function to handle the selection of a location
   const handleSelect = (location) => {
     setIsSelected({ selected: true, location })
