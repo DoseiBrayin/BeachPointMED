@@ -1,3 +1,3 @@
-export default function condition(...clases){
-    return clases.filter(Boolean).join(" ")
+export default function condition (...clases) {
+  return clases.filter(Boolean).join(' ')
 }

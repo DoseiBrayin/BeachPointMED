@@ -1,25 +1,21 @@
-import dayjs from "dayjs"
-import { useState } from "react"
+import dayjs from 'dayjs'
+import { useState } from 'react'
 
 export const calendarHooks = () => {
-
-  function handlePastMonth(){
-   
+  function handlePastMonth () {
     setToday(todayState.month(todayState.month() - 1))
   }
-  function handleNextMonth(){
-   
+  function handleNextMonth () {
     setToday(todayState.month(todayState.month() + 1))
   }
-  function handleSelectDay(day){
+  function handleSelectDay (day) {
     setSelectDay(day)
     console.log()
   }
 
-    const currentDate = dayjs()
-    const [todayState, setToday] = useState(currentDate)
-    const [selectDay, setSelectDay] = useState(null)
-
+  const currentDate = dayjs()
+  const [todayState, setToday] = useState(currentDate)
+  const [selectDay, setSelectDay] = useState(null)
 
   return (
     {
@@ -29,6 +25,6 @@ export const calendarHooks = () => {
       handleSelectDay,
       handlePastMonth,
       handleNextMonth
-    } 
+    }
   )
 }
