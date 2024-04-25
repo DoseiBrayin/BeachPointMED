@@ -1,7 +1,7 @@
 import { useCountdown } from '../Hooks/useCountdown'
 
 export const Countdown = () => {
-  const { countdown, countValue } = useCountdown(5)
+  const { countdown, countValue } = useCountdown()
 
   return (
     <div>

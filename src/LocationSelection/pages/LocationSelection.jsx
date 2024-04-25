@@ -6,25 +6,33 @@ import { useSelectorLocation } from '../Hooks/useSelectorLocation'
 import { SomethingWentWrong } from '../../components/SomethingWentWrong'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { Link } from 'react-router-dom'
+import { useStartContext } from '../../context/StartCountdownContext'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const LocationSelection = () => {
   const { t } = useTranslation('global')
   const { error } = useSelectorLocation()
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
+  const { setStart } = useStartContext()
+  const { removeItem } = useLocalStorage({ key: 'countdown' })
+
+  const handleClick = () => {
+    removeItem()
+    setStart(true)
+  }
 
   window.addEventListener('load', () => {
     bookCourt.location = null
     setBookCourt({ ...bookCourt, location: null })
   })
 
-  const empty = () => {
+  const route = () => {
     let urlToGo = '/reserve'
     if (bookCourt.location === null) {
       return
     } else {
       urlToGo = `/reserve/${bookCourt.location.id}`
     }
-
     return urlToGo
   }
 
@@ -52,8 +60,8 @@ export const LocationSelection = () => {
           </Link>
           <Link
             className="border-[1px] rounded-md px-2 py-1"
-            onClick={() => empty()}
-            to={empty()}
+            onClick={() => handleClick()}
+            to={route()}
           >
             Next
           </Link>
