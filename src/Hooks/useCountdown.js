@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useLocalStorage } from './useLocalStorage'
 import { useStartContext } from '../context/StartCountdownContext'
 import { useNavigate } from 'react-router-dom'
+import { useBookYourCourtContext } from '../context/BookYourCourtContext'
 
 const formatTime = (seconds) => {
   const minutes = Math.floor(seconds / 60)
@@ -10,16 +11,23 @@ const formatTime = (seconds) => {
 }
 
 export const useCountdown = () => {
+  const startValue = 10
+  const oneMinuteInSeconds = 5
   const { start, setStart } = useStartContext()
   const { setItem, getItem, removeItem } = useLocalStorage({ key: 'countdown' })
-  const [countValue, setCountValue] = useState({ countValue: 600, firstTime: true })
+  const [countValue, setCountValue] = useState({ countValue: startValue, firstTime: true })
   const navigate = useNavigate()
-
-  const oneMinuteInSeconds = 60
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
 
   useEffect(() => {
     if (getItem()) {
       setCountValue({ ...countValue, countValue: getItem() })
+    }
+
+    return () => {
+      setCountValue({ ...countValue, countValue: startValue, firstTime: true })
+      setBookCourt({ ...bookCourt, location: null })
+      removeItem()
     }
   }, [])
 
@@ -46,6 +54,8 @@ export const useCountdown = () => {
           navigate('/LocationSelection')
           // The countdown is reset to its initial value
           setStart(false)
+          // The countdown is reset to 1 minute
+          setCountValue({ ...countValue, countValue: startValue, firstTime: true })
           // The countdown is removed from the local storage
           removeItem()
         }
