@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export const UseStateCart = () => {
-    const [cartState, setCartState] = useState(true)
-    function handleCart(){
+  const [cartState, setCartState] = useState(true)
+
+  function handleCart () {
     setCartState(!cartState)
   }
-  return  {
+
+  return {
     cartState,
     handleCart
-}
+  }
 }

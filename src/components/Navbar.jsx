@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { NavHooks } from '../Hooks/NavHooks'
 import { LenguageSelector } from './LenguageSelector'
 import { useTranslation } from 'react-i18next'
+import { useCountdown } from '../Hooks/useCountdown'
 
 const navLinkStyle = 'text-[#2E2E2E]'
 
@@ -51,6 +52,7 @@ export const HamburguerMenu = ({ isVisible, close }) => {
 export const Navbar = () => {
   const { handleOpen, handleClose, isVisible } = NavHooks()
   const { t } = useTranslation('global')
+  const { countdown, countValue } = useCountdown()
 
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
@@ -82,10 +84,10 @@ export const Navbar = () => {
         </button>
       </div>
       {/* Este es el diseno qeu se ve en pantallas pequenas */}
-      <div className="flex gap-3 justify-center items-center md:hidden">
-        <button className="w-[31px] h-[31px]">
-          <img src="/LandingImages/spanish_flag.webp" alt="" />
-        </button>
+      <div className="flex justify-between items-center w-full md:hidden">
+        <div className='w-full h-[45px] pl-[60px] items-center flex justify-center'>
+          <p className={`${countValue <= 180 ? 'text-[#FF001C]' : 'text-[#2e2e2e]'}`}>{countdown}</p>
+        </div>
         <div className="flex items-center gap-2">
           <LenguageSelector />
           <button onClick={handleOpen} className="w-[24px] h-[24px]">
