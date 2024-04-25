@@ -4,9 +4,15 @@ import { calendarHooks } from '../Hooks/calendarHooks'
 import { months, days } from '../Hooks/Calendar'
 import { ProgressBar } from '../../components/ProgressBar'
 import { useTimeCourts } from '../Hooks/useTimeCourts'
+import { useStartContext } from '../../context/StartCountdownContext'
 
 export const Main = () => {
   const { todayState } = calendarHooks()
+
+  window.addEventListener('load', () => {
+    const { setStart } = useStartContext()
+    setStart(true)
+  })
 
   const { data } = useTimeCourts()
 
@@ -14,7 +20,7 @@ export const Main = () => {
     <section className="flex justify-center items-center">
       <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
-          <ProgressBar percentage='30%' />
+          <ProgressBar percentage='30%' count={true} />
           <h1 className="text-[24px] text-[#2E2E2E] font-inter font-[800] mt-5">
             Select Playing Time
           </h1>
