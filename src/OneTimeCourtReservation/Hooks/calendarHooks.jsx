@@ -13,7 +13,6 @@ export const calendarHooks = () => {
   }
   function handleSelectDay(day){
     setSelectDay(day)
-    console.log()
   }
 
     const currentDate = dayjs()

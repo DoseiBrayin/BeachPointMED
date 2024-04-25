@@ -4,6 +4,8 @@ import { calendarHooks } from '../Hooks/calendarHooks'
 import { months, days } from '../Hooks/Calendar'
 import { ProgressBar } from '../../components/ProgressBar'
 import { useTimeCourts } from '../Hooks/useTimeCourts'
+import {ButtonAddCart} from "./ButtonAddCart"
+import { ButtonUnavailable } from './ButtonUnavailable'
 
 export const Main = () => {
   const { todayState } = calendarHooks()
@@ -81,11 +83,14 @@ export const Main = () => {
                     }
 
                     return (
+
                     <tr key={court.id} className="rounded-tl-xl rounded-tr-xl">
                       <td className='text-sx p-2 text-center min-[425px]:text-[15px]'>
                         {court.hour}
                       </td>
                       <td className="text-xs p-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(court.price)} COP`}</td>
+                      {court.state === "Unavailable" ? <td><ButtonUnavailable/></td> : <td><ButtonAddCart/></td>}
+                      {court.state === "Unavailable" ? <td><ButtonUnavailable/></td> : <td><ButtonAddCart/></td>}
                     </tr>
                     )
                   })
