@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-export const useAxios = ({ url }) => {
+export const useAxios = ({ url, token }) => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -10,7 +10,11 @@ export const useAxios = ({ url }) => {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await axios.get(url)
+        const response = await axios.get(url, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         setData(response.data)
       } catch (error) {
         setError(error)
@@ -19,7 +23,7 @@ export const useAxios = ({ url }) => {
       }
     }
     fetchData()
-  }, [url])
+  }, [url, token])
 
   return { data, loading, error }
 }
