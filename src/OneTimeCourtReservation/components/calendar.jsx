@@ -1,23 +1,22 @@
-import { generateDate, months, days } from "../Hooks/Calendar";
-import dayjs from "dayjs";
-import condition from "../Hooks/CssConditions";
-import { calendarHooks } from "../Hooks/calendarHooks";
+import { generateDate, months, days } from '../Hooks/Calendar'
+import dayjs from 'dayjs'
+import { calendarHooks } from '../Hooks/calendarHooks'
 
-export const Calendar = ({}) => {
+export const Calendar = () => {
   const {
     todayState,
     handlePastMonth,
     handleNextMonth,
     selectDay,
-    handleSelectDay,
-  } = calendarHooks();
+    handleSelectDay
+  } = calendarHooks()
 
   return (
     <>
       <ol className="w-[80%] h-[15rem] grid grid-cols-7 grid-rows-8 m-2">
         <li className="flex col-span-full items-center justify-between w-[55%] ">
           <img
-            className={`w-5 h-5 cursor-pointer`}
+            className={'w-5 h-5 cursor-pointer'}
             src="/OneTimeCourReservation/ArrowLeft.svg"
             alt=""
             onClick={handlePastMonth}
@@ -28,7 +27,7 @@ export const Calendar = ({}) => {
           </h1>
         </li>
         {
-          //Getting the days, you can use a similar approach to make the months and you just get the current month - 1 and display it
+          // Getting the days, you can use a similar approach to make the months and you just get the current month - 1 and display it
           days.map((day, index) => {
             return (
               <li
@@ -37,31 +36,31 @@ export const Calendar = ({}) => {
               >
                 {day}
               </li>
-            );
+            )
           })
         }
         {generateDate(todayState.month(), todayState.year()).map(
           ({ date, currentMonth, today }, index) => {
-            const isSelected = selectDay?.isSame(date, "day");
-            const isToday = today && !isSelected;
+            const isSelected = selectDay?.isSame(date, 'day')
+            const isToday = today && !isSelected
             return (
               <li
                 onClick={() => handleSelectDay(dayjs(date))}
                 key={`item-${index}`}
                 className={`
           my-[0.2rem] list-none w-[1rem] text-center h-[1rem]
-          ${currentMonth ? "text-sm cursor-pointer" : "text-gray-400 text-xs opacity-0 cursor-context-menu"}
+          ${currentMonth ? 'text-sm cursor-pointer' : 'text-gray-400 text-xs opacity-0 cursor-context-menu'}
           ${
             isSelected
-              ? "bg-black text-white rounded-lg p-3 cursor-pointer flex justify-center items-center"
-              : ""
+              ? 'bg-black text-white rounded-lg p-3 cursor-pointer flex justify-center items-center'
+              : ''
           }
-          ${isToday ? "" : ""}
+          ${isToday ? '' : ''}
         `}
               >
                 {date.date()}
               </li>
-            );
+            )
           }
         )}
       </ol>
@@ -74,7 +73,7 @@ export const Calendar = ({}) => {
               <span> {todayState.year()}</span>
             </h1>
             <img
-              className={`w-5 h-5 rotate-180 cursor-pointer`}
+              className={'w-5 h-5 rotate-180 cursor-pointer'}
               src="/OneTimeCourReservation/ArrowLeft.svg"
               alt=""
               onClick={handleNextMonth}
@@ -82,7 +81,7 @@ export const Calendar = ({}) => {
           </div>
         </li>
         {
-          //Getting the days, you can use a similar approach to make the months and you just get the current month - 1 and display it
+          // Getting the days, you can use a similar approach to make the months and you just get the current month - 1 and display it
           days.map((day, index) => {
             return (
               <li
@@ -91,34 +90,34 @@ export const Calendar = ({}) => {
               >
                 {day}
               </li>
-            );
+            )
           })
         }
         {generateDate(todayState.month() + 1, todayState.year()).map(
           ({ date, currentMonth, today }, index) => {
-            const isSelected = selectDay?.isSame(date, "day");
-            const isToday = today && !isSelected;
+            const isSelected = selectDay?.isSame(date, 'day')
+            const isToday = today && !isSelected
             return (
               <li
                 onClick={() => handleSelectDay(dayjs(date))}
                 key={`item-${index}`}
                 className={`
         my-[0.2rem] list-none w-[1rem] text-center h-[1rem]
-        ${currentMonth ? "text-sm" : "text-gray-400 text-xs opacity-0"}
+        ${currentMonth ? 'text-sm' : 'text-gray-400 text-xs opacity-0'}
         ${
           isSelected
-            ? "bg-black text-white rounded-lg p-3 cursor-pointer flex justify-center items-center"
-            : ""
+            ? 'bg-black text-white rounded-lg p-3 cursor-pointer flex justify-center items-center'
+            : ''
         }
-        ${isToday ? "" : "cursor-pointer"}
+        ${isToday ? '' : 'cursor-pointer'}
       `}
               >
                 {date.date()}
               </li>
-            );
+            )
           }
         )}
       </ol>
     </>
-  );
-};
+  )
+}
