@@ -55,11 +55,11 @@ export const LocationSelection = () => {
       </div>
       <div className="w-full flex justify-end max-w-[64.75rem]">
         <div className="flex gap-3 ">
-          <Link className="border-[1px] rounded-md px-2 py-1" to={'/'}>
+          <Link className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit" to={'/'}>
             Back
           </Link>
           <Link
-            className="border-[1px] rounded-md px-2 py-1"
+            className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
             onClick={() => handleClick()}
             to={route()}
           >
