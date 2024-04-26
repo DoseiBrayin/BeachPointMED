@@ -1,7 +1,5 @@
 import '../CourtReservation.modules.css'
 import { Calendar } from './calendar'
-import { calendarHooks } from '../Hooks/calendarHooks'
-import { months, days } from '../Hooks/Calendar'
 import { ProgressBar } from '../../components/ProgressBar'
 import { useTimeCourts } from '../Hooks/useTimeCourts'
 import { useStartContext } from '../../context/StartCountdownContext'
@@ -9,13 +7,15 @@ import dayjs from 'dayjs'
 import {ButtonAddCart} from "./ButtonAddCart"
 import { ButtonUnavailable } from './ButtonUnavailable'
 
-export const Main = () => {
-  const { todayState } = calendarHooks()
+
+export const CourtsTable = () => {
 
   window.addEventListener('load', () => {
     const { setStart } = useStartContext()
     setStart(true)
   })
+
+
 
   function formatPrice(numero) {
     // Convertir el número a una cadena de texto y separar la parte entera de la decimal
@@ -44,9 +44,6 @@ export const Main = () => {
       <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
           <ProgressBar percentage='30%' count={true} />
-          <h1 className="text-[24px] text-[#2E2E2E] font-inter font-[800] mt-5">
-            Select Playing Time
-          </h1>
         </header>
         <main
           className="flex flex-col items-center
@@ -54,9 +51,6 @@ export const Main = () => {
               md:h-full
         "
         >
-          <div className="my-3 md:hidden border border-black h-[1rem] w-[100%] rounded-full flex items-center justify-center">
-            <span className="text-xs">{days[todayState.day()]} {months[todayState.month()]} {todayState.day()} {todayState.year()}</span>
-          </div>
           <aside className="hidden md:w-[25%] md:h-fit md:flex md:flex-col items-center m-2 md:mt-4 md:rounded-2xl shadow-lg md:border md:border-gray-200">
             <Calendar />
           </aside>
@@ -64,6 +58,7 @@ export const Main = () => {
             className="flex flex-col items-center pb-3
              min-h-[4rem]
              max-h-[100%] overflow-y-scroll
+             h-[25rem]
              sm:w-[100%]
              md:w-[60%]
              md:h-[28rem]"
@@ -94,6 +89,12 @@ export const Main = () => {
                             {court.hour}
                           </td>
                           <td className="text-xs p-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(court.price)} COP`}</td>
+                          <td>{court.state == "Unavailable" 
+                            ? <ButtonUnavailable />
+                            :<ButtonAddCart/>}</td>
+                          <td>{court.state == "Unavailable"
+                            ? <ButtonUnavailable />
+                            :<ButtonAddCart/>}</td>
                         </tr>
                       )
                     })
