@@ -11,6 +11,14 @@ export const calendarHooks = () => {
    
     setToday(todayState.month(todayState.month() + 1))
   }
+  function handlePastDay(){
+   
+    setToday(todayState.subtract(1, 'day'))
+  }
+  function handleNextDay(){
+   
+    setToday(todayState.add(1, 'day'))
+  }
   function handleSelectDay(day){
     setSelectDay(day)
   }
@@ -26,6 +34,8 @@ export const calendarHooks = () => {
       todayState,
       selectDay,
       handleSelectDay,
+      handlePastDay,
+      handleNextDay,
       handlePastMonth,
       handleNextMonth
     } 
