@@ -5,7 +5,7 @@ const StartCountdownContext = createContext()
 export const useStartContext = () => useContext(StartCountdownContext)
 
 export const StartCountProvider = ({ children }) => {
-  const [start, setStart] = useState(true)
+  const [start, setStart] = useState(false)
 
   return (
     <StartCountdownContext.Provider value={{ start, setStart }}>
