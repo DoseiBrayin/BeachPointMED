@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useBookYourCourtContext } from "../../context/BookYourCourtContext";
 
 export const UseStateCart = ({ court }) => {
   const [cartState, setCartState] = useState(true);
 
   const { bookCourt, setBookCourt } = useBookYourCourtContext();
-
-  useEffect(()=>{
-    console.log(bookCourt)
-  }, [bookCourt])
 
   function handleCart() {
     if (cartState == true) {

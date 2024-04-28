@@ -1,7 +1,7 @@
 import React from 'react'
 import { UseStateCart } from '../Hooks/UseStateCart.jsx'
 
-export const ButtonAddCart = ({court, frontID }) => {
+export const ButtonAddCart = ({court }) => {
   const { cartState, handleCart } = UseStateCart({court: court})
 
   return (

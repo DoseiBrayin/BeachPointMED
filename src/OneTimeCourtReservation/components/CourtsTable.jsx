@@ -7,11 +7,8 @@ import dayjs from 'dayjs'
 import {ButtonAddCart} from "./ButtonAddCart"
 import { ButtonUnavailable } from './ButtonUnavailable'
 import {Link} from 'react-router-dom'
-import {useState} from 'react'
 
 export const CourtsTable = () => {
-
-  const [stateFrontID, setStateFrontID] = useState(0)
 
   window.addEventListener('load', () => {
     const { setStart } = useStartContext()
