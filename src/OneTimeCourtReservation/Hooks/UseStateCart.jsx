@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useBookYourCourtContext } from "../../context/BookYourCourtContext";
 
 export const UseStateCart = ({ court }) => {
   const [cartState, setCartState] = useState(true);
+
   const { bookCourt, setBookCourt } = useBookYourCourtContext();
 
-  useEffect(() => {
-    console.log(bookCourt);
-  }, [bookCourt]);
+  useEffect(()=>{
+    console.log(bookCourt)
+  }, [bookCourt])
 
   function handleCart() {
     if (cartState == true) {
@@ -22,15 +23,19 @@ export const UseStateCart = ({ court }) => {
         ...prevBookCourt,
         courts: [...prevBookCourt.courts, newCourt],
       }));
-    } else {
+    }  else {
       setCartState(true);
-
-      setBookCourt((prevBookCourt) => ({
-        ...prevBookCourt,
-        courts: prevBookCourt.courts.filter(
-          (item) => item.timecourt !== court.court.id
-        ),
-      }));
+      let filteredCourts = [...bookCourt.courts];
+      const indexToRemove = filteredCourts.findIndex(
+        (item) => item.timecourt === court.id
+      );
+      if (indexToRemove !== -1) {
+        filteredCourts.splice(indexToRemove, 1);
+        setBookCourt((prevBookCourt) => ({
+          ...prevBookCourt,
+          courts: filteredCourts,
+        }));
+      }
     }
   }
 

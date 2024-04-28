@@ -7,16 +7,16 @@ import dayjs from 'dayjs'
 import {ButtonAddCart} from "./ButtonAddCart"
 import { ButtonUnavailable } from './ButtonUnavailable'
 import {Link} from 'react-router-dom'
-
+import {useState} from 'react'
 
 export const CourtsTable = () => {
+
+  const [stateFrontID, setStateFrontID] = useState(0)
 
   window.addEventListener('load', () => {
     const { setStart } = useStartContext()
     setStart(true)
   })
-
-
 
   function formatPrice(numero) {
     // Convertir el número a una cadena de texto y separar la parte entera de la decimal
@@ -40,7 +40,7 @@ export const CourtsTable = () => {
   }
 
   const { data } = useTimeCourts(dayjs().format('YYYY-MM-DD'))
-  console.log(data)
+
 
   return (
     <section className="flex justify-center items-center">
@@ -86,7 +86,6 @@ export const CourtsTable = () => {
 
                   data && Array.isArray(data.data) && data.data.length > 0
                     ? data?.data.map((court) => {
-                      console.log(court)
                       return (
                         <tr key={court.id} className="rounded-tl-xl rounded-tr-xl h-[2rem]">
                           <td className='text-sx px-2 text-center min-[425px]:text-[15px]'>
@@ -94,10 +93,10 @@ export const CourtsTable = () => {
                           </td>
                           <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(court.price)} COP`}</td>
                           <td>{court.state == "Available" 
-                            ? <ButtonAddCart court={court} />
+                            ? <ButtonAddCart court={court} frontID={0} />
                             :<ButtonUnavailable />}</td>
                           <td>{court.state == "Available" 
-                            ? <ButtonAddCart court={court} />
+                            ? <ButtonAddCart court={court} frontID={1} />
                             :<ButtonUnavailable />}</td>
                         </tr>
                       )
