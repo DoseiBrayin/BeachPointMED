@@ -40,6 +40,7 @@ export const CourtsTable = () => {
   }
 
   const { data } = useTimeCourts(dayjs().format('YYYY-MM-DD'))
+  console.log(data)
 
   return (
     <section className="flex justify-center items-center">
@@ -82,8 +83,10 @@ export const CourtsTable = () => {
               </thead>
               <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB] border border-gray-50  shadow-gray-300 rounded-2xl">
                 {
+
                   data && Array.isArray(data.data) && data.data.length > 0
                     ? data?.data.map((court) => {
+                      console.log(court)
                       return (
                         <tr key={court.id} className="rounded-tl-xl rounded-tr-xl h-[2rem]">
                           <td className='text-sx px-2 text-center min-[425px]:text-[15px]'>

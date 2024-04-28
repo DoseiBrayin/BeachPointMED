@@ -1,14 +1,13 @@
-import dayjs from "dayjs";
-import { months, days } from "../Hooks/Calendar";
 import { calendarHooks } from "../Hooks/calendarHooks";
 import { CourtsTable } from "../components/CourtsTable";
 import { Calendar } from "../components/calendar";
 import { Link } from "react-router-dom";
-import { nextViewState } from "../Hooks/nextViewState";
+import { nextViewState } from "../Hooks/useNextViewState";
+
 
 export const CourtReservationCalendar = () => {
   const { handleNextView, view, handlePastView } = nextViewState();
-  const { todayState, handlePastMonth, handleNextMonth, currentDate, handleNextDay, handlePastDay } = calendarHooks();
+  const { todayState, handleNextDay, handlePastDay } = calendarHooks();
 
   return (
     <>
