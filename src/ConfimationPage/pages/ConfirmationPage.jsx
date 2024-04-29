@@ -21,7 +21,7 @@ export const ConfirmationPage = () => {
         <div className='w-full flex justify-center'>
             <ProgressBar percentage="60%" count={true} />
         </div>
-        <h1 className="text-[#2E2E2E] w-full text-center md:text-left text-[24px] font-[800] mt-4 mb-4">
+        <h1 className="text-[#2E2E2E] w-full text-center md:text-left text-[24px] font-[800] mt-4 mb-4 md:text-[45px] md:font-[600]">
           Verify Your Personal Data
         </h1>
 
@@ -65,7 +65,8 @@ export const ConfirmationPage = () => {
                 type="email"
                 className={inputStyle}
                 {...register('email', {
-                  required: 'Email is required'
+                  required: 'Email is required',
+                  pattern: { value: /^\S+@\S+$/i, message: 'Invalid email' }
                 })}
               />
               {errors.email && <ErrorMessage message={errors.email.message} />}
