@@ -9,6 +9,7 @@ import { LocationSelection } from './LocationSelection/pages/LocationSelection.j
 import { BookYourCourtProvider } from './context/BookYourCourtContext.jsx'
 import { StartCountProvider } from './context/StartCountdownContext.jsx'
 import { CourtReservationCalendar } from './OneTimeCourtReservation/Pages/court-reservation.jsx'
+import { ConfirmationPage } from './ConfimationPage/pages/ConfirmationPage.jsx'
 
 function App () {
   return (
@@ -24,6 +25,7 @@ function App () {
             <Route path="/MyCart" element={<MyCartReservationPage />} />
             <Route path="/LocationSelection" element={<LocationSelection />} />
             <Route path="/reserve" element={<CourtReservationCalendar />} />
+            <Route path='/confirmationPage' element={<ConfirmationPage />}/>
             <Route path="*" element={<Page404 />} />
           </Routes>
         </BrowserRouter>
