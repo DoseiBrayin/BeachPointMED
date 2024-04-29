@@ -17,6 +17,9 @@ export const LocationSelection = () => {
   const { removeItem } = useLocalStorage({ key: 'countdown' })
 
   const handleClick = () => {
+    if (bookCourt.location === null) {
+      return
+    }
     removeItem()
     setStart(true)
   }

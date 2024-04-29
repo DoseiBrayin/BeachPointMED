@@ -39,7 +39,7 @@ export const generateDate = (
 
   //The remaining days that the month need of the other month to be completed with 42 days
 
-  const remaining = 42 - arrayOfDate.length;
+  const remaining = 35 - arrayOfDate.length;
 
   //Adding those days to the array
 
@@ -50,7 +50,7 @@ export const generateDate = (
   ) {
     arrayOfDate.push({
       currentMonth: false,
-      date: lastDateOfMonth.date(i),
+      date: firstDateOfMonth.day(i),
     });
   }
 
