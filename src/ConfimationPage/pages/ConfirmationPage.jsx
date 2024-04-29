@@ -107,7 +107,7 @@ export const ConfirmationPage = () => {
         <div className="flex gap-3">
           <Link
             className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
-            to={'/'}
+            to={'/myCart'}
           >
             Back
           </Link>

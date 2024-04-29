@@ -11,8 +11,8 @@ const formatTime = (seconds) => {
 }
 
 export const useCountdown = () => {
-  const startValue = 10 // 600
-  const oneMinuteInSeconds = 5 // 180
+  const startValue = 600 // 600
+  const oneMinuteInSeconds = 180 // 180
   const { start, setStart } = useStartContext()
   const { setItem, getItem, removeItem } = useLocalStorage({ key: 'countdown' })
   const [countValue, setCountValue] = useState({ countValue: startValue, firstTime: true })
