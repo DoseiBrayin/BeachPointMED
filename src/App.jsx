@@ -20,6 +20,7 @@ function App () {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/reserve/:locationId" element={<CourtReservationCalendar />} />
+            <Route path="/reserve/:locationId" element={<CourtReservationCalendar />} />
             <Route path="/MyCart" element={<MyCartReservationPage />} />
             <Route path="/LocationSelection" element={<LocationSelection />} />
             <Route path="/reserve" element={<CourtReservationCalendar />} />
