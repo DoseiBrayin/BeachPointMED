@@ -11,23 +11,17 @@ const formatTime = (seconds) => {
 }
 
 export const useCountdown = () => {
-  const startValue = 600
-  const oneMinuteInSeconds = 180
+  const startValue = 10 // 600
+  const oneMinuteInSeconds = 5 // 180
   const { start, setStart } = useStartContext()
   const { setItem, getItem, removeItem } = useLocalStorage({ key: 'countdown' })
   const [countValue, setCountValue] = useState({ countValue: startValue, firstTime: true })
-  const navigate = useNavigate()
   const { setBookCourt, bookCourt } = useBookYourCourtContext()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (getItem()) {
       setCountValue({ ...countValue, countValue: getItem() })
-    }
-
-    return () => {
-      setCountValue({ ...countValue, countValue: startValue, firstTime: true })
-      setBookCourt({ ...bookCourt, location: null })
-      removeItem()
     }
   }, [])
 
@@ -38,11 +32,14 @@ export const useCountdown = () => {
       // The countdown is decremented by 1 every second
       if (countValue.countValue > 0) {
         timerId = setTimeout(() => {
-          setCountValue((prevCountValue) => ({
-            ...prevCountValue,
-            countValue: prevCountValue.countValue - 1
-          }))
-          setItem(countValue.countValue - 1)
+          setCountValue((prevCountValue) => {
+            const newCountValue = prevCountValue.countValue - 1
+            setItem(newCountValue)
+            return {
+              ...prevCountValue,
+              countValue: newCountValue
+            }
+          })
         }, 1000)
       } else {
         if (countValue.firstTime) {
@@ -54,6 +51,8 @@ export const useCountdown = () => {
           navigate('/LocationSelection')
           // The countdown is reset to its initial value
           setStart(false)
+          // The location is removed from the context
+          setBookCourt({ ...bookCourt, location: null })
           // The countdown is reset to 1 minute
           setCountValue({ ...countValue, countValue: startValue, firstTime: true })
           // The countdown is removed from the local storage
@@ -69,5 +68,5 @@ export const useCountdown = () => {
     return () => clearInterval(timerId)
   }, [start, countValue.countValue])
 
-  return { countdown: formatTime(countValue.countValue), countValue: countValue.countValue }
+  return { countdown: formatTime(countValue.countValue), countValue: countValue.countValue, setCountValue, startValue, removeItem }
 }

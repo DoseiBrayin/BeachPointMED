@@ -1,21 +1,16 @@
-
-import { useState } from "react"
-
+import { useState } from 'react'
 
 export const nextViewState = () => {
-    const [view, setNextView] = useState(false)
-    const handleNextView = () =>{
-        setNextView(true)
-    }
-    const handlePastView = ()=>{
-      setNextView(false)
-    }
+  const [view, setNextView] = useState(false)
+  const handleNextView = () => {
+    setNextView(true)
+  }
+  const handlePastView = () => {
+    setNextView(false)
+  }
   return {
-        handleNextView,
-        handlePastView,
-        view,
-      }
-
-    
-  
+    handleNextView,
+    handlePastView,
+    view
+  }
 }
