@@ -74,7 +74,8 @@
       }
     },
     "LocationSelection": {
-      "title": "选择位置"
+      "title": "选择位置",
+      "noCountrySelected": "您必须选择一个地点"
   }
   
   }

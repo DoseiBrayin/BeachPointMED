@@ -74,7 +74,8 @@
       }
     },
     "LocationSelection": {
-      "title": "स्थान चुनें"
-  }
+      "title": "स्थान चुनें",
+      "noCountrySelected": "आपको एक स्थान का चयन करना चाहिए"
+  }  
   }
   

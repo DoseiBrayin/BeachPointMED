@@ -75,6 +75,6 @@
     },
     "LocationSelection":  {
         "title": "Select Location",
-        "noCountrySelected": "You most select a location"
+        "noCountrySelected": "You must select a location"
     }
 }
