@@ -13,11 +13,11 @@ export const Calendar = () => {
 
   return (
     <>
-      <ol className="w-[80%] h-[15rem] grid grid-cols-7 grid-rows-8 m-2">    
+      <ol className="w-[80%] h-[15rem] grid grid-cols-7 grid-rows-8 m-2">
         <li className="flex col-span-full items-center justify-between w-[100%] ">
           <div className="flex justify-between w-[55%]">
             <img
-              className={`w-5 h-5 cursor-pointer`}
+              className={'w-5 h-5 cursor-pointer'}
               src="/OneTimeCourReservation/ArrowLeft.svg"
               alt=""
               onClick={handlePastMonth}
@@ -54,8 +54,8 @@ export const Calendar = () => {
           ${currentMonth ? 'text-sm cursor-pointer' : 'text-gray-400 text-xs opacity-0 cursor-context-menu'}
           ${
             currentMonth
-              ? "text-sm cursor-pointer"
-              : "text-gray-400 text-xs opacity-0 pointer-events-none"
+              ? 'text-sm cursor-pointer'
+              : 'text-gray-400 text-xs opacity-0 pointer-events-none'
           }
           ${
             isSelected
@@ -110,7 +110,7 @@ export const Calendar = () => {
                 className={`
         my-[0.2rem] list-none w-[1rem] text-center h-[1rem]
         ${currentMonth ? 'text-sm' : 'text-gray-400 text-xs opacity-0'}
-        ${currentMonth ? "text-sm" : "text-gray-400 text-xs opacity-0 pointer-events-none"}
+        ${currentMonth ? 'text-sm' : 'text-gray-400 text-xs opacity-0 pointer-events-none'}
         ${
           isSelected
             ? 'bg-black text-white rounded-lg p-3 cursor-pointer flex justify-center items-center'

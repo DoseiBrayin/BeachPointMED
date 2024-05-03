@@ -19,6 +19,9 @@ export const Selector = () => {
                   <p className='text-[#2E2E2E]'>{location.description}</p>
               </div>
             ))}
+            <div>
+              {filteredLocations.length === 0 && <p className='font-inter text-[#2E2E2E]'>No location found</p>}
+            </div>
           </div>
     </div>
 

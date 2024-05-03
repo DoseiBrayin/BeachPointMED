@@ -4,18 +4,29 @@ import { ProgressBar } from '../../components/ProgressBar'
 import { useTimeCourts } from '../Hooks/useTimeCourts'
 import { useStartContext } from '../../context/StartCountdownContext'
 import dayjs from 'dayjs'
-import {ButtonAddCart} from "./ButtonAddCart"
+import { ButtonAddCart } from './ButtonAddCart'
 import { ButtonUnavailable } from './ButtonUnavailable'
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useCountdown } from '../../Hooks/useCountdown'
+import { useEffect } from 'react'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export const CourtsTable = () => {
+  const { resetCountdown } = useCountdown()
+  const { bookCourt } = useBookYourCourtContext()
+  const navigate = useNavigate()
 
-  window.addEventListener('load', () => {
-    const { setStart } = useStartContext()
+  const { setStart } = useStartContext()
+  useEffect(() => {
     setStart(true)
-  })
+    if (bookCourt.location === null) {
+      resetCountdown()
+      setStart(false)
+      navigate('/LocationSelection')
+    }
+  }, [])
 
-  function formatPrice(numero) {
+  function formatPrice (numero) {
     // Convertir el número a una cadena de texto y separar la parte entera de la decimal
     const partes = numero.toString().split('.')
 
@@ -38,12 +49,11 @@ export const CourtsTable = () => {
 
   const { data } = useTimeCourts(dayjs().format('YYYY-MM-DD'))
 
-
   return (
     <section className="flex justify-center items-center">
       <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
-          <ProgressBar percentage='30%' count={true} />
+          <ProgressBar percentage='20%' count={true} />
         </header>
         <main
           className="flex flex-col items-center
@@ -89,12 +99,12 @@ export const CourtsTable = () => {
                             {court.hour}
                           </td>
                           <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(court.price)} COP`}</td>
-                          <td>{court.state == "Available" 
+                          <td>{court.state === 'Available'
                             ? <ButtonAddCart court={court} frontID={0} />
-                            :<ButtonUnavailable />}</td>
-                          <td>{court.state == "Available" 
+                            : <ButtonUnavailable />}</td>
+                          <td>{court.state === 'Available'
                             ? <ButtonAddCart court={court} frontID={1} />
-                            :<ButtonUnavailable />}</td>
+                            : <ButtonUnavailable />}</td>
                         </tr>
                       )
                     })
@@ -109,15 +119,15 @@ export const CourtsTable = () => {
         <footer className='hidden md:block'>
         <div className='flex gap-3 w-full place-content-end '>
             <Link
-                className="border-[2px] border-[#E3E3E3]  rounded-xl px-3 py-2
-                 bg-[#FFFFFF] text-black font-inter font-[600] text-center"
-                to={"/LocationSelection"}
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
+                to={'/LocationSelection'}
+                onClick={resetCountdown}
               >
                 Back
               </Link>
               <Link
-                className="border-[1px] rounded-xl px-3 py-2 bg-[#29845A] text-[#FFFFFF] font-inter font-[600] text-center"
-                to={"/MyCart"}
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
+                to={'/MyCart'}
               >
                 Next
               </Link>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { ProgressBar } from '../../components/ProgressBar'
 import { useTranslation } from 'react-i18next'
 import { Selector } from '../components/Selector'
@@ -8,6 +7,7 @@ import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { Link } from 'react-router-dom'
 import { useStartContext } from '../../context/StartCountdownContext'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
+import { useState } from 'react'
 
 export const LocationSelection = () => {
   const { t } = useTranslation('global')
@@ -15,9 +15,11 @@ export const LocationSelection = () => {
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
   const { setStart } = useStartContext()
   const { removeItem } = useLocalStorage({ key: 'countdown' })
+  const [notSelected, setNotSelected] = useState(false)
 
   const handleClick = () => {
     if (bookCourt.location === null) {
+      setNotSelected(true)
       return
     }
     removeItem()
@@ -51,14 +53,24 @@ export const LocationSelection = () => {
           <h1 className="font-bold text-[24px] text-[#2E2E2E] md:text-[45px]">
             {t('LocationSelection.title')}
           </h1>
-          <div className="w-full mt-[50px] flex justify-center items-center">
-            <Selector />
+          <div className="w-full mt-[50px] flex justify-center flex-col items-center">
+            <div className='w-[90%] md:w-[600px]'>
+              <Selector />
+              {
+                notSelected && (
+                <p className="text-[#F44336] text-[14px] mt-2">
+                  {t('LocationSelection.noCountrySelected')}
+                </p>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>
       <div className="w-full flex justify-end max-w-[64.75rem]">
         <div className="flex gap-3 ">
-          <Link className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit" to={'/'}>
+          <Link className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit" to={'/'}
+          >
             Back
           </Link>
           <Link
