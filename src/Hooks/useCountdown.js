@@ -68,5 +68,12 @@ export const useCountdown = () => {
     return () => clearInterval(timerId)
   }, [start, countValue.countValue])
 
-  return { countdown: formatTime(countValue.countValue), countValue: countValue.countValue, setCountValue, startValue, removeItem }
+  const resetCountdown = () => {
+    setStart(false)
+    setCountValue({ ...countValue, countValue: startValue, firstTime: true })
+    setBookCourt({ ...bookCourt, location: null })
+    removeItem()
+  }
+
+  return { countdown: formatTime(countValue.countValue), countValue: countValue.countValue, setCountValue, startValue, removeItem, resetCountdown }
 }

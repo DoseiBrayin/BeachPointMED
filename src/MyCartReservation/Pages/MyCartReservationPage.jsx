@@ -1,17 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Courts } from '../components/Courts'
 import { ProgressBar } from '../../components/ProgressBar'
 import { Refreshments } from '../components/Refreshments'
 import { useFormatePrices } from '../hooks/useFormatPrices'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useStartContext } from '../../context/StartCountdownContext'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { useCountdown } from '../../Hooks/useCountdown'
 
 export const MyCartReservationPage = () => {
   const { getGrandTotalPrice } = useFormatePrices()
   const { t } = useTranslation('global')
 
+  const { setStart } = useStartContext()
+  const { resetCountdown } = useCountdown()
+  const { bookCourt } = useBookYourCourtContext()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setStart(true)
+    if (bookCourt.location === null) {
+      resetCountdown()
+      setStart(false)
+      navigate('/LocationSelection')
+    }
+  }, [])
+
   return (
-    <div className='flex flex-col items-center md:px-5'>
+    <div className='flex flex-col items-center px-5'>
         <div className='w-[100%] flex items-center justify-center'>
             <ProgressBar percentage='40%' count={true}/>
         </div>

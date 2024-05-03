@@ -1,18 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '../components/ErrorMessage'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ProgressBar } from '../../components/ProgressBar'
+import { useStartContext } from '../../context/StartCountdownContext'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { useCountdown } from '../../Hooks/useCountdown'
 
 export const ConfirmationPage = () => {
-  const inputStyle =
-    'border border-[#8A8A8A] rounded-md p-2 h-[32px] w-full text-[13px]'
+  const inputStyle = 'border border-[#8A8A8A] rounded-md p-2 h-[32px] w-full text-[13px] focus:outline-none'
+  const errroInputStyle = 'border border-[#8E1F0B] h-[32px] w-full rounded-md p-2 text-[13px] bg-[#FFEBE8] focus:outline-none'
+
+  const { setStart } = useStartContext()
+  const { resetCountdown } = useCountdown()
+  const { bookCourt } = useBookYourCourtContext()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setStart(true)
+    if (bookCourt.location === null) {
+      resetCountdown()
+      setStart(false)
+      navigate('/LocationSelection')
+    }
+  }, [])
+
   const { register, handleSubmit, formState } = useForm()
   const { errors } = formState
 
   // this function will make the API call
   const onSubmit = (data) => {
-    console.log(data)
+    return data // this is where you will make the API call
   }
 
   return (
@@ -26,13 +44,13 @@ export const ConfirmationPage = () => {
         </h1>
 
         <form className="w-full flex flex-col justify-center items-center px-5">
-          <div className="max-w-[330px] md:max-w-[415px]">
+          <div className="max-w-[330px] md:max-w-[415px] flex flex-col gap-2">
             <div className="flex gap-3">
               <div>
                 <label className="text-[14px]">First Name</label>
                 <input
                   type="text"
-                  className={inputStyle}
+                  className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
                   {...register('firstName', {
                     required: 'First name is required',
                     minLength: {
@@ -49,7 +67,7 @@ export const ConfirmationPage = () => {
                 <label className="text-[14px]">Last Name</label>
                 <input
                   type="text"
-                  className={inputStyle}
+                  className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
                   {...register('lastName', {
                     required: 'Last name is required'
                   })}
@@ -63,7 +81,7 @@ export const ConfirmationPage = () => {
               <label className="text-[14px]">Email</label>
               <input
                 type="email"
-                className={inputStyle}
+                className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
                 {...register('email', {
                   required: 'Email is required',
                   pattern: { value: /^\S+@\S+$/i, message: 'Invalid email' }
@@ -76,7 +94,7 @@ export const ConfirmationPage = () => {
                 <label className="text-[14px]">Country Code</label>
                 <input
                   type="text"
-                  className={inputStyle}
+                  className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
                   {...register('countryCode', {
                     required: 'Country code is required'
                   })}
@@ -89,7 +107,7 @@ export const ConfirmationPage = () => {
                 <label className="text-[14px]">Phone Number</label>
                 <input
                   type="text"
-                  className={inputStyle}
+                  className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
                   {...register('phoneNumber', {
                     required: 'Phone number is required'
                   })}

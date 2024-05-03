@@ -7,7 +7,7 @@ export const Courts = () => {
   const { t } = useTranslation('global')
 
   return (
-      <div className='px-[5%] mt-4 w-full max-w-[52.5rem]'>
+      <div className=' mt-4 w-full max-w-[52.5rem]'>
         <h1 className="text-[#2E2E2E] font-[700] text-[20px] md:text-[28px] md:text-[#000]">{t('MyCartReservation.Courts')}</h1>
         <table className='w-full shadow-lg'>
           <thead className='text-left'>

@@ -3,9 +3,11 @@ import { CourtsTable } from '../components/CourtsTable'
 import { Calendar } from '../components/calendar'
 import { Link } from 'react-router-dom'
 import { nextViewState } from '../Hooks/useNextViewState'
+import { useCountdown } from '../../Hooks/useCountdown'
 
 export const CourtReservationCalendar = () => {
   const { handleNextView, view, handlePastView } = nextViewState()
+  const { resetCountdown } = useCountdown()
   const { todayState, handleNextDay, handlePastDay } = calendarHooks()
 
   return (
@@ -58,16 +60,17 @@ export const CourtReservationCalendar = () => {
             ${view ? 'hidden' : 'block'}`}
             >
               <Link
-                className="border-[2px] border-[#E3E3E3]  rounded-xl px-3 py-2
-                 bg-[#FFFFFF] text-black font-inter font-[600] text-center"
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
                 to={'/LocationSelection'}
-                onClick={handlePastView}
+                onClick={() => {
+                  resetCountdown()
+                  handlePastView()
+                }}
               >
                 Back
               </Link>
               <button
-                className="border-[1px] rounded-xl px-3 py-2 bg-[#29845A]
-                text-[#FFFFFF] font-inter font-[600] text-center"
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
                 onClick={handleNextView}
               >
                 Next
@@ -79,13 +82,13 @@ export const CourtReservationCalendar = () => {
             ${view ? 'block' : 'hidden'}`}
             >
               <button
-                className="border-[2px] border-[#E3E3E3]  rounded-xl px-3 py-2 bg-[#FFFFFF] text-black font-inter font-[600] text-center"
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
                 onClick={handlePastView}
               >
                 Back
               </button>
               <Link
-                className="border-[1px] rounded-xl px-3 py-2 bg-[#29845A] text-[#FFFFFF] font-inter font-[600] text-center"
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
                 to={'/MyCart'}
                 onClick={handleNextView}
               >
