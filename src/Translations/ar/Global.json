@@ -74,8 +74,8 @@
       }
     },
     "LocationSelection": {
-      "title": "اختر الموقع"
-    }
-
+      "title": "اختر الموقع",
+      "noCountrySelected": "يجب عليك تحديد موقع"
+  }  
   }
   

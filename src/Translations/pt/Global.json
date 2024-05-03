@@ -74,7 +74,8 @@
       }
     },
     "LocationSelection": {
-      "title": "Selecione o local"
+      "title": "Selecione o local",
+      "noCountrySelected": "Você deve selecionar uma localização"
     }
   }
   
