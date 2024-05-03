@@ -5,16 +5,16 @@ import i18next from 'i18next'
 export const useLeguageSelector = () => {
   // The sources object contains the paths to the images that represent the languages
   const sources = {
-    en: 'LandingImages/Countries/English.webp',
-    fr: 'LandingImages/Countries/French.webp',
-    pt: 'LandingImages/Countries/Portugese.webp',
-    zh: 'LandingImages/Countries/Mandarin.webp',
-    hi: 'LandingImages/Countries/Hindi.webp',
-    ar: 'LandingImages/Countries/Arabic.webp',
-    ru: 'LandingImages/Countries/Russian.webp',
-    de: 'LandingImages/Countries/German.webp',
-    es: 'LandingImages/Countries/colombia.png'
-  }
+    en: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/English.webp',
+    fr: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/French.webp',
+    pt: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/Portugese.webp',
+    zh: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/Mandarin.webp',
+    hi: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/Hindi.webp',
+    ar: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/Arabic.webp',
+    ru: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/Russian.webp',
+    de: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/German.webp',
+    es: 'https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/colombia.png'
+  } 
 
   // The useLocalStorage hook is used to save the selected language in the local storage
   const { setItem, getItem } = useLocalStorage({ key: 'language' })
