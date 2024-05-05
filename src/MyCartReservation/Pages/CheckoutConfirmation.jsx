@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Courts } from '../components/Courts'
-import { ProgressBar } from '../../components/ProgressBar'
 import { Refreshments } from '../components/Refreshments'
 import { useFormatePrices } from '../hooks/useFormatPrices'
 import { useTranslation } from 'react-i18next'
@@ -16,6 +15,16 @@ export const CheckOutConfirmation = () => {
   const { setStart } = useStartContext()
   const { resetCountdown } = useCountdown()
   const { bookCourt } = useBookYourCourtContext()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setStart(true)
+    if (bookCourt.location === null) {
+      resetCountdown()
+      setStart(false)
+      navigate('/LocationSelection')
+    }
+  }, [])
 
   return (
     <div className='flex flex-col items-center px-5'>
