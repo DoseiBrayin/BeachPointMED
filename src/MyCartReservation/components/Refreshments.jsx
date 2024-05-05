@@ -45,11 +45,11 @@ export const Refreshments = ({isCheckOut}) => {
                           <td className={'font-inter text-[14px] table-cell'}>
                             <div className='flex justify-center items-center'>
                             <div className="flex gap-2 border-[0.031rem] w-fit px-1 border-[#000] justify-center items-center rounded-xl">
-                                <button className={`${isCheckOut ? "cursor-event-none" : ""}`} onClick={(e) => handleMinus(e)}>
+                                <button className={`${isCheckOut ? "pointer-events-none" : ""}`} onClick={(e) => handleMinus(e)}>
                                   <img src="/MyCartReservationImages/minus.svg" alt="" />
                                 </button>
                                 <p>{item.quantity}</p>
-                                <button className={`${isCheckOut ? "cursor-event-none" : ""}`} onClick={(e) => handlePlus(e)}>
+                                <button className={`${isCheckOut ? "pointer-events-none" : ""}`} onClick={(e) => handlePlus(e)}>
                                   <img src="/MyCartReservationImages/plus.svg" alt="" />
                                 </button>
                             </div>
