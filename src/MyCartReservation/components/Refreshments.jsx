@@ -3,7 +3,7 @@ import { useCart } from '../hooks/useCart'
 import { useFormatePrices } from '../hooks/useFormatPrices'
 import { useTranslation } from 'react-i18next'
 
-export const Refreshments = () => {
+export const Refreshments = ({isCheckOut}) => {
   const { handleMinus, handlePlus, refreshments } = useCart()
   const { formatPrice, getTotalPrice } = useFormatePrices()
   const { t } = useTranslation('global')
@@ -43,19 +43,21 @@ export const Refreshments = () => {
                           <td className={'font-inter text-[14px] md:hidden'}>{item.item} {item.varient}</td>
 
                           <td className={'font-inter text-[14px] table-cell'}>
-                            <div className="flex gap-2 border-[0.031rem] w-fit px-1 border-[#000] justify-center rounded-xl">
-                                <button onClick={(e) => handleMinus(e)}>
+                            <div className='flex justify-center items-center'>
+                            <div className="flex gap-2 border-[0.031rem] w-fit px-1 border-[#000] justify-center items-center rounded-xl">
+                                <button className={`${isCheckOut ? "cursor-event-none" : ""}`} onClick={(e) => handleMinus(e)}>
                                   <img src="/MyCartReservationImages/minus.svg" alt="" />
                                 </button>
                                 <p>{item.quantity}</p>
-                                <button onClick={(e) => handlePlus(e)}>
+                                <button className={`${isCheckOut ? "cursor-event-none" : ""}`} onClick={(e) => handlePlus(e)}>
                                   <img src="/MyCartReservationImages/plus.svg" alt="" />
                                 </button>
+                            </div>
                             </div>
                           </td>
 
                           <td className={'font-inter text-[14px]'}>{formatPrice(item.cost)} COP</td>
-                          <td><img src="/MyCartReservationImages/trash.svg" className="w-[12px] h-[12px] " alt="" /></td>
+                          <td><img className={`${isCheckOut ? "hidden" : ""} w-[12px] h-[12px] `} src="/MyCartReservationImages/trash.svg" alt="" /></td>
                       </tr>
                     )
                   })

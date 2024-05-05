@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { useFormatePrices } from '../hooks/useFormatPrices'
 import { mockCourts } from '../mocks/courts.json'
 
-export const Courts = () => {
+export const Courts = ({isCheckOut}) => {
   const { getTotalPrice } = useFormatePrices()
   const { t } = useTranslation('global')
 
@@ -30,7 +30,7 @@ export const Courts = () => {
                         <td className={'font-inter text-[14px]'}>{court.time}</td>
                         <td className={'font-inter text-[14px]'}>{court.court}</td>
                         <td className={'font-inter text-[14px]'}>{court.cost} COP</td>
-                        <td><img src="/MyCartReservationImages/trash.svg" className="w-[12px] h-[12px] " alt="" /></td>
+                        <td><img src="/MyCartReservationImages/trash.svg" className={`w-[12px] h-[12px] ${isCheckOut ? "hidden" : ""}`} alt="" /></td>
                     </tr>
                   )
                 })
