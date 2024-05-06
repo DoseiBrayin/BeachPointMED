@@ -9,22 +9,37 @@ import { ButtonUnavailable } from './ButtonUnavailable'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useEffect } from 'react'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
-  const { bookCourt } = useBookYourCourtContext()
   const navigate = useNavigate()
+  const { removeItem, getItem } = useLocalStorage({ key: 'order' })
+  const { setBookCourt } = useBookYourCourtContext()
 
   const { setStart } = useStartContext()
   useEffect(() => {
+    // If there is no location selected, the user is redirected to the location selection page
+    // or there is no order, the user is redirected to the location selection page
+    const order = getItem()
+    setBookCourt(order)
     setStart(true)
-    if (bookCourt.location === null) {
+    if (!order || order.location === null) {
       resetCountdown()
       setStart(false)
       navigate('/LocationSelection')
     }
   }, [])
+
+  const handleBackPage = () => {
+    resetCountdown()
+    removeItem()
+  }
+
+  const handleNextPage = () => {
+
+  }
 
   function formatPrice (numero) {
     // Convertir el número a una cadena de texto y separar la parte entera de la decimal
@@ -121,12 +136,13 @@ export const CourtsTable = () => {
             <Link
                 className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
                 to={'/LocationSelection'}
-                onClick={resetCountdown}
+                onClick={() => handleBackPage()}
               >
                 Back
               </Link>
               <Link
                 className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
+                onClick={handleNextPage}
                 to={'/MyCart'}
               >
                 Next

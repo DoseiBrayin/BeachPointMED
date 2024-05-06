@@ -15,6 +15,7 @@ export const LocationSelection = () => {
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
   const { setStart } = useStartContext()
   const { removeItem } = useLocalStorage({ key: 'countdown' })
+  const { setItem } = useLocalStorage({ key: 'order' })
   const [notSelected, setNotSelected] = useState(false)
 
   const handleClick = () => {
@@ -22,6 +23,7 @@ export const LocationSelection = () => {
       setNotSelected(true)
       return
     }
+    setItem(bookCourt)
     removeItem()
     setStart(true)
   }

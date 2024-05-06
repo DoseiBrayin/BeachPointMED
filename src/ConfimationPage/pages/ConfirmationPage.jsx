@@ -6,6 +6,7 @@ import { ProgressBar } from '../../components/ProgressBar'
 import { useStartContext } from '../../context/StartCountdownContext'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const ConfirmationPage = () => {
   const inputStyle = 'border border-[#8A8A8A] rounded-md p-2 h-[32px] w-full text-[13px] focus:outline-none'
@@ -13,12 +14,15 @@ export const ConfirmationPage = () => {
 
   const { setStart } = useStartContext()
   const { resetCountdown } = useCountdown()
-  const { bookCourt } = useBookYourCourtContext()
+  const { setBookCourt } = useBookYourCourtContext()
+  const { getItem } = useLocalStorage({ key: 'order' })
   const navigate = useNavigate()
 
   useEffect(() => {
     setStart(true)
-    if (bookCourt.location === null) {
+    const order = getItem()
+    setBookCourt(order)
+    if (!order || order.location === null) {
       resetCountdown()
       setStart(false)
       navigate('/LocationSelection')

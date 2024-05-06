@@ -6,21 +6,24 @@ import { useFormatePrices } from '../hooks/useFormatPrices'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import { useStartContext } from '../../context/StartCountdownContext'
-import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export const MyCartReservationPage = () => {
   const { getGrandTotalPrice } = useFormatePrices()
   const { t } = useTranslation('global')
-
   const { setStart } = useStartContext()
   const { resetCountdown } = useCountdown()
-  const { bookCourt } = useBookYourCourtContext()
   const navigate = useNavigate()
+  const { getItem } = useLocalStorage({ key: 'order' })
+  const { setBookCourt } = useBookYourCourtContext()
 
   useEffect(() => {
     setStart(true)
-    if (bookCourt.location === null) {
+    const item = getItem()
+    setBookCourt(item)
+    if (!item || item.location === null) {
       resetCountdown()
       setStart(false)
       navigate('/LocationSelection')
@@ -42,8 +45,9 @@ export const MyCartReservationPage = () => {
             <p className="text-[14px] font-inter text-white font-[400]">{getGrandTotalPrice()} COP</p>
         </div>
         <div className="w-full flex justify-end max-w-[64.75rem]">
-        <div className="flex gap-3 ">
-          <Link className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit" to={'/reserve/:locationId'}
+        <div className="flex gap-3 mb-20">
+          <Link className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
+            to={`/reserve/${getItem().location?.id}`}
           >
             Back
           </Link>
