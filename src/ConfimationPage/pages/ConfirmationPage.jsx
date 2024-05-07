@@ -134,6 +134,7 @@ export const ConfirmationPage = () => {
             onClick={handleSubmit((data) => {
               onSubmit(data)
             })}
+            to={'/CheckOutConfirmation'}
           >
             Next
           </Link>
