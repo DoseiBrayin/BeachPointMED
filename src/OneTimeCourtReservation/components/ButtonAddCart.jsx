@@ -1,5 +1,5 @@
 import React from 'react'
-import { UseStateCart } from '../Hooks/UseStateCart.jsx'
+import { UseStateCart } from '../Hooks/UseStateCart.js'
 
 export const ButtonAddCart = ({ court }) => {
   const { cartState, handleCart } = UseStateCart({ court })

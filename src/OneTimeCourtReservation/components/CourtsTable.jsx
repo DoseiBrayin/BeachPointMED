@@ -11,6 +11,8 @@ import { useCountdown } from '../../Hooks/useCountdown'
 import { useEffect } from 'react'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { formatPriceCourts } from '../Hooks/formatPriceCourts'
+import { formatTimeCourts } from '../Hooks/formatTimeCourts'
 
 export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
@@ -35,31 +37,6 @@ export const CourtsTable = () => {
   const handleBackPage = () => {
     resetCountdown()
     removeItem()
-  }
-
-  const handleNextPage = () => {
-
-  }
-
-  function formatPrice (numero) {
-    // Convertir el número a una cadena de texto y separar la parte entera de la decimal
-    const partes = numero.toString().split('.')
-
-    // Formatear la parte entera
-    const parteEntera = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-
-    // Si hay parte decimal
-    if (partes.length === 2) {
-      let parteDecimal = partes[1]
-
-      // Añadir ceros adicionales si la parte decimal tiene menos de tres dígitos
-      parteDecimal = parteDecimal.padEnd(3, '0')
-
-      return `${parteEntera}.${parteDecimal}`
-    } else {
-      // Si no hay parte decimal, agregar '.000'
-      return `${parteEntera}.000`
-    }
   }
 
   const { data } = useTimeCourts(dayjs().format('YYYY-MM-DD'))
@@ -111,9 +88,9 @@ export const CourtsTable = () => {
                       return (
                         <tr key={court.id} className="rounded-tl-xl rounded-tr-xl h-[2rem]">
                           <td className='text-sx px-2 text-center min-[425px]:text-[15px]'>
-                            {court.hour}
+                            {formatTimeCourts(court.hour)}
                           </td>
-                          <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(court.price)} COP`}</td>
+                          <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPriceCourts(court.price)} COP`}</td>
                           <td>{court.state === 'Available'
                             ? <ButtonAddCart court={court} frontID={0} />
                             : <ButtonUnavailable />}</td>
@@ -142,7 +119,6 @@ export const CourtsTable = () => {
               </Link>
               <Link
                 className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-                onClick={handleNextPage}
                 to={'/MyCart'}
               >
                 Next
