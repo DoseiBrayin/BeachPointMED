@@ -1,59 +1,57 @@
-import '../CourtReservation.modules.css'
-import { Calendar } from './calendar'
-import { ProgressBar } from '../../components/ProgressBar'
-import { useTimeCourts } from '../Hooks/useTimeCourts'
-import { useStartContext } from '../../context/StartCountdownContext'
-import dayjs from 'dayjs'
-import { ButtonAddCart } from './ButtonAddCart'
-import { ButtonUnavailable } from './ButtonUnavailable'
-import { Link, useNavigate } from 'react-router-dom'
-import { useCountdown } from '../../Hooks/useCountdown'
-import { useEffect } from 'react'
-import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import "../CourtReservation.modules.css";
+import { Calendar } from "./calendar";
+import { ProgressBar } from "../../components/ProgressBar";
+import { useStartContext } from "../../context/StartCountdownContext";
+import { ButtonAddCart } from "./ButtonAddCart";
+import { ButtonUnavailable } from "./ButtonUnavailable";
+import { Link, useNavigate } from "react-router-dom";
+import { useCountdown } from "../../Hooks/useCountdown";
+import { useEffect } from "react";
+import { useBookYourCourtContext } from "../../context/BookYourCourtContext";
+import { useCourtDateContext } from "../../context/CourtsDateContext";
 
 export const CourtsTable = () => {
-  const { resetCountdown } = useCountdown()
-  const { bookCourt } = useBookYourCourtContext()
-  const navigate = useNavigate()
+  const { resetCountdown } = useCountdown();
+  const { bookCourt } = useBookYourCourtContext();
+  const navigate = useNavigate();
+  const { dataCourtDate } = useCourtDateContext();
 
-  const { setStart } = useStartContext()
+  const { setStart } = useStartContext();
   useEffect(() => {
-    setStart(true)
+    setStart(true);
     if (bookCourt.location === null) {
-      resetCountdown()
-      setStart(false)
-      navigate('/LocationSelection')
+      resetCountdown();
+      setStart(false);
+      navigate("/LocationSelection");
     }
-  }, [])
+  }, []);
 
-  function formatPrice (numero) {
+  function formatPrice(numero) {
     // Convertir el número a una cadena de texto y separar la parte entera de la decimal
-    const partes = numero.toString().split('.')
+    const partes = numero.toString().split(".");
 
     // Formatear la parte entera
-    const parteEntera = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+    const parteEntera = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
     // Si hay parte decimal
     if (partes.length === 2) {
-      let parteDecimal = partes[1]
+      let parteDecimal = partes[1];
 
       // Añadir ceros adicionales si la parte decimal tiene menos de tres dígitos
-      parteDecimal = parteDecimal.padEnd(3, '0')
+      parteDecimal = parteDecimal.padEnd(3, "0");
 
-      return `${parteEntera}.${parteDecimal}`
+      return `${parteEntera}.${parteDecimal}`;
     } else {
       // Si no hay parte decimal, agregar '.000'
-      return `${parteEntera}.000`
+      return `${parteEntera}.000`;
     }
   }
-
-  const { data } = useTimeCourts(dayjs().format('YYYY-MM-DD'))
 
   return (
     <section className="flex justify-center items-center">
       <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
-          <ProgressBar percentage='20%' count={true} />
+          <ProgressBar percentage="20%" count={true} />
         </header>
         <main
           className="flex flex-col items-center
@@ -71,7 +69,9 @@ export const CourtsTable = () => {
              w-[100%]
              md:w-[60%]
              md:h-[28rem]"
-          > <table className="w-[100%] h-full md:w-full">
+          >
+            {" "}
+            <table className="w-[100%] h-full md:w-full">
               <thead>
                 <tr>
                   <th className="text-sm font-[600] font-inter text-center ">
@@ -89,51 +89,67 @@ export const CourtsTable = () => {
                 </tr>
               </thead>
               <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB] border border-gray-50  shadow-gray-300 rounded-2xl">
-                {
-
-                  data && Array.isArray(data.data) && data.data.length > 0
-                    ? data?.data.map((court) => {
-                      return (
-                        <tr key={court.id} className="rounded-tl-xl rounded-tr-xl h-[2rem]">
-                          <td className='text-sx px-2 text-center min-[425px]:text-[15px]'>
-                            {court.hour}
-                          </td>
-                          <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(court.price)} COP`}</td>
-                          <td>{court.state === 'Available'
-                            ? <ButtonAddCart court={court} frontID={0} />
-                            : <ButtonUnavailable />}</td>
-                          <td>{court.state === 'Available'
-                            ? <ButtonAddCart court={court} frontID={1} />
-                            : <ButtonUnavailable />}</td>
-                        </tr>
-                      )
-                    })
-                    : <tr>
-                      <td colSpan="4" className="text-center">No courts available in this date</td>
-                    </tr>
-                }
+                {dataCourtDate &&
+                Array.isArray(dataCourtDate.data) &&
+                dataCourtDate.data.length > 0 ? (
+                  dataCourtDate?.data.map((court) => {
+                    return (
+                      <tr
+                        key={court.id}
+                        className="rounded-tl-xl rounded-tr-xl h-[2rem]"
+                      >
+                        <td className="text-sx px-2 text-center min-[425px]:text-[15px]">
+                          {court.hour}
+                        </td>
+                        <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(
+                          court.price
+                        )} COP`}</td>
+                        <td>
+                          {court.state === "Available" ? (
+                            <ButtonAddCart court={court} frontID={0} />
+                          ) : (
+                            <ButtonUnavailable />
+                          )}
+                        </td>
+                        <td>
+                          {court.state === "Available" ? (
+                            <ButtonAddCart court={court} frontID={1} />
+                          ) : (
+                            <ButtonUnavailable />
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan="4" className="text-center">
+                      No courts available in this date
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
         </main>
-        <footer className='hidden md:block'>
-        <div className='flex gap-3 w-full place-content-end '>
+        <footer className="hidden md:block">
+          <div className="flex gap-3 w-full place-content-end ">
             <Link
-                className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
-                to={'/LocationSelection'}
-                onClick={resetCountdown}
-              >
-                Back
-              </Link>
-              <Link
-                className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-                to={'/MyCart'}
-              >
-                Next
-              </Link>
-            </div>
+              className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
+              to={"/LocationSelection"}
+              onClick={resetCountdown}
+            >
+              Back
+            </Link>
+            <Link
+              className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
+              to={"/MyCart"}
+            >
+              Next
+            </Link>
+          </div>
         </footer>
       </div>
     </section>
-  )
-}
+  );
+};
