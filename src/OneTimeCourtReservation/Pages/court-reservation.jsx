@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom'
 import { nextViewState } from '../Hooks/useNextViewState'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export const CourtReservationCalendar = () => {
   const { handleNextView, view, handlePastView } = nextViewState()
   const { resetCountdown } = useCountdown()
   const { todayState, handleNextDay, handlePastDay } = calendarHooks()
   const { removeItem } = useLocalStorage({ key: 'order' })
+  const { setBookCourt } = useBookYourCourtContext()
 
   return (
     <>
@@ -68,6 +70,7 @@ export const CourtReservationCalendar = () => {
                   resetCountdown()
                   handlePastView()
                   removeItem()
+                  setBookCourt({ location: null, courts: [] })
                 }}
               >
                 Back

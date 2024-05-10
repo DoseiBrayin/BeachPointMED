@@ -30,7 +30,7 @@ export const LocationSelection = () => {
 
   window.addEventListener('load', () => {
     bookCourt.location = null
-    setBookCourt({ ...bookCourt, location: null })
+    setBookCourt({ ...bookCourt, location: null, courts: [] })
   })
 
   const route = () => {

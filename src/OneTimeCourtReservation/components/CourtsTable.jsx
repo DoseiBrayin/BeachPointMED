@@ -37,9 +37,13 @@ export const CourtsTable = () => {
   const handleBackPage = () => {
     resetCountdown()
     removeItem()
+    setBookCourt({ location: null, courts: [] })
   }
 
   const { data } = useTimeCourts(dayjs().format('YYYY-MM-DD'))
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
   return (
     <section className="flex justify-center items-center">
@@ -90,13 +94,47 @@ export const CourtsTable = () => {
                           <td className='text-sx px-2 text-center min-[425px]:text-[15px]'>
                             {formatTimeCourts(court.hour)}
                           </td>
-                          <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPriceCourts(court.price)} COP`}</td>
-                          <td>{court.state === 'Available'
+                          <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">
+                            {`${formatPriceCourts(court.price)} COP`}
+                          </td>
+                          <td>
+                            {
+                              court.state === 'Available'
+                                ? <ButtonAddCart court={{
+                                  id: court.id,
+                                  hour: court.hour,
+                                  price: court.price,
+                                  fk_court: court.fk_court,
+                                  description: court.description,
+                                  state: court.state,
+                                  date: court.date
+                                }} />
+                                : <ButtonUnavailable />
+                            }
+                          </td>
+
+                          <td>
+                            {
+                              court['state-2'] === 'Available'
+                                ? <ButtonAddCart court={{
+                                  id: court['id-2'],
+                                  hour: court.hour,
+                                  price: court.price,
+                                  fk_court: court['fk_court-2'],
+                                  description: court['description-2'],
+                                  state: court['state-2'],
+                                  date: court.date
+                                }} />
+                                : <ButtonUnavailable />
+                            }
+                          </td>
+
+                          {/* <td>{court.state === 'Available'
                             ? <ButtonAddCart court={court} frontID={0} />
                             : <ButtonUnavailable />}</td>
                           <td>{court.state === 'Available'
                             ? <ButtonAddCart court={court} frontID={1} />
-                            : <ButtonUnavailable />}</td>
+                            : <ButtonUnavailable />}</td> */}
                         </tr>
                       )
                     })
