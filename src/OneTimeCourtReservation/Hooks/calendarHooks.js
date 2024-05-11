@@ -30,7 +30,7 @@ export const calendarHooks = () => {
       const url = import.meta.env.VITE_BEACHPOINT_API_URL;
       const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN;
       
-      const response = await axios.get(`${url}timeCourts/timeCourts/${day.format("DD-MM-YY")}/${locationId}`, {
+      const response = await axios.get(`${url}timeCourts/timeCourts/${day.format("YYYY-MM-DD")}/${locationId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
