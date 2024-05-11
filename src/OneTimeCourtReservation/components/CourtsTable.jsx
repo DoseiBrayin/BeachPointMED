@@ -18,10 +18,14 @@ export const CourtsTable = () => {
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
-  const { bookCourt } = useBookYourCourtContext()
   const { dataCourtDate } = useCourtDateContext()
 
   const { setStart } = useStartContext()
+
+  const handleBackPage = () => {
+    removeItem()
+    resetCountdown()
+  }
 
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
@@ -36,27 +40,6 @@ export const CourtsTable = () => {
       navigate('/LocationSelection')
     }
   }, [])
-
-  function formatPrice (numero) {
-    // Convertir el número a una cadena de texto y separar la parte entera de la decimal
-    const partes = numero.toString().split('.')
-
-    // Formatear la parte entera
-    const parteEntera = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-
-    // Si hay parte decimal
-    if (partes.length === 2) {
-      let parteDecimal = partes[1]
-
-      // Añadir ceros adicionales si la parte decimal tiene menos de tres dígitos
-      parteDecimal = parteDecimal.padEnd(3, '0')
-
-      return `${parteEntera}.${parteDecimal}`
-    } else {
-      // Si no hay parte decimal, agregar '.000'
-      return `${parteEntera}.000`
-    }
-  }
 
   return (
     <section className="flex justify-center items-center">
@@ -114,7 +97,7 @@ export const CourtsTable = () => {
                         <td className="text-sx px-2 text-center min-[425px]:text-[15px]">
                         {formatTimeCourts(court.hour)}
                         </td>
-                        <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(
+                        <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPriceCourts(
                           court.price
                         )} COP`}</td>
                         <td>
