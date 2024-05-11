@@ -1,9 +1,7 @@
 import '../CourtReservation.modules.css'
 import { Calendar } from './calendar'
 import { ProgressBar } from '../../components/ProgressBar'
-import { useTimeCourts } from '../Hooks/useTimeCourts'
 import { useStartContext } from '../../context/StartCountdownContext'
-import dayjs from 'dayjs'
 import { ButtonAddCart } from './ButtonAddCart'
 import { ButtonUnavailable } from './ButtonUnavailable'
 import { Link, useNavigate } from 'react-router-dom'
@@ -30,29 +28,24 @@ export const CourtsTable = () => {
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
-  const { resetCountdown } = useCountdown();
   const { bookCourt } = useBookYourCourtContext();
-  const navigate = useNavigate();
   const { dataCourtDate } = useCourtDateContext();
 
   const { setStart } = useStartContext();
-  useEffect(() => {
+  
+  useEffect(()=>{
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
     const order = getItem()
+
     setBookCourt(order)
     setStart(true)
     if (!order || order.location === null) {
       resetCountdown()
       setStart(false)
       navigate('/LocationSelection')
-    setStart(true);
-    if (bookCourt.location === null) {
-      resetCountdown();
-      setStart(false);
-      navigate("/LocationSelection");
-    }
-  }, []);
+     }
+  },[])
 
   function formatPrice(numero) {
     // Convertir el número a una cadena de texto y separar la parte entera de la decimal
