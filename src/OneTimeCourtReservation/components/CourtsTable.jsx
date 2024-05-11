@@ -2,7 +2,6 @@ import '../CourtReservation.modules.css'
 import { Calendar } from './calendar'
 import { ProgressBar } from '../../components/ProgressBar'
 import { useStartContext } from '../../context/StartCountdownContext'
-import { ButtonAddCart } from './ButtonAddCart'
 import { ButtonUnavailable } from './ButtonUnavailable'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCountdown } from '../../Hooks/useCountdown'
@@ -11,16 +10,7 @@ import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { formatPriceCourts } from '../Hooks/formatPriceCourts'
 import { formatTimeCourts } from '../Hooks/formatTimeCourts'
-import "../CourtReservation.modules.css";
-import { Calendar } from "./calendar";
-import { ProgressBar } from "../../components/ProgressBar";
-import { useStartContext } from "../../context/StartCountdownContext";
 import { ButtonAddCart } from "./ButtonAddCart";
-import { ButtonUnavailable } from "./ButtonUnavailable";
-import { Link, useNavigate } from "react-router-dom";
-import { useCountdown } from "../../Hooks/useCountdown";
-import { useEffect } from "react";
-import { useBookYourCourtContext } from "../../context/BookYourCourtContext";
 import { useCourtDateContext } from "../../context/CourtsDateContext";
 
 export const CourtsTable = () => {
@@ -32,7 +22,7 @@ export const CourtsTable = () => {
   const { dataCourtDate } = useCourtDateContext();
 
   const { setStart } = useStartContext();
-  
+
   useEffect(()=>{
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
