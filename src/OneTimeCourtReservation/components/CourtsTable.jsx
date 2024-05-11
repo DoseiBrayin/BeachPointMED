@@ -1,3 +1,18 @@
+import '../CourtReservation.modules.css'
+import { Calendar } from './calendar'
+import { ProgressBar } from '../../components/ProgressBar'
+import { useTimeCourts } from '../Hooks/useTimeCourts'
+import { useStartContext } from '../../context/StartCountdownContext'
+import dayjs from 'dayjs'
+import { ButtonAddCart } from './ButtonAddCart'
+import { ButtonUnavailable } from './ButtonUnavailable'
+import { Link, useNavigate } from 'react-router-dom'
+import { useCountdown } from '../../Hooks/useCountdown'
+import { useEffect } from 'react'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { formatPriceCourts } from '../Hooks/formatPriceCourts'
+import { formatTimeCourts } from '../Hooks/formatTimeCourts'
 import "../CourtReservation.modules.css";
 import { Calendar } from "./calendar";
 import { ProgressBar } from "../../components/ProgressBar";
@@ -11,6 +26,10 @@ import { useBookYourCourtContext } from "../../context/BookYourCourtContext";
 import { useCourtDateContext } from "../../context/CourtsDateContext";
 
 export const CourtsTable = () => {
+  const { resetCountdown } = useCountdown()
+  const navigate = useNavigate()
+  const { removeItem, getItem } = useLocalStorage({ key: 'order' })
+  const { setBookCourt } = useBookYourCourtContext()
   const { resetCountdown } = useCountdown();
   const { bookCourt } = useBookYourCourtContext();
   const navigate = useNavigate();
@@ -18,6 +37,15 @@ export const CourtsTable = () => {
 
   const { setStart } = useStartContext();
   useEffect(() => {
+    // If there is no location selected, the user is redirected to the location selection page
+    // or there is no order, the user is redirected to the location selection page
+    const order = getItem()
+    setBookCourt(order)
+    setStart(true)
+    if (!order || order.location === null) {
+      resetCountdown()
+      setStart(false)
+      navigate('/LocationSelection')
     setStart(true);
     if (bookCourt.location === null) {
       resetCountdown();
@@ -89,6 +117,7 @@ export const CourtsTable = () => {
                 </tr>
               </thead>
               <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB] border border-gray-50  shadow-gray-300 rounded-2xl">
+
                 {dataCourtDate &&
                 Array.isArray(dataCourtDate.data) &&
                 dataCourtDate.data.length > 0 ? (
@@ -99,7 +128,7 @@ export const CourtsTable = () => {
                         className="rounded-tl-xl rounded-tr-xl h-[2rem]"
                       >
                         <td className="text-sx px-2 text-center min-[425px]:text-[15px]">
-                          {court.hour}
+                        {formatTimeCourts(court.hour)}
                         </td>
                         <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(
                           court.price
@@ -135,19 +164,19 @@ export const CourtsTable = () => {
         <footer className="hidden md:block">
           <div className="flex gap-3 w-full place-content-end ">
             <Link
-              className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
-              to={"/LocationSelection"}
-              onClick={resetCountdown}
-            >
-              Back
-            </Link>
-            <Link
-              className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-              to={"/MyCart"}
-            >
-              Next
-            </Link>
-          </div>
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
+                to={'/LocationSelection'}
+                onClick={() => handleBackPage()}
+              >
+                Back
+              </Link>
+              <Link
+                className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
+                to={'/MyCart'}
+              >
+                Next
+              </Link>
+            </div>
         </footer>
       </div>
     </section>

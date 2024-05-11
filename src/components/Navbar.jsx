@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import { NavHooks } from '../Hooks/NavHooks'
 import { LenguageSelector } from './LenguageSelector'
 import { useTranslation } from 'react-i18next'
-import { useCountdown } from '../Hooks/useCountdown'
 import { useStartContext } from '../context/StartCountdownContext'
 import { Countdown } from './Countdown'
 
@@ -54,7 +53,6 @@ export const HamburguerMenu = ({ isVisible, close }) => {
 export const Navbar = () => {
   const { handleOpen, handleClose, isVisible } = NavHooks()
   const { t } = useTranslation('global')
-  const { countValue } = useCountdown()
   const { start } = useStartContext()
 
   return (
@@ -88,17 +86,18 @@ export const Navbar = () => {
       </div>
       {/* Este es el diseno qeu se ve en pantallas pequenas */}
       <div className="flex justify-between items-center w-full md:hidden">
-        <div className='w-full h-[45px] pl-[60px] items-center flex justify-center'>
-          <p className={`${countValue <= 180 ? 'text-[#FF001C]' : 'text-[#2e2e2e]'}`}>{start ? <Countdown /> : ''}</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <LenguageSelector />
-          <button onClick={handleOpen} className="w-[24px] h-[24px]">
-            <img src="/LandingImages/menu.webp" alt="" />
-          </button>
-        </div>
-        <HamburguerMenu isVisible={isVisible} close={handleClose} />
-      </div>
+  <div className='w-full h-[45px] pl-[60px] items-center flex justify-center'>
+    {start && <Countdown />} {/* Aquí se renderiza el Countdown directamente */}
+  </div>
+  <div className="flex items-center gap-2">
+    <LenguageSelector />
+    <button onClick={handleOpen} className="w-[24px] h-[24px]">
+      <img src="/LandingImages/menu.webp" alt="" />
+    </button>
+  </div>
+  <HamburguerMenu isVisible={isVisible} close={handleClose} />
+</div>
+
     </nav>
   )
 }

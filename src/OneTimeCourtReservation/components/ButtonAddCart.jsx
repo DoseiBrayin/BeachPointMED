@@ -1,8 +1,8 @@
 import React from 'react'
-import { UseStateCart } from '../Hooks/UseStateCart.jsx'
+import { UseStateCart } from '../Hooks/UseStateCart.js'
 
-export const ButtonAddCart = ({court }) => {
-  const { cartState, handleCart } = UseStateCart({court: court})
+export const ButtonAddCart = ({ court }) => {
+  const { cartState, handleCart } = UseStateCart({ court })
 
   return (
     <div className=" md:flex md:justify-center">
