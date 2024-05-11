@@ -10,20 +10,24 @@ import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { formatPriceCourts } from '../Hooks/formatPriceCourts'
 import { formatTimeCourts } from '../Hooks/formatTimeCourts'
-import { ButtonAddCart } from "./ButtonAddCart";
-import { useCourtDateContext } from "../../context/CourtsDateContext";
+import { ButtonAddCart } from './ButtonAddCart'
+import { useCourtDateContext } from '../../context/CourtsDateContext'
 
 export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
-  const { bookCourt } = useBookYourCourtContext();
-  const { dataCourtDate } = useCourtDateContext();
+  const { dataCourtDate } = useCourtDateContext()
 
-  const { setStart } = useStartContext();
+  const { setStart } = useStartContext()
 
-  useEffect(()=>{
+  const handleBackPage = () => {
+    removeItem()
+    resetCountdown()
+  }
+
+  useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
     const order = getItem()
@@ -34,29 +38,8 @@ export const CourtsTable = () => {
       resetCountdown()
       setStart(false)
       navigate('/LocationSelection')
-     }
-  },[])
-
-  function formatPrice(numero) {
-    // Convertir el número a una cadena de texto y separar la parte entera de la decimal
-    const partes = numero.toString().split(".");
-
-    // Formatear la parte entera
-    const parteEntera = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-    // Si hay parte decimal
-    if (partes.length === 2) {
-      let parteDecimal = partes[1];
-
-      // Añadir ceros adicionales si la parte decimal tiene menos de tres dígitos
-      parteDecimal = parteDecimal.padEnd(3, "0");
-
-      return `${parteEntera}.${parteDecimal}`;
-    } else {
-      // Si no hay parte decimal, agregar '.000'
-      return `${parteEntera}.000`;
     }
-  }
+  }, [])
 
   return (
     <section className="flex justify-center items-center">
@@ -81,7 +64,7 @@ export const CourtsTable = () => {
              md:w-[60%]
              md:h-[28rem]"
           >
-            {" "}
+            {' '}
             <table className="w-[100%] h-full md:w-full">
               <thead>
                 <tr>
@@ -103,9 +86,10 @@ export const CourtsTable = () => {
 
                 {dataCourtDate &&
                 Array.isArray(dataCourtDate.data) &&
-                dataCourtDate.data.length > 0 ? (
-                  dataCourtDate?.data.map((court) => {
-                    return (
+                dataCourtDate.data.length > 0
+                  ? (
+                      dataCourtDate?.data.map((court) => {
+                        return (
                       <tr
                         key={court.id}
                         className="rounded-tl-xl rounded-tr-xl h-[2rem]"
@@ -113,33 +97,38 @@ export const CourtsTable = () => {
                         <td className="text-sx px-2 text-center min-[425px]:text-[15px]">
                         {formatTimeCourts(court.hour)}
                         </td>
-                        <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPrice(
+                        <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPriceCourts(
                           court.price
                         )} COP`}</td>
                         <td>
-                          {court.state === "Available" ? (
+                          {court.state === 'Available'
+                            ? (
                             <ButtonAddCart court={court} frontID={0} />
-                          ) : (
+                              )
+                            : (
                             <ButtonUnavailable />
-                          )}
+                              )}
                         </td>
                         <td>
-                          {court.state === "Available" ? (
+                          {court.state === 'Available'
+                            ? (
                             <ButtonAddCart court={court} frontID={1} />
-                          ) : (
+                              )
+                            : (
                             <ButtonUnavailable />
-                          )}
+                              )}
                         </td>
                       </tr>
-                    );
-                  })
-                ) : (
+                        )
+                      })
+                    )
+                  : (
                   <tr>
                     <td colSpan="4" className="text-center">
                       No courts available in this date
                     </td>
                   </tr>
-                )}
+                    )}
               </tbody>
             </table>
           </div>
@@ -163,5 +152,5 @@ export const CourtsTable = () => {
         </footer>
       </div>
     </section>
-  );
-};
+  )
+}

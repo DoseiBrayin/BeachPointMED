@@ -1,8 +1,28 @@
-import React from 'react'
-import { UseStateCart } from '../Hooks/UseStateCart.js'
+import React, { useState } from 'react'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const ButtonAddCart = ({ court }) => {
-  const { cartState, handleCart } = UseStateCart({ court })
+  // const { cartState, handleCart } = UseStateCart({ court })
+  const { bookCourt, setBookCourt } = useBookYourCourtContext()
+  const [cartState, setCartState] = useState(true)
+  const { setItem } = useLocalStorage({ key: 'order' })
+
+  const handleCart = () => {
+    setCartState(!cartState)
+    if (cartState) {
+      // add the court to the cart
+      setBookCourt({ ...bookCourt, courts: [...bookCourt.courts, court] })
+      setItem({ ...bookCourt, courts: [...bookCourt.courts, court] })
+    } else {
+      // remove the court from the cart
+      const filteredCourts = bookCourt.courts.filter(courtItem => courtItem.id !== court.id)
+      setBookCourt({ ...bookCourt, courts: filteredCourts })
+      setItem({ ...bookCourt, courts: filteredCourts })
+    }
+    // console.log(bookCourt)
+    // console.log(court)
+  }
 
   return (
     <div className=" md:flex md:justify-center">
