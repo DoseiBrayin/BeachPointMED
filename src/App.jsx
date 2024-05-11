@@ -11,12 +11,14 @@ import { StartCountProvider } from './context/StartCountdownContext.jsx'
 import { CourtReservationCalendar } from './OneTimeCourtReservation/Pages/court-reservation.jsx'
 import { ConfirmationPage } from './ConfimationPage/pages/ConfirmationPage.jsx'
 import { CheckOutConfirmation } from './MyCartReservation/Pages/CheckoutConfirmation.jsx'
+import { CourtDateProvider } from './context/CourtsDateContext.jsx'
 
 function App () {
   return (
     <>
     <StartCountProvider>
       <BookYourCourtProvider>
+        <CourtDateProvider>
         <BrowserRouter>
         <Navbar />
           <Routes>
@@ -30,10 +32,12 @@ function App () {
             <Route path="*" element={<Page404 />} />
           </Routes>
         </BrowserRouter>
+        </CourtDateProvider>
       </BookYourCourtProvider>
     </StartCountProvider>
     </>
   )
 }
+
 
 export default App

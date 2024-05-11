@@ -1,7 +1,17 @@
 import dayjs from 'dayjs'
 import { useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { useCourtDateContext } from "../../context/CourtsDateContext";
+
 
 export const calendarHooks = () => {
+  const currentDate = dayjs()
+  const {setDataCourtDate} = useCourtDateContext()
+  const [todayState, setToday] = useState(currentDate)
+  const [selectDay, setSelectDay] = useState(null)
+  const { locationId } = useParams()
+  
   function handlePastMonth () {
     setToday(todayState.month(todayState.month() - 1))
   }
@@ -14,13 +24,23 @@ export const calendarHooks = () => {
   function handleNextDay () {
     setToday(todayState.add(1, 'day'))
   }
-  function handleSelectDay (day) {
-    setSelectDay(day)
+  async function handleSelectDay(day) {
+    setSelectDay(day);
+    try {
+      const url = import.meta.env.VITE_BEACHPOINT_API_URL;
+      const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN;
+      
+      const response = await axios.get(`${url}timeCourts/timeCourts/${day.format("DD-MM-YY")}/${locationId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      setDataCourtDate(response.data);
+    } catch {
+      setDataCourtDate([])
+    }
   }
-
-  const currentDate = dayjs()
-  const [todayState, setToday] = useState(currentDate)
-  const [selectDay, setSelectDay] = useState(null)
 
   return (
     {
@@ -31,7 +51,7 @@ export const calendarHooks = () => {
       handlePastDay,
       handleNextDay,
       handlePastMonth,
-      handleNextMonth
+      handleNextMonth,
     }
   )
 }

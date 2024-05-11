@@ -8,7 +8,7 @@ export const Calendar = () => {
     handlePastMonth,
     handleNextMonth,
     selectDay,
-    handleSelectDay
+    handleSelectDay,
   } = calendarHooks()
 
   return (
@@ -29,7 +29,6 @@ export const Calendar = () => {
           </div>
         </li>
         {
-          // Getting the days, you can use a similar approach to make the months and you just get the current month - 1 and display it
           days.map((day, index) => {
             return (
               <li
