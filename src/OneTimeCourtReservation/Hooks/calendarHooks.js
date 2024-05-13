@@ -26,10 +26,10 @@ export const calendarHooks = () => {
   async function handleSelectDay (day) {
     setSelectDay(day)
     try {
-      const url = import.meta.env.VITE_BEACHPOINT_API_URL;
-      const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN;
-      
-      const response = await axios.get(`${url}timeCourts/timeCourts/${day.format("YYYY-MM-DD")}/${locationId}`, {
+      const url = import.meta.env.VITE_BEACHPOINT_API_URL
+      const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+
+      const response = await axios.get(`${url}timeCourts/timeCourts/${day.format('YYYY-MM-DD')}/${locationId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
