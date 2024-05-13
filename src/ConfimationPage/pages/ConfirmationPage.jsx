@@ -7,6 +7,8 @@ import { useStartContext } from '../../context/StartCountdownContext'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
+import { User } from '../../API/create_user/User'
+import { createUser } from '../../API/create_user/createUser'
 import { Payment } from '../Hooks/payment'
 
 export const ConfirmationPage = () => {
@@ -36,7 +38,22 @@ export const ConfirmationPage = () => {
 
   // this function will make the API call
   const onSubmit = (data) => {
-    return data // this is where you will make the API call
+    const user = new User(
+      data.cedula,
+      data.countryCode.includes('+') ? `${data.countryCode}${data.phoneNumber}` : `+${data.countryCode}${data.phoneNumber}`,
+      data.email,
+      `${data.firstName} ${data.lastName}`,
+      'password',
+      'card_id',
+      'TMP'
+    )
+    createUser(user).then((res) => {
+      if (res) {
+        navigate('/CheckOutConfirmation')
+      } else {
+        console.log('error')
+      }
+    })
   }
 
   return (
@@ -64,6 +81,7 @@ export const ConfirmationPage = () => {
                       message: 'First name should be at least 2 characters'
                     }
                   })}
+                  placeholder='John'
                 />
                 {errors.firstName && (
                   <ErrorMessage message={errors.firstName.message} />
@@ -77,12 +95,28 @@ export const ConfirmationPage = () => {
                   {...register('lastName', {
                     required: 'Last name is required'
                   })}
+                  placeholder='Doe'
                 />
                 {errors.lastName && (
                   <ErrorMessage message={errors.lastName.message} />
                 )}
               </div>
             </div>
+            <div className="w-full">
+                <label className="text-[14px]">Cedula</label>
+                <input
+                  type="text"
+                  className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
+                  {...register('cedula', {
+                    required: 'Cedula is required',
+                    pattern: { value: /^[0-9]{5,}$/, message: 'Invalid cedula' }
+                  })}
+                  placeholder='1234567890'
+                />
+                {errors.cedula && (
+                  <ErrorMessage message={errors.cedula.message} />
+                )}
+              </div>
             <div className="flex flex-col">
               <label className="text-[14px]">Email</label>
               <input
@@ -92,6 +126,7 @@ export const ConfirmationPage = () => {
                   required: 'Email is required',
                   pattern: { value: /^\S+@\S+$/i, message: 'Invalid email' }
                 })}
+                placeholder='email@domain.com'
               />
               {errors.email && <ErrorMessage message={errors.email.message} />}
             </div>
@@ -102,8 +137,10 @@ export const ConfirmationPage = () => {
                   type="text"
                   className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
                   {...register('countryCode', {
-                    required: 'Country code is required'
+                    required: 'Country code is required',
+                    pattern: { value: /^\+[0-9]{1,3}$/, message: 'Invalid country code' }
                   })}
+                  placeholder='+57'
                 />
                 {errors.countryCode && (
                   <ErrorMessage message={errors.countryCode.message} />
@@ -115,8 +152,10 @@ export const ConfirmationPage = () => {
                   type="text"
                   className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
                   {...register('phoneNumber', {
-                    required: 'Phone number is required'
+                    required: 'Phone number is required',
+                    pattern: { value: /^[0-9]{5,}$/, message: 'Invalid phone number' }
                   })}
+                  placeholder='3001234567'
                 />
                 {errors.phoneNumber && (
                   <ErrorMessage message={errors.phoneNumber.message} />
@@ -137,6 +176,9 @@ export const ConfirmationPage = () => {
           </Link>
           <Link
             className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
+            onClick={handleSubmit((data) => {
+              onSubmit(data)
+            })}
             // onClick={handleSubmit((data) => {
             //   onSubmit(data)
             // })}

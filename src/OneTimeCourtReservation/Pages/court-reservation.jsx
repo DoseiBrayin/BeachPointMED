@@ -6,6 +6,7 @@ import { nextViewState } from '../Hooks/useNextViewState'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { useCourtDateContext } from '../../context/CourtsDateContext'
 
 export const CourtReservationCalendar = () => {
   const { handleNextView, view, handlePastView } = nextViewState()
@@ -13,6 +14,7 @@ export const CourtReservationCalendar = () => {
   const { todayState, handleNextDay, handlePastDay } = calendarHooks()
   const { removeItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
+  const { setDataCourtDate } = useCourtDateContext()
 
   return (
     <>
@@ -71,6 +73,7 @@ export const CourtReservationCalendar = () => {
                   handlePastView()
                   removeItem()
                   setBookCourt({ location: null, courts: [] })
+                  setDataCourtDate([])
                 }}
               >
                 Back

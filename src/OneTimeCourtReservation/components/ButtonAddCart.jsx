@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const ButtonAddCart = ({ court }) => {
-  // const { cartState, handleCart } = UseStateCart({ court })
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
   const [cartState, setCartState] = useState(true)
   const { setItem } = useLocalStorage({ key: 'order' })
@@ -20,18 +19,16 @@ export const ButtonAddCart = ({ court }) => {
       setBookCourt({ ...bookCourt, courts: filteredCourts })
       setItem({ ...bookCourt, courts: filteredCourts })
     }
-    // console.log(bookCourt)
-    // console.log(court)
   }
 
   return (
     <div className=" md:flex md:justify-center">
-    <button
-      onClick={handleCart}
-      className={cartState ? 'buttonAdd' : 'inCart inCartShadow'}
+      <button
+        onClick={handleCart}
+        className={cartState ? 'buttonAdd' : 'inCart inCartShadow'}
       >
-      {cartState ? 'Add to cart' : 'Remove'}
-    </button>
+        {cartState ? 'Add to cart' : 'Remove'}
+      </button>
     </div>
   )
 }
