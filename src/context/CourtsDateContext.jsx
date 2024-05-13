@@ -5,7 +5,6 @@ const CourtDateContext = createContext()
 export const useCourtDateContext = () => useContext(CourtDateContext)
 
 export const CourtDateProvider = ({ children }) => {
-
   const [dataCourtDate, setDataCourtDate] = useState([])
 
   return (
