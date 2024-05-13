@@ -18,27 +18,31 @@ export const CourtsTable = () => {
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
-  const { dataCourtDate } = useCourtDateContext()
+  const { dataCourtDate, setDataCourtDate } = useCourtDateContext()
+
+  useEffect(() => {
+    console.log(dataCourtDate)
+  }, [dataCourtDate])
 
   const { setStart } = useStartContext()
 
   const handleBackPage = () => {
     removeItem()
     resetCountdown()
+    setDataCourtDate([])
   }
 
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
     const order = getItem()
-
-    setBookCourt(order)
-    setStart(true)
     if (!order || order.location === null) {
       resetCountdown()
       setStart(false)
       navigate('/LocationSelection')
     }
+    setBookCourt({ ...order, courts: [] })
+    setStart(true)
   }, [])
 
   return (
@@ -101,22 +105,34 @@ export const CourtsTable = () => {
                           court.price
                         )} COP`}</td>
                         <td>
-                          {court.state === 'Available'
-                            ? (
-                            <ButtonAddCart court={court} frontID={0} />
-                              )
-                            : (
-                            <ButtonUnavailable />
-                              )}
+                          {
+                            court.state === 'Available'
+                              ? <ButtonAddCart court={{
+                                id: court.id,
+                                hour: court.hour,
+                                price: court.price,
+                                fk_court: court.fk_court,
+                                description: court.description,
+                                state: court.state,
+                                date: court.date
+                              }} />
+                              : <ButtonUnavailable />
+                          }
                         </td>
                         <td>
-                          {court.state === 'Available'
-                            ? (
-                            <ButtonAddCart court={court} frontID={1} />
-                              )
-                            : (
-                            <ButtonUnavailable />
-                              )}
+                          {
+                            court['state-2'] === 'Available'
+                              ? <ButtonAddCart court={{
+                                id: court['id-2'],
+                                hour: court.hour,
+                                price: court.price,
+                                fk_court: court['fk_court-2'],
+                                description: court['description-2'],
+                                state: court['state-2'],
+                                date: court.date
+                              }} />
+                              : <ButtonUnavailable />
+                          }
                         </td>
                       </tr>
                         )

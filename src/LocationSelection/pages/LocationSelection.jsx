@@ -7,7 +7,7 @@ import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { Link } from 'react-router-dom'
 import { useStartContext } from '../../context/StartCountdownContext'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const LocationSelection = () => {
   const { t } = useTranslation('global')
@@ -15,7 +15,7 @@ export const LocationSelection = () => {
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
   const { setStart } = useStartContext()
   const { removeItem } = useLocalStorage({ key: 'countdown' })
-  const { setItem } = useLocalStorage({ key: 'order' })
+  const { setItem, removeItem: removeOrder } = useLocalStorage({ key: 'order' })
   const [notSelected, setNotSelected] = useState(false)
 
   const handleClick = () => {
@@ -28,10 +28,11 @@ export const LocationSelection = () => {
     setStart(true)
   }
 
-  window.addEventListener('load', () => {
+  useEffect(() => {
     bookCourt.location = null
+    removeOrder()
     setBookCourt({ ...bookCourt, location: null, courts: [] })
-  })
+  }, [])
 
   const route = () => {
     let urlToGo = '/reserve'

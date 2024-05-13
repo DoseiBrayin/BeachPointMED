@@ -3,7 +3,6 @@ import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const ButtonAddCart = ({ court }) => {
-  // const { cartState, handleCart } = UseStateCart({ court })
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
   const [cartState, setCartState] = useState(true)
   const { setItem } = useLocalStorage({ key: 'order' })
@@ -20,8 +19,6 @@ export const ButtonAddCart = ({ court }) => {
       setBookCourt({ ...bookCourt, courts: filteredCourts })
       setItem({ ...bookCourt, courts: filteredCourts })
     }
-    // console.log(bookCourt)
-    // console.log(court)
   }
 
   return (

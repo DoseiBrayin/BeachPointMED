@@ -4,6 +4,7 @@ import { LenguageSelector } from './LenguageSelector'
 import { useTranslation } from 'react-i18next'
 import { useStartContext } from '../context/StartCountdownContext'
 import { Countdown } from './Countdown'
+import { useBookYourCourtContext } from '../context/BookYourCourtContext'
 
 const navLinkStyle = 'text-[#2E2E2E]'
 
@@ -54,6 +55,7 @@ export const Navbar = () => {
   const { handleOpen, handleClose, isVisible } = NavHooks()
   const { t } = useTranslation('global')
   const { start } = useStartContext()
+  const { bookCourt } = useBookYourCourtContext()
 
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
@@ -61,6 +63,9 @@ export const Navbar = () => {
         <img src={'/LandingImages/logo.webp'} alt="BeachPointMED" />
       </NavLink>
       {/* este es el diseno que se ve en pantallas grandes */}
+      <div className='h-[600px] w-[600px] bg-black fixed left-0 bottom-0 opacity-80'>
+      <p className='text-white'>{JSON.stringify(bookCourt)}</p>
+  </div>
       <div className="hidden gap-4 md:flex justify-center items-center ">
         <div className="flex gap-[30px]">
           <NavLink className={navLinkStyle} to="/">
