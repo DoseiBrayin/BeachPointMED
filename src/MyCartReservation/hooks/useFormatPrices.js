@@ -1,7 +1,8 @@
-import { mockCourts } from '../mocks/courts.json'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { mockRefreshments } from '../mocks/refreshments.json'
 
 export const useFormatePrices = () => {
+  const {bookCourt} = useBookYourCourtContext()
   // this function will format the price to a string with the format '60,000'
   const formatPrice = (price) => {
     const formatedPrice = price.toLocaleString('es-CO', {
@@ -17,15 +18,15 @@ export const useFormatePrices = () => {
   const getTotalPrice = ({ list }) => {
     let total = 0
     list.forEach(item => {
-      total += parseInt(item.cost)
+      total += parseInt(item.price)
     })
     const formatedTotal = formatPrice(total)
     return formatedTotal
   }
 
   const getGrandTotalPrice = () => {
-    const totalCourts = mockCourts.map(court => {
-      return parseInt(court.cost)
+    const totalCourts = bookCourt.courts.map(court => {
+      return parseInt(court.price)
     })
     const totalRefreshments = mockRefreshments.map(refreshment => {
       return parseInt(refreshment.cost)

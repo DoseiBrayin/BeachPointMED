@@ -21,7 +21,7 @@ export const CourtsTable = () => {
   const { dataCourtDate } = useCourtDateContext()
 
   const { setStart } = useStartContext()
-
+  
   const handleBackPage = () => {
     removeItem()
     resetCountdown()

@@ -5,7 +5,6 @@ export const UseStateCart = ({ court }) => {
   const [cartState, setCartState] = useState(true)
 
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
-
   function handleCart () {
     if (cartState === true) {
       setCartState(false)

@@ -20,8 +20,7 @@ export const ButtonAddCart = ({ court }) => {
       setBookCourt({ ...bookCourt, courts: filteredCourts })
       setItem({ ...bookCourt, courts: filteredCourts })
     }
-    // console.log(bookCourt)
-    // console.log(court)
+    console.log(bookCourt)
   }
 
   return (
