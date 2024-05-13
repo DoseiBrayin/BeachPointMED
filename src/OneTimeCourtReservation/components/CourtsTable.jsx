@@ -17,7 +17,7 @@ export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt } = useBookYourCourtContext()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { dataCourtDate } = useCourtDateContext()
 
   const { setStart } = useStartContext()
@@ -32,6 +32,7 @@ export const CourtsTable = () => {
     // or there is no order, the user is redirected to the location selection page
     const order = getItem()
 
+
     setBookCourt(order)
     setStart(true)
     if (!order || order.location === null) {
@@ -40,6 +41,11 @@ export const CourtsTable = () => {
       navigate('/LocationSelection')
     }
   }, [])
+
+  useEffect(()=>{
+    console.log(bookCourt)
+  }, [bookCourt])
+
 
   return (
     <section className="flex justify-center items-center">

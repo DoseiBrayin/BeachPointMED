@@ -7,6 +7,7 @@ import { useStartContext } from '../../context/StartCountdownContext'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
+import { Payment } from '../Hooks/payment'
 
 export const ConfirmationPage = () => {
   const inputStyle = 'border border-[#8A8A8A] rounded-md p-2 h-[32px] w-full text-[13px] focus:outline-none'
@@ -17,6 +18,7 @@ export const ConfirmationPage = () => {
   const { setBookCourt } = useBookYourCourtContext()
   const { getItem } = useLocalStorage({ key: 'order' })
   const navigate = useNavigate()
+  const {createOrder} = Payment()
 
   useEffect(() => {
     setStart(true)
@@ -135,12 +137,15 @@ export const ConfirmationPage = () => {
           </Link>
           <Link
             className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-            onClick={handleSubmit((data) => {
-              onSubmit(data)
-            })}
-            to={'/CheckOutConfirmation'}
+            // onClick={handleSubmit((data) => {
+            //   onSubmit(data)
+            // })}
+            onClick={()=>{
+              createOrder()
+            }}
+            // to={'/CheckOutConfirmation'}
           >
-            Next
+            Pay
           </Link>
         </div>
       </div>

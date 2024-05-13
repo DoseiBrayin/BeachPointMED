@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 onclick={handleClick()}>hola</h1>
+    <script>
+        // Obtén la referencia de Payco de la URL actual (por ejemplo, https://mi-sitio.com/?ref_payco=123123444443)
+        const urlParams = new URLSearchParams(window.location.search);
+        const refPayco = urlParams.get('ref_payco');
+
+        const apiUrl = `https://secure.epayco.co/validation/v1/reference/${refPayco}`;
+const handleClick =()=>{
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Aquí puedes procesar la información obtenida
+            console.log('Información de la transacción:', data);
+        })
+        .catch(error => {
+            console.error('Error al obtener la información de la transacción:', error.message);
+        });
+
+}
+    
+    </script>
+</body>
+</html>

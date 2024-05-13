@@ -7,7 +7,7 @@ import { useCourtDateContext } from "../../context/CourtsDateContext";
 
 export const calendarHooks = () => {
   const currentDate = dayjs()
-  const {setDataCourtDate} = useCourtDateContext()
+  const {setDataCourtDate, dataCourtDate} = useCourtDateContext()
   const [todayState, setToday] = useState(currentDate)
   const [selectDay, setSelectDay] = useState(null)
   const { locationId } = useParams()
