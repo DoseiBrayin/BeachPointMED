@@ -20,10 +20,6 @@ export const CourtsTable = () => {
   const { setBookCourt } = useBookYourCourtContext()
   const { dataCourtDate, setDataCourtDate } = useCourtDateContext()
 
-  useEffect(() => {
-    console.log(dataCourtDate)
-  }, [dataCourtDate])
-
   const { setStart } = useStartContext()
 
   const handleBackPage = () => {

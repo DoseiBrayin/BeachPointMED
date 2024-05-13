@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
@@ -23,12 +23,12 @@ export const ButtonAddCart = ({ court }) => {
 
   return (
     <div className=" md:flex md:justify-center">
-    <button
-      onClick={handleCart}
-      className={cartState ? 'buttonAdd' : 'inCart inCartShadow'}
+      <button
+        onClick={handleCart}
+        className={cartState ? 'buttonAdd' : 'inCart inCartShadow'}
       >
-      {cartState ? 'Add to cart' : 'Remove'}
-    </button>
+        {cartState ? 'Add to cart' : 'Remove'}
+      </button>
     </div>
   )
 }
