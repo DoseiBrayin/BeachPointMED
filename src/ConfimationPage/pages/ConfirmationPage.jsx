@@ -7,8 +7,9 @@ import { useStartContext } from '../../context/StartCountdownContext'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
-import { User } from '../../API/create_user/User'
-import { createUser } from '../../API/create_user/createUser'
+import { User } from '../../API/userBP/User'
+import { createUser } from '../../API/userBP/createUser'
+import { use } from 'i18next'
 
 export const ConfirmationPage = () => {
   const inputStyle = 'border border-[#8A8A8A] rounded-md p-2 h-[32px] w-full text-[13px] focus:outline-none'
@@ -66,6 +67,21 @@ export const ConfirmationPage = () => {
 
         <form className="w-full flex flex-col justify-center items-center px-5">
           <div className="max-w-[330px] md:max-w-[415px] flex flex-col gap-2">
+          <div className="w-full">
+                <label className="text-[14px]">Cedula</label>
+                <input
+                  type="text"
+                  className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
+                  {...register('cedula', {
+                    required: 'Cedula is required',
+                    pattern: { value: /^[0-9]{5,}$/, message: 'Invalid cedula' }
+                  })}
+                  placeholder='1234567890'
+                />
+                {errors.cedula && (
+                  <ErrorMessage message={errors.cedula.message} />
+                )}
+              </div>
             <div className="flex gap-3">
               <div>
                 <label className="text-[14px]">First Name</label>
@@ -100,21 +116,6 @@ export const ConfirmationPage = () => {
                 )}
               </div>
             </div>
-            <div className="w-full">
-                <label className="text-[14px]">Cedula</label>
-                <input
-                  type="text"
-                  className={`${inputStyle} ${errors.firstName ? errroInputStyle : ''}`}
-                  {...register('cedula', {
-                    required: 'Cedula is required',
-                    pattern: { value: /^[0-9]{5,}$/, message: 'Invalid cedula' }
-                  })}
-                  placeholder='1234567890'
-                />
-                {errors.cedula && (
-                  <ErrorMessage message={errors.cedula.message} />
-                )}
-              </div>
             <div className="flex flex-col">
               <label className="text-[14px]">Email</label>
               <input
