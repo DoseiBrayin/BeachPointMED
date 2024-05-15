@@ -33,7 +33,6 @@ export const CourtsTable = () => {
     // or there is no order, the user is redirected to the location selection page
     const order = getItem()
 
-
     setBookCourt(order)
     setStart(true)
     if (!order || order.location === null) {
@@ -45,10 +44,12 @@ export const CourtsTable = () => {
     setStart(true)
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(bookCourt)
   }, [bookCourt])
-
+  useEffect(() => {
+    console.log(dataCourtDate)
+  }, [dataCourtDate])
 
   return (
     <section className="flex justify-center items-center">

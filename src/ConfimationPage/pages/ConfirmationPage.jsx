@@ -176,9 +176,6 @@ export const ConfirmationPage = () => {
           </Link>
           <Link
             className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-            onClick={handleSubmit((data) => {
-              onSubmit(data)
-            })}
             // onClick={handleSubmit((data) => {
             //   onSubmit(data)
             // })}
