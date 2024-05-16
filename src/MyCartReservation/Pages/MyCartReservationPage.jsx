@@ -9,6 +9,8 @@ import { useStartContext } from '../../context/StartCountdownContext'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { useProducts } from '../hooks/useProducts'
+import { formatPrice } from '../../Hooks/formatPrice'
 
 export const MyCartReservationPage = () => {
   const { getGrandTotalPrice } = useFormatePrices()
@@ -17,7 +19,8 @@ export const MyCartReservationPage = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { getItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt } = useBookYourCourtContext()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
+  const { data } = useProducts()
 
   useEffect(() => {
     setStart(true)
@@ -29,6 +32,10 @@ export const MyCartReservationPage = () => {
       navigate('/LocationSelection')
     }
   }, [])
+
+  useEffect(() => {
+    console.log(bookCourt)
+  }, [bookCourt])
 
   return (
     <div className='flex flex-col items-center px-5'>
@@ -42,7 +49,7 @@ export const MyCartReservationPage = () => {
         <Refreshments />
         <div className="flex justify-center items-center gap-5 px-3 rounded-md mt-2 h-[26px] bg-black">
             <h1 className="font-[700] font-inter text-[14px] text-white">{t('MyCartReservation.Grandtotal')}</h1>
-            <p className="text-[14px] font-inter text-white font-[400]">{getGrandTotalPrice()} COP</p>
+            <p className="text-[14px] font-inter text-white font-[400]">{data ? formatPrice(getGrandTotalPrice(data.data)) : '--'} COP</p>
         </div>
         <div className="w-full flex justify-end max-w-[64.75rem]">
         <div className="flex gap-3 mb-20">

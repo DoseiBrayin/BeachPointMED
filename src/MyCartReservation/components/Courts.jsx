@@ -3,12 +3,12 @@ import { useFormatePrices } from '../hooks/useFormatPrices'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { formatPrice } from '../../Hooks/formatPrice'
 import { formatTime } from '../../Hooks/formatTime'
-
-export const Courts = ({isCheckOut}) => {
+import { useCart } from '../hooks/useCart'
+export const Courts = ({ isCheckOut }) => {
   const { getTotalPrice } = useFormatePrices()
   const { t } = useTranslation('global')
-
-  const {bookCourt} = useBookYourCourtContext()
+  const { bookCourt } = useBookYourCourtContext()
+  const { deleteCourts } = useCart()
 
   return (
       <div className=' mt-4 w-full max-w-[52.5rem]'>
@@ -32,9 +32,9 @@ export const Courts = ({isCheckOut}) => {
                         <td className={`${'font-inter text-[14px]'} hidden md:table-cell`}>{bookCourt.location.description}</td>
                         <td className={'font-inter text-[14px]'}>{court.date}</td>
                         <td className={'font-inter text-[14px]'}>{formatTime(court.hour)}</td>
-                        <td className={'font-inter text-[14px]'}>{court.court}</td>
+                        <td className={'font-inter text-[14px]'}>{court.description.split('-')[0]}</td>
                         <td className={'font-inter text-[14px]'}>{formatPrice(court.price)} COP</td>
-                        <td><img src="/MyCartReservationImages/trash.svg" className={`w-[12px] h-[12px] ${isCheckOut ? "hidden" : ""}`} alt="" /></td>
+                        <td><img onClick={() => deleteCourts(court)} src="/MyCartReservationImages/trash.svg" className={`w-[12px] h-[12px] ${isCheckOut ? 'hidden' : ''}`} alt="" /></td>
                     </tr>
                   )
                 })
