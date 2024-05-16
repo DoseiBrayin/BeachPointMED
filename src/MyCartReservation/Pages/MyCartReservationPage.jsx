@@ -19,7 +19,7 @@ export const MyCartReservationPage = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { getItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt, bookCourt } = useBookYourCourtContext()
+  const { setBookCourt } = useBookYourCourtContext()
   const { data } = useProducts()
 
   useEffect(() => {
@@ -32,10 +32,6 @@ export const MyCartReservationPage = () => {
       navigate('/LocationSelection')
     }
   }, [])
-
-  useEffect(() => {
-    console.log(bookCourt)
-  }, [bookCourt])
 
   return (
     <div className='flex flex-col items-center px-5'>
