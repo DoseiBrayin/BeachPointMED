@@ -38,7 +38,7 @@ export const Refreshments = ({ isCheckOut }) => {
             </thead>
             <tbody className='border-[1px] text-center rounded-lg'>
             {
-              bookCourt.Refreshments.length > 0
+              bookCourt.Refreshments && bookCourt.Refreshments.length > 0
                 ? (bookCourt?.Refreshments.map((item, index) => {
                     return (
                       <tr key={index} id={item.id} className={'border-b-[1px] h-[44px]'}>
@@ -78,7 +78,7 @@ export const Refreshments = ({ isCheckOut }) => {
           <div className="flex justify-end gap-5 pr-5 mt-2">
             <h1 className="font-[600] text-[14px]">{t('MyCartReservation.Subtotal')}</h1>
             <p className="text-[14px] font-[400]">{
-              bookCourt.Refreshments.length > 0
+              bookCourt.Refreshments && bookCourt.Refreshments.length > 0
                 ? formatPrice(getTotalPrice({ list: bookCourt.Refreshments }))
                 : '---' } COP  </p>
         </div>

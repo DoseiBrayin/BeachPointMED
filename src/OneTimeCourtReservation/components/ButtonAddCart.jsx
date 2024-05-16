@@ -11,7 +11,7 @@ export const ButtonAddCart = ({ court }) => {
 
   const handleCart = () => {
     setCartState(!cartState)
-    if (cartState && bookCourt.Refreshments.length === 0) {
+    if (cartState && bookCourt.Refreshments && bookCourt.Refreshments.length === 0) {
       // If there are no refreshments will add them to the global object
       setBookCourt({ ...bookCourt, courts: [...bookCourt.courts, court], Refreshments: data.data })
     } else if (cartState) {
