@@ -13,7 +13,11 @@ export const ButtonAddCart = ({ court }) => {
     setCartState(!cartState)
     if (cartState && bookCourt.Refreshments && bookCourt.Refreshments.length === 0) {
       // If there are no refreshments will add them to the global object
-      setBookCourt({ ...bookCourt, courts: [...bookCourt.courts, court], Refreshments: data.data })
+      const Refreshments = data.data.map(refreshObject => {
+        refreshObject = { ...refreshObject, quantity: 0 }
+        return refreshObject
+      })
+      setBookCourt({ ...bookCourt, courts: [...bookCourt.courts, court], Refreshments })
     } else if (cartState) {
       // add the court to the cart
       setBookCourt({ ...bookCourt, courts: [...bookCourt.courts, court] })

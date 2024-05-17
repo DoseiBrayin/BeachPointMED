@@ -9,7 +9,6 @@ import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { User } from '../../API/userBP/User'
 import { createUser } from '../../API/userBP/createUser'
-import { use } from 'i18next'
 
 export const ConfirmationPage = () => {
   const inputStyle = 'border border-[#8A8A8A] rounded-md p-2 h-[32px] w-full text-[13px] focus:outline-none'

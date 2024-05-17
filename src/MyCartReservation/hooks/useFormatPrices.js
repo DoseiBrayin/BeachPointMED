@@ -1,33 +1,33 @@
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { formatPrice } from '../../Hooks/formatPrice'
 
 export const useFormatePrices = () => {
-  const { bookCourt } = useBookYourCourtContext()
+  const { bookCourt, setBookCourt } = useBookYourCourtContext()
 
   const getTotalPrice = ({ list }) => {
-    let total = 0
-    list.forEach((item) => {
-      total += parseFloat(item.price)
-    })
+    return list.reduce((total, item) => {
+      const quantity = item.quantity !== undefined ? parseInt(item.quantity) : 1
+      return total + (parseFloat(item.price) * quantity)
+    }, 0)
+  }
+  const getGrandTotalPrice = () => {
+    const totalCourts = bookCourt.courts.reduce((total, court) => total + parseFloat(court.price), 0)
+    const totalRefreshments = bookCourt.Refreshments.reduce((total, refreshment) => {
+      return total + (parseFloat(refreshment.price) * parseInt(refreshment.quantity))
+    }, 0)
+    const total = totalCourts + totalRefreshments
     return total
   }
-
-  const getGrandTotalPrice = (refreshments) => {
-    const totalCourts = bookCourt.courts.map((court) => {
-      return parseFloat(court.price)
-    })
-    const totalRefreshments = refreshments.map((refreshment) => {
-      return parseFloat(refreshment.price)
-    })
-    const court = totalCourts.reduce((acc, value) => acc + value, 0)
-    const refreshment = totalRefreshments.reduce(
-      (acc, value) => acc + value,
-      0
-    )
-    return court + refreshment
+  const handleSetContext = () => {
+    setBookCourt(prevBookCourt => ({
+      ...prevBookCourt,
+      GrandTotal: formatPrice(getGrandTotalPrice())
+    }))
   }
 
   return {
     getTotalPrice,
-    getGrandTotalPrice
+    getGrandTotalPrice,
+    handleSetContext
   }
 }

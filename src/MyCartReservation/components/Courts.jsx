@@ -26,24 +26,38 @@ export const Courts = ({ isCheckOut }) => {
           </thead>
           <tbody className='border-[1px] text-center'>
             {
-                bookCourt.courts.map((court, index) => {
-                  return (
+              bookCourt.courts && bookCourt.courts.length > 0
+                ? (bookCourt.courts.map((court, index) => {
+                    return (
                       <tr key={index} className={'border-b-[1px] h-[44px]'}>
                         <td className={`${'font-inter text-[14px]'} hidden md:table-cell`}>{bookCourt.location.description}</td>
                         <td className={'font-inter text-[14px]'}>{court.date}</td>
                         <td className={'font-inter text-[14px]'}>{formatTime(court.hour)}</td>
                         <td className={'font-inter text-[14px]'}>{court.description.split('-')[0]}</td>
                         <td className={'font-inter text-[14px]'}>{formatPrice(court.price)} COP</td>
-                        <td><img onClick={() => deleteCourts(court)} src="/MyCartReservationImages/trash.svg" className={`w-[12px] h-[12px] ${isCheckOut ? 'hidden' : ''}`} alt="" /></td>
+                        <td><img onClick={() => deleteCourts(court)} src="/MyCartReservationImages/trash.svg" className={`w-[12px] h-[12px] cursor-pointer ${isCheckOut ? 'hidden' : ''}`} alt="" /></td>
                     </tr>
+                    )
+                  }))
+                : (
+                  <tr>
+                    <td colSpan="6" className="text-center">
+                      There are no courts available
+                    </td>
+                  </tr>
                   )
-                })
             }
           </tbody>
         </table>
         <div className="flex justify-end gap-5 pr-5 mt-2">
             <h1 className="font-[600] text-[14px]">{t('MyCartReservation.Subtotal')}</h1>
-            <p className="text-[14px] font-[400]">{formatPrice(getTotalPrice({ list: bookCourt.courts }))} COP</p>
+            { bookCourt.courts && bookCourt.courts.length > 0
+              ? (
+                  <p className="text-[14px] font-[400]">{formatPrice(getTotalPrice({ list: bookCourt.courts }))} COP</p>
+                )
+              : (
+                  <p className="text-[14px] font-[400]"> -- COP</p>
+                )}
         </div>
       </div>
   )

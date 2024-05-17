@@ -9,18 +9,16 @@ import { useStartContext } from '../../context/StartCountdownContext'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
-import { useProducts } from '../hooks/useProducts'
 import { formatPrice } from '../../Hooks/formatPrice'
 
 export const MyCartReservationPage = () => {
-  const { getGrandTotalPrice } = useFormatePrices()
+  const { getGrandTotalPrice, handleSetContext } = useFormatePrices()
   const { t } = useTranslation('global')
   const { setStart } = useStartContext()
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { getItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt } = useBookYourCourtContext()
-  const { data } = useProducts()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
 
   useEffect(() => {
     setStart(true)
@@ -32,6 +30,10 @@ export const MyCartReservationPage = () => {
       navigate('/LocationSelection')
     }
   }, [])
+
+  const handleClickNext = () => {
+    handleSetContext()
+  }
 
   return (
     <div className='flex flex-col items-center px-5'>
@@ -45,7 +47,7 @@ export const MyCartReservationPage = () => {
         <Refreshments />
         <div className="flex justify-center items-center gap-5 px-3 rounded-md mt-2 h-[26px] bg-black">
             <h1 className="font-[700] font-inter text-[14px] text-white">{t('MyCartReservation.Grandtotal')}</h1>
-            <p className="text-[14px] font-inter text-white font-[400]">{data ? formatPrice(getGrandTotalPrice(data.data)) : '--'} COP</p>
+            <p className="text-[14px] font-inter text-white font-[400]">{bookCourt.Refreshments && bookCourt.Refreshments.length > 0 ? formatPrice(getGrandTotalPrice()) : '--'} COP</p>
         </div>
         <div className="w-full flex justify-end max-w-[64.75rem]">
         <div className="flex gap-3 mb-20">
@@ -56,6 +58,7 @@ export const MyCartReservationPage = () => {
           </Link>
           <Link
             className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
+            onClick={handleClickNext}
             to={'/confirmationPage'}
           >
             Next

@@ -30,6 +30,9 @@ export const Refreshments = ({ isCheckOut }) => {
                     {t('MyCartReservation.RefreshmentTableItems.Quantity')}
                   </th>
                   <th className={'font-[600] font-inter text-[14px] text-center'}>
+                    Cost per item
+                  </th>
+                  <th className={'font-[600] font-inter text-[14px] text-center'}>
                     {t('MyCartReservation.RefreshmentTableItems.Cost')}
                   </th>
                   <th>
@@ -52,7 +55,7 @@ export const Refreshments = ({ isCheckOut }) => {
                                 <button className={`${isCheckOut ? 'pointer-events-none' : ''}`} onClick={(e) => handleMinus(e)}>
                                   <img src="/MyCartReservationImages/minus.svg" alt="" />
                                 </button>
-                                <p>1</p>
+                                <p>{item.quantity}</p>
                                 <button className={`${isCheckOut ? 'pointer-events-none' : ''}`} onClick={(e) => handlePlus(e)}>
                                   <img src="/MyCartReservationImages/plus.svg" alt="" />
                                 </button>
@@ -61,13 +64,14 @@ export const Refreshments = ({ isCheckOut }) => {
                           </td>
 
                           <td className={'font-inter text-[14px]'}>{formatPrice(item.price)} COP</td>
-                          <td><img onClick={() => deleteRefreshments(item)} className={`${isCheckOut ? 'hidden' : ''} w-[12px] h-[12px] `} src="/MyCartReservationImages/trash.svg" alt="" /></td>
+                          <td className={'font-inter text-[14px]'}>{formatPrice(item.price * item.quantity)} COP</td>
+                          <td><img onClick={() => deleteRefreshments(item)} className={`${isCheckOut ? 'hidden' : ''} w-[12px] h-[12px] cursor-pointer `} src="/MyCartReservationImages/trash.svg" alt="" /></td>
                       </tr>
                     )
                   }))
                 : (
                     <tr>
-                      <td colSpan="4" className="text-center">
+                      <td colSpan="6" className="text-center">
                         There are no refreshments available
                       </td>
                     </tr>
