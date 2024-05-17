@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useStartContext } from '../../context/StartCountdownContext'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
-// import { axios } from 'axios'
+import { formatPrice } from '../../Hooks/formatPrice'
 
 export const CheckOutConfirmation = () => {
   const { getGrandTotalPrice } = useFormatePrices()
@@ -57,7 +57,7 @@ export const CheckOutConfirmation = () => {
         <div className="w-[100%] max-w-[52.5rem] flex justify-end items-center">
             <div className='bg-black flex gap-5 px-3 rounded-md mt-2 h-[26px]'>
             <h1 className="font-[700] font-inter text-[14px] text-white ">{t('MyCartReservation.Grandtotal')}</h1>
-            <p className="text-[14px] font-inter text-white font-[400]">{getGrandTotalPrice()} COP</p>
+            <p className="text-[14px] font-inter text-white font-[400]">{bookCourt.Refreshments.length > 0 ? formatPrice(getGrandTotalPrice(bookCourt.Refreshments)) : '--'} COP</p>
             </div>
         </div>
         <div className="w-full flex justify-end max-w-[64.75rem]">

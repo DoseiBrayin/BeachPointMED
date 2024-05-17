@@ -27,7 +27,6 @@ export const CourtsTable = () => {
     resetCountdown()
     setDataCourtDate([])
   }
-
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page

@@ -1,43 +1,53 @@
-import { useState } from 'react'
-import { mockRefreshments } from '../mocks/refreshments.json'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export const useCart = () => {
-  const [refreshments, setRefreshments] = useState(mockRefreshments)
+  const { bookCourt, setBookCourt } = useBookYourCourtContext()
+
+  const deleteCourts = (court) => {
+    const filteredCourts = bookCourt.courts.filter((courtItem) => court.id !== courtItem.id)
+    setBookCourt({ ...bookCourt, courts: filteredCourts })
+  }
+
+  const deleteRefreshments = (refreshment) => {
+    const filteredRefreshments = bookCourt.Refreshments.map((refreshmentItem) => {
+      if (refreshment.id === refreshmentItem.id) {
+        return { ...refreshmentItem, quantity: 0 }
+      }
+      return refreshmentItem
+    })
+    setBookCourt({ ...bookCourt, Refreshments: filteredRefreshments })
+  }
 
   const handleMinus = (event) => {
     const idToMinus = event.target.closest('tr').id
-    setRefreshments(data => {
-      return data.map(item => {
+    setBookCourt(prevState => {
+      const updatedRefreshments = prevState.Refreshments.map(item => {
         if (item.id === idToMinus) {
-          if (parseInt(item.quantity) === 0) return item
-          return {
-            ...item,
-            quantity: parseInt(item.quantity) - 1
-          }
+          const newQuantity = Math.max(0, parseInt(item.quantity) - 1)
+          return { ...item, quantity: newQuantity }
         }
         return item
       })
+      return { ...prevState, Refreshments: updatedRefreshments }
     })
   }
 
   const handlePlus = (event) => {
     const idToPlus = event.target.closest('tr').id
-    setRefreshments(data => {
-      return data.map(item => {
+    setBookCourt(prevState => {
+      const updatedRefreshments = prevState.Refreshments.map(item => {
         if (item.id === idToPlus) {
-          return {
-            ...item,
-            quantity: parseInt(item.quantity) + 1
-          }
+          return { ...item, quantity: parseInt(item.quantity) + 1 }
         }
         return item
       })
+      return { ...prevState, Refreshments: updatedRefreshments }
     })
   }
-
   return {
     handleMinus,
     handlePlus,
-    refreshments
+    deleteCourts,
+    deleteRefreshments
   }
 }

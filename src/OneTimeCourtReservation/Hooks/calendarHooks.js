@@ -6,7 +6,7 @@ import { useCourtDateContext } from '../../context/CourtsDateContext'
 
 export const calendarHooks = () => {
   const currentDate = dayjs()
-  const {setDataCourtDate, dataCourtDate} = useCourtDateContext()
+  const { setDataCourtDate, dataCourtDate } = useCourtDateContext()
   const [todayState, setToday] = useState(currentDate)
   const [selectDay, setSelectDay] = useState(null)
   const { locationId } = useParams()
@@ -25,6 +25,13 @@ export const calendarHooks = () => {
   }
   async function handleSelectDay (day) {
     setSelectDay(day)
+
+    const Reg = /\b\d{4}-\d{2}-\d{2}\b/
+    if (dataCourtDate?.data?.[0]?.date === day.format('YYYY-MM-DD') ||
+      (dataCourtDate?.data === null && dataCourtDate?.message?.match(Reg)?.[0] === day.format('YYYY-MM-DD'))) {
+      return
+    }
+
     try {
       const url = import.meta.env.VITE_BEACHPOINT_API_URL
       const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
@@ -34,7 +41,6 @@ export const calendarHooks = () => {
           Authorization: `Bearer ${token}`
         }
       })
-
       setDataCourtDate(response.data)
     } catch {
       setDataCourtDate([])
