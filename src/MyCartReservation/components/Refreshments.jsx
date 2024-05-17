@@ -38,7 +38,7 @@ export const Refreshments = ({ isCheckOut }) => {
             </thead>
             <tbody className='border-[1px] text-center rounded-lg'>
             {
-              bookCourt.Refreshments.length > 0
+              bookCourt.Refreshments && bookCourt.Refreshments.length > 0
                 ? (bookCourt?.Refreshments.map((item, index) => {
                     return (
                       <tr key={index} id={item.id} className={'border-b-[1px] h-[44px]'}>
