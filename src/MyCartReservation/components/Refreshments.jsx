@@ -67,7 +67,7 @@ export const Refreshments = ({ isCheckOut }) => {
                   }))
                 : (
                     <tr>
-                      <td colSpan="4" className="text-center">
+                      <td colSpan="6" className="text-center">
                         There are no refreshments available
                       </td>
                     </tr>
@@ -78,7 +78,7 @@ export const Refreshments = ({ isCheckOut }) => {
           <div className="flex justify-end gap-5 pr-5 mt-2">
             <h1 className="font-[600] text-[14px]">{t('MyCartReservation.Subtotal')}</h1>
             <p className="text-[14px] font-[400]">{
-              bookCourt.Refreshments.length > 0
+              bookCourt.Refreshments && bookCourt.Refreshments.length > 0
                 ? formatPrice(getTotalPrice({ list: bookCourt.Refreshments }))
                 : '---' } COP  </p>
         </div>

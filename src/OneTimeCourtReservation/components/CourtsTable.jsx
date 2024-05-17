@@ -17,7 +17,7 @@ export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt } = useBookYourCourtContext()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { dataCourtDate, setDataCourtDate } = useCourtDateContext()
 
   const { setStart } = useStartContext()
@@ -27,6 +27,10 @@ export const CourtsTable = () => {
     resetCountdown()
     setDataCourtDate([])
   }
+
+  useEffect(() => {
+    console.log(bookCourt)
+  }, [bookCourt])
 
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
