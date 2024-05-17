@@ -35,7 +35,7 @@ export const Courts = ({ isCheckOut }) => {
                         <td className={'font-inter text-[14px]'}>{formatTime(court.hour)}</td>
                         <td className={'font-inter text-[14px]'}>{court.description.split('-')[0]}</td>
                         <td className={'font-inter text-[14px]'}>{formatPrice(court.price)} COP</td>
-                        <td><img onClick={() => deleteCourts(court)} src="/MyCartReservationImages/trash.svg" className={`w-[12px] h-[12px] ${isCheckOut ? 'hidden' : ''}`} alt="" /></td>
+                        <td><img onClick={() => deleteCourts(court)} src="/MyCartReservationImages/trash.svg" className={`w-[12px] h-[12px] cursor-pointer ${isCheckOut ? 'hidden' : ''}`} alt="" /></td>
                     </tr>
                     )
                   }))
