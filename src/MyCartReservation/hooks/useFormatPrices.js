@@ -19,7 +19,6 @@ export const useFormatePrices = () => {
     return total
   }
   const handleSetContext = () => {
-    console.log(getGrandTotalPrice())
     setBookCourt(prevBookCourt => ({
       ...prevBookCourt,
       GrandTotal: formatPrice(getGrandTotalPrice())
