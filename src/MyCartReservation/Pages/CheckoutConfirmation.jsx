@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useStartContext } from '../../context/StartCountdownContext'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
+// import { axios } from 'axios'
 
 export const CheckOutConfirmation = () => {
   const { getGrandTotalPrice } = useFormatePrices()
@@ -25,6 +26,22 @@ export const CheckOutConfirmation = () => {
       navigate('/LocationSelection')
     }
   }, [])
+
+  // const urlParams = new URLSearchParams(window.location.search)
+  // const refPayco = urlParams.get('ref_payco')
+  // const apiUrl = `https://secure.epayco.co/validation/v1/reference/${refPayco}`
+
+  // useEffect(() => {
+  //   const response = axios.get(apiUrl)
+  //     .then(response => {
+  //       const data = response.data
+  //       // Aquí puedes procesar la información obtenida
+  //       console.log('Información de la transacción:', data)
+  //     })
+  //     .catch(error => {
+  //       console.error('Error al obtener la información de la transacción:', error.message)
+  //     })
+  // }, [refPayco])
 
   return (
     <div className='flex flex-col items-center px-5'>

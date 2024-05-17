@@ -44,13 +44,6 @@ export const CourtsTable = () => {
     setStart(true)
   }, [])
 
-  useEffect(() => {
-    console.log(bookCourt)
-  }, [bookCourt])
-  useEffect(() => {
-    console.log(dataCourtDate)
-  }, [dataCourtDate])
-
   return (
     <section className="flex justify-center items-center">
       <div className="w-full max-w-[64.75rem] h-full px-[15px]">

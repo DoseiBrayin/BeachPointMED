@@ -31,8 +31,8 @@ export function Payment () {
       extra2: 'extra2',
       extra3: 'extra3',
       // Paginas donde se recibe el estado de la compra
+      response: 'beachpointmed.pages.dev/CheckOutConfirmation',
       confirmation: 'http://localhost:5173/LocationSelection',
-      response: 'http://localhost:5173/LocationSelection',
 
       // Atributos del cliente
       name_billing: 'Jhon Doe',

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { set, useForm } from 'react-hook-form'
+import React, { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '../components/ErrorMessage'
 import { Link, useNavigate } from 'react-router-dom'
 import { ProgressBar } from '../../components/ProgressBar'
@@ -46,7 +46,9 @@ export const ConfirmationPage = () => {
       'password',
       'card_id',
       'TMP'
+
     )
+
     createUser(user).then((res) => {
       if (res) {
         navigate('/CheckOutConfirmation')
@@ -54,6 +56,7 @@ export const ConfirmationPage = () => {
         console.log('error')
       }
     })
+    createOrder()
   }
 
   return (
@@ -176,13 +179,10 @@ export const ConfirmationPage = () => {
           </Link>
           <Link
             className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-            // onClick={handleSubmit((data) => {
-            //   onSubmit(data)
-            // })}
-            onClick={() => {
-              createOrder()
-            }}
-            // to={'/CheckOutConfirmation'}
+            onClick={handleSubmit((data) => {
+              onSubmit(data)
+            })}
+            to={'/CheckOutConfirmation'}
           >
             Pay
           </Link>
