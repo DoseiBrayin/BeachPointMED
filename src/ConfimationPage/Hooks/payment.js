@@ -3,6 +3,12 @@ import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 export function Payment () {
   const { bookCourt } = useBookYourCourtContext()
 
+  function formatCOP () {
+    let formatedTotal = bookCourt.GrandTotal * 1000
+    formatedTotal = Math.round(formatedTotal)
+    return formatedTotal.toString().replace('.', '')
+  }
+
   const handler = ePayco.checkout.configure({
     key: '6e3cd97070f51ec9d8ea865d257eccc6',
     test: true
@@ -15,7 +21,7 @@ export function Payment () {
       description: `Courts: ${bookCourt.location.description}`,
       invoice: `ref-${Date.now().toString()}`,
       currency: 'cop',
-      amount: '5000',
+      amount: `${formatCOP()}`,
       tax_base: '4000',
       tax: '500',
       tax_ico: '500',
@@ -35,11 +41,11 @@ export function Payment () {
       confirmation: 'http://localhost:5173/LocationSelection',
 
       // Atributos del cliente
-      name_billing: 'Jhon Doe',
-      address_billing: 'Carrera 19 numero 14 91',
+      name_billing: bookCourt.user.name,
+      address_billing: '',
       type_doc_billing: 'cc',
-      mobilephone_billing: '3050000000',
-      number_doc_billing: '100000000'
+      mobilephone_billing: bookCourt.user.number,
+      number_doc_billing: bookCourt.user.cedula
     }
     handler.open(data)
   }

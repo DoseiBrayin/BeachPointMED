@@ -1,8 +1,10 @@
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { formatPrice } from '../../Hooks/formatPrice'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const useFormatePrices = () => {
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
+  const { setItem } = useLocalStorage({ key: 'order' })
 
   const getTotalPrice = ({ list }) => {
     return list.reduce((total, item) => {
@@ -21,8 +23,9 @@ export const useFormatePrices = () => {
   const handleSetContext = () => {
     setBookCourt(prevBookCourt => ({
       ...prevBookCourt,
-      GrandTotal: formatPrice(getGrandTotalPrice())
+      GrandTotal: getGrandTotalPrice()
     }))
+    setItem({ ...bookCourt, GrandTotal: getGrandTotalPrice() })
   }
 
   return {
