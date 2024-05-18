@@ -1,11 +1,11 @@
-
 import { Courts } from '../components/Courts'
 import { ProgressBar } from '../../components/ProgressBar'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { getGrandTotalPrice } from '../../MyCartReservation/hooks/useFormatPrices'
 
-
-export const MyCartReservationPage = () => {
-
+export const CheckOutConfirmation = () => {
+  const { t } = useTranslation('global')
   return (
     <div className='flex flex-col items-center px-5'>
         <div className='w-[100%] flex items-center justify-center'>

@@ -17,7 +17,7 @@ export const MyCartReservationPage = () => {
   const { setStart } = useStartContext()
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
-  const { getItem } = useLocalStorage({ key: 'order' })
+  const { getItem, setItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt, bookCourt } = useBookYourCourtContext()
 
   useEffect(() => {
@@ -33,6 +33,11 @@ export const MyCartReservationPage = () => {
 
   const handleClickNext = () => {
     handleSetContext()
+  }
+
+  const resetStates = () => {
+    setBookCourt({ ...bookCourt, courts: [], Refreshments: [] })
+    setItem({ ...bookCourt, courts: [], Refreshments: [] })
   }
 
   return (
@@ -53,6 +58,7 @@ export const MyCartReservationPage = () => {
         <div className="flex gap-3 mb-20">
           <Link className="border-[1px] rounded-lg px-2 py-1 shadow-md text-[14px] h-fit"
             to={`/reserve/${getItem().location?.id}`}
+            onClick={() => resetStates()}
           >
             Back
           </Link>
