@@ -9,6 +9,7 @@ import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { User } from '../../API/userBP/User'
 import { createUser } from '../../API/userBP/createUser'
+import { Payment } from '../Hooks/payment'
 
 export const ConfirmationPage = () => {
   const inputStyle = 'border border-[#8A8A8A] rounded-md p-2 h-[32px] w-full text-[13px] focus:outline-none'
@@ -16,9 +17,10 @@ export const ConfirmationPage = () => {
 
   const { setStart } = useStartContext()
   const { resetCountdown } = useCountdown()
-  const { setBookCourt } = useBookYourCourtContext()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { getItem } = useLocalStorage({ key: 'order' })
   const navigate = useNavigate()
+  const { createOrder } = Payment()
 
   useEffect(() => {
     setStart(true)
@@ -44,15 +46,23 @@ export const ConfirmationPage = () => {
       'password',
       'card_id',
       'TMP'
+
     )
+    setBookCourt({ ...bookCourt, user })
+
     createUser(user).then((res) => {
       if (res) {
-        navigate('/CheckOutConfirmation')
+        // navigate('/CheckOutConfirmation')
       } else {
         console.log('error')
       }
     })
+    createOrder()
   }
+
+  useEffect(() => {
+    console.log(bookCourt)
+  }, [bookCourt])
 
   return (
     <div className="w-full flex flex-col items-center justify-between h-screen-minus-100px md:h-screen-minus-200px ">
@@ -178,7 +188,7 @@ export const ConfirmationPage = () => {
               onSubmit(data)
             })}
           >
-            Next
+            Pay
           </Link>
         </div>
       </div>

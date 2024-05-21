@@ -35,6 +35,10 @@ export const MyCartReservationPage = () => {
     handleSetContext()
   }
 
+  useEffect(() => {
+    console.log(bookCourt)
+  }, [bookCourt])
+
   return (
     <div className='flex flex-col items-center px-5'>
         <div className='w-[100%] flex items-center justify-center'>

@@ -18,19 +18,21 @@ export const CourtsTable = () => {
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
-  const { dataCourtDate, setDataCourtDate } = useCourtDateContext()
+  const { dataCourtDate } = useCourtDateContext()
 
   const { setStart } = useStartContext()
 
   const handleBackPage = () => {
     removeItem()
     resetCountdown()
-    setDataCourtDate([])
   }
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
     const order = getItem()
+
+    setBookCourt(order)
+    setStart(true)
     if (!order || order.location === null) {
       resetCountdown()
       setStart(false)

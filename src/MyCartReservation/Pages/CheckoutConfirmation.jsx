@@ -27,6 +27,22 @@ export const CheckOutConfirmation = () => {
     }
   }, [])
 
+  // const urlParams = new URLSearchParams(window.location.search)
+  // const refPayco = urlParams.get('ref_payco')
+  // const apiUrl = `https://secure.epayco.co/validation/v1/reference/${refPayco}`
+
+  // useEffect(() => {
+  //   const response = axios.get(apiUrl)
+  //     .then(response => {
+  //       const data = response.data
+  //       // Aquí puedes procesar la información obtenida
+  //       console.log('Información de la transacción:', data)
+  //     })
+  //     .catch(error => {
+  //       console.error('Error al obtener la información de la transacción:', error.message)
+  //     })
+  // }, [refPayco])
+
   return (
     <div className='flex flex-col items-center px-5'>
         <div className='max-w-[64.75rem] w-[100%] flex justify-center md:justify-start'>

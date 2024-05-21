@@ -1,11 +1,8 @@
-
 import { Courts } from '../components/Courts'
 import { ProgressBar } from '../../components/ProgressBar'
 import { Link } from 'react-router-dom'
 
-
 export const MyCartReservationPage = () => {
-
   return (
     <div className='flex flex-col items-center px-5'>
         <div className='w-[100%] flex items-center justify-center'>
