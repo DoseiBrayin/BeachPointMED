@@ -8,7 +8,6 @@ export function Payment () {
     formatedTotal = Math.round(formatedTotal)
     return formatedTotal.toString().replace('.', '')
   }
-
   const handler = ePayco.checkout.configure({
     key: '6e3cd97070f51ec9d8ea865d257eccc6',
     test: true
@@ -38,7 +37,7 @@ export function Payment () {
       extra3: 'extra3',
       // Paginas donde se recibe el estado de la compra
       response: 'beachpointmed.pages.dev/CheckOutConfirmation',
-      confirmation: 'http://localhost:5173/LocationSelection',
+      confirmation: 'https://beachpointmed-back.onrender.com/payment',
 
       // Atributos del cliente
       name_billing: bookCourt.user.name,
