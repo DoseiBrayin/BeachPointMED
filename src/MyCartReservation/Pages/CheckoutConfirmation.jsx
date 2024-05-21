@@ -18,14 +18,14 @@ export const CheckOutConfirmation = () => {
   const { bookCourt } = useBookYourCourtContext()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    setStart(true)
-    if (bookCourt.location === null) {
-      resetCountdown()
-      setStart(false)
-      navigate('/LocationSelection')
-    }
-  }, [setStart, bookCourt.location, resetCountdown, navigate])
+  // useEffect(() => {
+  //   setStart(true)
+  //   if (bookCourt.location === null) {
+  //     resetCountdown()
+  //     setStart(false)
+  //     navigate('/LocationSelection')
+  //   }
+  // }, [setStart, bookCourt.location, resetCountdown, navigate])
 
   const PaymentStatus = () => {
     const [paymentData, setPaymentData] = useState(null)
