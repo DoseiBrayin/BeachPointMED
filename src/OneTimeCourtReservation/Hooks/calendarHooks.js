@@ -18,13 +18,16 @@ export const calendarHooks = () => {
     setToday(todayState.month(todayState.month() + 1))
   }
   function handlePastDay () {
-    setToday(todayState.subtract(1, 'day'))
+    setDataCourtDate({ ...dataCourtDate, date: dataCourtDate.date.subtract(1, 'day') })
+    console.log(dataCourtDate)
   }
   function handleNextDay () {
-    setToday(todayState.add(1, 'day'))
+    setDataCourtDate({ ...dataCourtDate, date: dataCourtDate.date.add(1, 'day') })
+    console.log(dataCourtDate)
   }
   async function handleSelectDay (day) {
     setSelectDay(day)
+    console.log(day)
 
     const Reg = /\b\d{4}-\d{2}-\d{2}\b/
     if (dataCourtDate?.data?.[0]?.date === day.format('YYYY-MM-DD') ||
@@ -41,7 +44,9 @@ export const calendarHooks = () => {
           Authorization: `Bearer ${token}`
         }
       })
-      setDataCourtDate(response.data)
+      const dataCourtArray = { data: response.data, date: day }
+      setDataCourtDate(dataCourtArray)
+      console.log(dataCourtDate)
     } catch {
       setDataCourtDate([])
     }
