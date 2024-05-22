@@ -14,7 +14,7 @@ export const CourtReservationCalendar = () => {
   const { todayState, handleNextDay, handlePastDay } = calendarHooks()
   const { removeItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
-  const { setDataCourtDate } = useCourtDateContext()
+  const { setDataCourtDate, dataCourtDate } = useCourtDateContext()
 
   return (
     <>
@@ -36,10 +36,10 @@ export const CourtReservationCalendar = () => {
             <Calendar />
           </section>
           <section
-            className={`max-[320px]:w-[100%]
+            className={`max-[320px]:w-[100%] flex flex-col justify-center items-center
             ${view ? '' : 'hidden'}`}
           >
-            <div className="my-3 md:hidden border border-black h-[1rem] w-[100%] rounded-full flex items-center justify-between">
+            <div className="my-3 py-3 md:hidden border border-black h-[1rem] w-[80%] rounded-xl flex items-center justify-between">
               <img
                 className={'w-5 h-5 cursor-pointer'}
                 src="/OneTimeCourReservation/ArrowLeft.svg"
@@ -47,7 +47,7 @@ export const CourtReservationCalendar = () => {
                 onClick={handlePastDay}
               />
               <span className="text-xs">
-                {todayState.format('ddd MMMM D YYYY')}
+                { dataCourtDate && dataCourtDate.date ? dataCourtDate?.date?.format('ddd MMMM D YYYY') : 'A problem with the date has occurred'}
               </span>
               <img
                 className={'w-5 h-5 rotate-180 cursor-pointer'}

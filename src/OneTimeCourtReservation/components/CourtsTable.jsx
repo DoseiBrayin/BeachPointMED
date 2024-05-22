@@ -17,7 +17,7 @@ export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt } = useBookYourCourtContext()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { dataCourtDate } = useCourtDateContext()
 
   const { setStart } = useStartContext()
@@ -41,6 +41,10 @@ export const CourtsTable = () => {
     setBookCourt({ ...order, courts: [] })
     setStart(true)
   }, [])
+
+  useEffect(() => {
+    console.log(bookCourt)
+  }, [bookCourt])
 
   return (
     <section className="flex justify-center items-center">
@@ -85,11 +89,11 @@ export const CourtsTable = () => {
               </thead>
               <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB] border border-gray-50  shadow-gray-300 rounded-2xl">
 
-                {dataCourtDate &&
-                Array.isArray(dataCourtDate.data) &&
-                dataCourtDate.data.length > 0
+                {dataCourtDate.data &&
+                Array.isArray(dataCourtDate.data.data) &&
+                dataCourtDate.data.data.length > 0
                   ? (
-                      dataCourtDate?.data.map((court) => {
+                      dataCourtDate?.data.data.map((court) => {
                         return (
                       <tr
                         key={court.id}
