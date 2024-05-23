@@ -48,7 +48,7 @@ export const CourtsTable = () => {
 
   return (
     <section className="flex justify-center items-center">
-      <div className="w-full max-w-[64.75rem] h-full px-[15px]">
+      <div className="w-full max-w-[64.75rem] h-full px-[15px] ">
         <header>
           <ProgressBar percentage="20%" count={true} />
         </header>
@@ -105,7 +105,7 @@ export const CourtsTable = () => {
                         <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPriceCourts(
                           court.price
                         )} COP`}</td>
-                        <td>
+                        <td className=''>
                           {
                             court.state === 'Available'
                               ? <ButtonAddCart court={{
@@ -120,7 +120,7 @@ export const CourtsTable = () => {
                               : <ButtonUnavailable />
                           }
                         </td>
-                        <td>
+                        <td className=''>
                           {
                             court['state-2'] === 'Available'
                               ? <ButtonAddCart court={{

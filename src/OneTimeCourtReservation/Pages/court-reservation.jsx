@@ -11,7 +11,7 @@ import { useCourtDateContext } from '../../context/CourtsDateContext'
 export const CourtReservationCalendar = () => {
   const { handleNextView, view, handlePastView } = nextViewState()
   const { resetCountdown } = useCountdown()
-  const { todayState, handleNextDay, handlePastDay } = calendarHooks()
+  const { handleNextDay, handlePastDay } = calendarHooks()
   const { removeItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt } = useBookYourCourtContext()
   const { setDataCourtDate, dataCourtDate } = useCourtDateContext()

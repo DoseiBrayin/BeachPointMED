@@ -17,13 +17,39 @@ export const calendarHooks = () => {
   function handleNextMonth () {
     setToday(todayState.month(todayState.month() + 1))
   }
-  function handlePastDay () {
-    setDataCourtDate({ ...dataCourtDate, date: dataCourtDate.date.subtract(1, 'day') })
-    console.log(dataCourtDate)
+  async function handlePastDay () {
+    const pastDay = dataCourtDate.date.subtract(1, 'day')
+    try {
+      const url = import.meta.env.VITE_BEACHPOINT_API_URL
+      const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+
+      const response = await axios.get(`${url}timeCourts/timeCourts/${pastDay.format('YYYY-MM-DD')}/${locationId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setDataCourtDate({ data: response.data, date: pastDay })
+      console.log(dataCourtDate)
+    } catch {
+      setDataCourtDate([])
+    }
   }
-  function handleNextDay () {
-    setDataCourtDate({ ...dataCourtDate, date: dataCourtDate.date.add(1, 'day') })
-    console.log(dataCourtDate)
+  async function handleNextDay () {
+    const nextDay = dataCourtDate.date.add(1, 'day')
+    try {
+      const url = import.meta.env.VITE_BEACHPOINT_API_URL
+      const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+
+      const response = await axios.get(`${url}timeCourts/timeCourts/${nextDay.format('YYYY-MM-DD')}/${locationId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setDataCourtDate({ data: response.data, date: nextDay })
+      console.log(dataCourtDate)
+    } catch {
+      setDataCourtDate([])
+    }
   }
   async function handleSelectDay (day) {
     setSelectDay(day)
