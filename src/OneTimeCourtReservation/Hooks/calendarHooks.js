@@ -29,7 +29,6 @@ export const calendarHooks = () => {
         }
       })
       setDataCourtDate({ data: response.data, date: pastDay })
-      console.log(dataCourtDate)
     } catch {
       setDataCourtDate([])
     }
@@ -46,14 +45,12 @@ export const calendarHooks = () => {
         }
       })
       setDataCourtDate({ data: response.data, date: nextDay })
-      console.log(dataCourtDate)
     } catch {
       setDataCourtDate([])
     }
   }
   async function handleSelectDay (day) {
     setSelectDay(day)
-    console.log(day)
 
     const Reg = /\b\d{4}-\d{2}-\d{2}\b/
     if (dataCourtDate?.data?.[0]?.date === day.format('YYYY-MM-DD') ||
@@ -72,7 +69,6 @@ export const calendarHooks = () => {
       })
       const dataCourtArray = { data: response.data, date: day }
       setDataCourtDate(dataCourtArray)
-      console.log(dataCourtDate)
     } catch {
       setDataCourtDate([])
     }

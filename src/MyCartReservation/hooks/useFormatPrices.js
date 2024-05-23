@@ -1,5 +1,4 @@
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
-import { formatPrice } from '../../Hooks/formatPrice'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const useFormatePrices = () => {
