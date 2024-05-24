@@ -60,10 +60,6 @@ export const ConfirmationPage = () => {
     createOrder()
   }
 
-  useEffect(() => {
-    console.log(bookCourt)
-  }, [bookCourt])
-
   return (
     <div className="w-full flex flex-col items-center justify-between h-screen-minus-100px md:h-screen-minus-200px ">
       <div className='w-full flex flex-col items-center max-w-[64.75rem] px-5'>

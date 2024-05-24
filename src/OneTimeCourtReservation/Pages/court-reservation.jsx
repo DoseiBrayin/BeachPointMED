@@ -7,17 +7,58 @@ import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCourtDateContext } from '../../context/CourtsDateContext'
+import { useEffect, useState } from 'react'
+import { useModalCourtReservationContext } from '../../context/ModalCourtReservationContext'
+import { ModalCourtReservation } from '../../components/ModalCourtReservation'
 
 export const CourtReservationCalendar = () => {
   const { handleNextView, view, handlePastView } = nextViewState()
   const { resetCountdown } = useCountdown()
   const { todayState, handleNextDay, handlePastDay } = calendarHooks()
   const { removeItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt } = useBookYourCourtContext()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { setDataCourtDate } = useCourtDateContext()
+  const [notCourtSelected, setNotCourtSelected] = useState(false)
+  const { isOpen, onOpen, setApproved, setNotApproved, isApproved } = useModalCourtReservationContext()
+
+  useEffect(() => {
+    if (bookCourt.courts.length > 0) {
+      setNotCourtSelected(false)
+    }
+  }, [bookCourt.courts])
+
+  const nextPage = () => {
+    handleNextView()
+    if (bookCourt.courts.length === 0) {
+      setNotCourtSelected(true)
+      return
+    }
+
+    // Here we should send the request to the server with the list of ids of the selected courts
+    // const orderIds = bookCourt.courts.map((court) => court.id)
+
+    const isOk = true
+    if (isOk) {
+      setTimeout(() => {
+        onOpen()
+        setApproved()
+        // setTimeout(() => {
+        //   navigate('/MyCart')
+        // }, 2000)
+      }, 500)
+    } else {
+      setTimeout(() => {
+        onOpen()
+        setNotApproved()
+      }, 500)
+    }
+  }
 
   return (
     <>
+      {
+        isOpen && <ModalCourtReservation isApproved={isApproved} />
+      }
       <section className="hidden md:block">
         <CourtsTable />
       </section>
@@ -59,6 +100,9 @@ export const CourtReservationCalendar = () => {
             <CourtsTable />
           </section>
         </main>
+        <div className={`text-center text-red-500 ${notCourtSelected ? '' : 'opacity-0'}`}>
+                  Please select a court
+        </div>
         <footer className="w-[80%]">
           <div className="w-full flex justify-end max-w-[64.75rem]">
             <div
@@ -72,7 +116,7 @@ export const CourtReservationCalendar = () => {
                   resetCountdown()
                   handlePastView()
                   removeItem()
-                  setBookCourt({ location: null, courts: [] })
+                  setBookCourt({ location: null, courts: [], Refreshments: [], GrandTotal: null })
                   setDataCourtDate([])
                 }}
               >
@@ -96,13 +140,12 @@ export const CourtReservationCalendar = () => {
               >
                 Back
               </button>
-              <Link
+              <button
                 className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-                to={'/MyCart'}
-                onClick={handleNextView}
+                onClick={() => nextPage()}
               >
-                Next
-              </Link>
+                Nextf
+              </button>
             </div>
           </div>
         </footer>

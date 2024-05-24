@@ -76,7 +76,12 @@
     "LocationSelection": {
       "title": "选择位置",
       "noCountrySelected": "您必须选择一个地点"
+  },
+  "Modals": {
+    "CourtsReservation": {
+      "ErrorMessage": "对不起，您选择的部分球场已不再可用。请更新您的选择。",
+      "SuccessMessage": "预订成功！所有选定的球场都可用。"
+    }
   }
-  
-  }
+}
   

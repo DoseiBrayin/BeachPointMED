@@ -5,22 +5,25 @@ import { useStartContext } from '../../context/StartCountdownContext'
 import { ButtonUnavailable } from './ButtonUnavailable'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCountdown } from '../../Hooks/useCountdown'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { formatPriceCourts } from '../Hooks/formatPriceCourts'
 import { formatTimeCourts } from '../Hooks/formatTimeCourts'
 import { ButtonAddCart } from './ButtonAddCart'
 import { useCourtDateContext } from '../../context/CourtsDateContext'
+import { ModalCourtReservation } from '../../components/ModalCourtReservation'
+import { useModalCourtReservationContext } from '../../context/ModalCourtReservationContext'
 
 export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
   const { removeItem, getItem } = useLocalStorage({ key: 'order' })
-  const { setBookCourt } = useBookYourCourtContext()
+  const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { dataCourtDate } = useCourtDateContext()
-
   const { setStart } = useStartContext()
+  const { isOpen, onOpen, setClose, setApproved, setNotApproved, isApproved } = useModalCourtReservationContext()
+  const [notCourtSelected, setNotCourtSelected] = useState(false)
 
   const handleBackPage = () => {
     removeItem()
@@ -30,6 +33,7 @@ export const CourtsTable = () => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
     const order = getItem()
+    setClose()
 
     setBookCourt(order)
     setStart(true)
@@ -42,8 +46,42 @@ export const CourtsTable = () => {
     setStart(true)
   }, [])
 
+  useEffect(() => {
+    if (bookCourt.courts.length > 0) {
+      setNotCourtSelected(false)
+    }
+  }, [bookCourt.courts])
+
+  const nextPage = () => {
+    if (bookCourt.courts.length === 0) {
+      setNotCourtSelected(true)
+      return
+    }
+    const orderIds = bookCourt.courts.map((court) => court.id)
+    console.log('orderIds', orderIds)
+
+    const isOk = true
+    if (isOk) {
+      setTimeout(() => {
+        onOpen()
+        setApproved()
+        // setTimeout(() => {
+        //   navigate('/MyCart')
+        // }, 1000)
+      }, 500)
+    } else {
+      setTimeout(() => {
+        onOpen()
+        setNotApproved()
+      }, 500)
+    }
+  }
+
   return (
     <section className="flex justify-center items-center">
+      {
+        isOpen && <ModalCourtReservation isApproved={isApproved} />
+      }
       <div className="w-full max-w-[64.75rem] h-full px-[15px]">
         <header>
           <ProgressBar percentage="20%" count={true} />
@@ -59,9 +97,10 @@ export const CourtsTable = () => {
           <div
             className="flex flex-col items-center pb-3
              min-h-[4rem]
-             max-h-[100%] overflow-y-scroll
+             max-h-[100%]
              h-[25rem]
              w-[100%]
+             mt-[20px]
              md:w-[60%]
              md:h-[28rem]"
           >
@@ -83,7 +122,7 @@ export const CourtsTable = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB] border border-gray-50  shadow-gray-300 rounded-2xl">
+              <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB]  shadow-gray-200  rounded-2xl">
 
                 {dataCourtDate &&
                 Array.isArray(dataCourtDate.data) &&
@@ -146,6 +185,9 @@ export const CourtsTable = () => {
             </table>
           </div>
         </main>
+        <div className={`text-center text-red-500 ${notCourtSelected ? '' : 'opacity-0'}`}>
+                  Please select a court
+        </div>
         <footer className="hidden md:block">
           <div className="flex gap-3 w-full place-content-end ">
             <Link
@@ -155,12 +197,12 @@ export const CourtsTable = () => {
               >
                 Back
               </Link>
-              <Link
+              <button
                 className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
-                to={'/MyCart'}
+                onClick={() => nextPage()}
               >
                 Next
-              </Link>
+              </button>
             </div>
         </footer>
       </div>

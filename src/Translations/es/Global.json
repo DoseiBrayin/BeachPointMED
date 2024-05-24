@@ -76,5 +76,11 @@
     "LocationSelection": {
       "title": "Selecciona una ubicación",
       "noCountrySelected": "Debe seleccionar una ubicación"
-  }  
+  },
+  "Modals": {
+    "CourtsReservation": {
+      "ErrorMessage": "Lo sentimos, alguna de las canchas seleccionadas ya no está disponible. Por favor, actualiza tu selección.",
+      "SuccessMessage": "¡Reserva exitosa! Todas las canchas seleccionadas están disponibles."
+    }
+  }
 }

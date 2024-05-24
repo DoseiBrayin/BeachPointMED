@@ -29,7 +29,6 @@ export const ButtonAddCart = ({ court }) => {
       setItem({ ...bookCourt, courts: filteredCourts })
     }
   }
-
   return (
     <div className=" md:flex md:justify-center">
       <button
