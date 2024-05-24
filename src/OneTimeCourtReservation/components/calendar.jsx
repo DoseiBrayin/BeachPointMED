@@ -8,7 +8,7 @@ export const Calendar = () => {
     handlePastMonth,
     handleNextMonth,
     selectDay,
-    handleSelectDay,
+    handleSelectDay
   } = calendarHooks()
 
   return (

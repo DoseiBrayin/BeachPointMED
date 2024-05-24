@@ -124,11 +124,11 @@ export const CourtsTable = () => {
               </thead>
               <tbody className="shadow-[-0px_0px_1px_1px_rgba(0,0,0,0.1)] divide-y-2 divide-[#EBEBEB]  shadow-gray-200  rounded-2xl">
 
-                {dataCourtDate &&
-                Array.isArray(dataCourtDate.data) &&
-                dataCourtDate.data.length > 0
+                {dataCourtDate.data &&
+                Array.isArray(dataCourtDate.data.data) &&
+                dataCourtDate.data.data.length > 0
                   ? (
-                      dataCourtDate?.data.map((court) => {
+                      dataCourtDate?.data.data.map((court) => {
                         return (
                       <tr
                         key={court.id}
@@ -140,7 +140,7 @@ export const CourtsTable = () => {
                         <td className="text-xs px-2 text-center min-[425px]:text-[15px] lg:pl-[3rem]">{`${formatPriceCourts(
                           court.price
                         )} COP`}</td>
-                        <td>
+                        <td className=''>
                           {
                             court.state === 'Available'
                               ? <ButtonAddCart court={{
@@ -155,7 +155,7 @@ export const CourtsTable = () => {
                               : <ButtonUnavailable />
                           }
                         </td>
-                        <td>
+                        <td className=''>
                           {
                             court['state-2'] === 'Available'
                               ? <ButtonAddCart court={{

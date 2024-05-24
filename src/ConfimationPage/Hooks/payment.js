@@ -16,7 +16,7 @@ export function Payment () {
   const createOrder = () => {
     const data = {
       // Parámetros de compra (obligatorios)
-      name: 'Courts: 1',
+      name: `Courts: ${bookCourt.location.description}`,
       description: `Courts: ${bookCourt.location.description}`,
       invoice: `ref-${Date.now().toString()}`,
       currency: 'cop',
@@ -30,15 +30,9 @@ export function Payment () {
       // Onpage="false" - Standard="true"
       // Mostrarlo como un pop up o como página entera
       external: 'false',
-
-      // Atributos opcionales
-      extra1: 'extra1',
-      extra2: 'extra2',
-      extra3: 'extra3',
       // Paginas donde se recibe el estado de la compra
       response: 'beachpointmed.pages.dev/CheckOutConfirmation',
       confirmation: 'https://beachpointmed-back.onrender.com/payment',
-
       // Atributos del cliente
       name_billing: bookCourt.user.name,
       address_billing: '',
