@@ -29,6 +29,7 @@ export const CourtsTable = () => {
     removeItem()
     resetCountdown()
   }
+
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
@@ -57,17 +58,18 @@ export const CourtsTable = () => {
       setNotCourtSelected(true)
       return
     }
-    const orderIds = bookCourt.courts.map((court) => court.id)
-    console.log('orderIds', orderIds)
+
+    // Here we should send the request to the server with the list of ids of the selected courts
+    // const orderIds = bookCourt.courts.map((court) => court.id)
 
     const isOk = true
     if (isOk) {
       setTimeout(() => {
         onOpen()
         setApproved()
-        // setTimeout(() => {
-        //   navigate('/MyCart')
-        // }, 1000)
+        setTimeout(() => {
+          navigate('/MyCart')
+        }, 1000)
       }, 500)
     } else {
       setTimeout(() => {

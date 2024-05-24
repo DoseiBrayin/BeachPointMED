@@ -1,7 +1,7 @@
 import { calendarHooks } from '../Hooks/calendarHooks'
 import { CourtsTable } from '../components/CourtsTable'
 import { Calendar } from '../components/calendar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { nextViewState } from '../Hooks/useNextViewState'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
@@ -20,6 +20,7 @@ export const CourtReservationCalendar = () => {
   const { setDataCourtDate, dataCourtDate } = useCourtDateContext()
   const [notCourtSelected, setNotCourtSelected] = useState(false)
   const { isOpen, onOpen, setApproved, setNotApproved, isApproved } = useModalCourtReservationContext()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (bookCourt.courts.length > 0) {
@@ -42,9 +43,9 @@ export const CourtReservationCalendar = () => {
       setTimeout(() => {
         onOpen()
         setApproved()
-        // setTimeout(() => {
-        //   navigate('/MyCart')
-        // }, 2000)
+        setTimeout(() => {
+          navigate('/MyCart')
+        }, 2000)
       }, 500)
     } else {
       setTimeout(() => {
@@ -144,7 +145,7 @@ export const CourtReservationCalendar = () => {
                 className="border-[1px] rounded-lg px-2 py-1 shadow-md bg-[#29845a] text-white text-[14px] h-fit"
                 onClick={() => nextPage()}
               >
-                Nextf
+                Next
               </button>
             </div>
           </div>
