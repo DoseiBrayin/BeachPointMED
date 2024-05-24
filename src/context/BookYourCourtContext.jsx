@@ -5,7 +5,15 @@ const BookYourCourtContext = createContext()
 export const useBookYourCourtContext = () => useContext(BookYourCourtContext)
 
 export const BookYourCourtProvider = ({ children }) => {
-  const [bookCourt, setBookCourt] = useState({ location: null, courts: [], Refreshments: [], GrandTotal: null })
+  const [bookCourt, setBookCourt] = useState({
+    location: null,
+    courts: [],
+    Refreshments: [],
+    GrandTotal: null,
+    uuid: null,
+    reserveDate: null,
+    userId: null
+  })
 
   return (
     <BookYourCourtContext.Provider value={{ bookCourt, setBookCourt }}>
