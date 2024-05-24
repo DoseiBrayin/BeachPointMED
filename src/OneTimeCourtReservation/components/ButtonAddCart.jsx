@@ -39,13 +39,23 @@ export const ButtonAddCart = ({ court }) => {
     }
   }
 
+  const setName = () => {
+    if (cartState && window.innerWidth <= 340) {
+      return 'Add'
+    } else if (cartState) {
+      return 'Add Cart'
+    } else {
+      return 'Remove'
+    }
+  }
+
   return (
     <div className=" md:flex md:justify-center">
       <button
         onClick={handleCart}
         className={cartState ? 'buttonAdd' : 'inCart inCartShadow'}
       >
-        {cartState ? 'Add to cart' : 'Remove'}
+        {setName()}
       </button>
     </div>
   )

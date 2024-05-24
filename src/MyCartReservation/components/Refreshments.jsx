@@ -17,19 +17,19 @@ export const Refreshments = ({ isCheckOut }) => {
           <table className='w-full shadow-lg rounded-lg'>
             <thead className='text-left'>
               <tr>
-                  <th className={'font-[600] font-inter text-[14px] text-center hidden md:table-cell'}>
+                  <th className={'font-[600] font-inter text-[14px] text-center hidden sm:table-cell'}>
                     {t('MyCartReservation.RefreshmentTableItems.Item')}
                   </th>
-                  <th className={'font-[600] font-inter text-[14px] text-center hidden md:table-cell'}>
+                  <th className={'font-[600] font-inter text-[14px] text-center hidden sm:table-cell'}>
                     {t('MyCartReservation.RefreshmentTableItems.Varient')}
                   </th>
-                  <th className={'font-[600] font-inter text-[14px] text-center md:hidden'}>
+                  <th className={'font-[600] font-inter text-[14px] text-center sm:hidden'}>
                     {t('MyCartReservation.RefreshmentTableItems.Item')}/{t('MyCartReservation.RefreshmentTableItems.Varient')}
                   </th>
                   <th className={'font-[600] font-inter text-[14px] text-center'}>
                     {t('MyCartReservation.RefreshmentTableItems.Quantity')}
                   </th>
-                  <th className={'font-[600] font-inter text-[14px] text-center'}>
+                  <th className={'font-[600] font-inter text-[14px] text-center hidden sm:table-cell'}>
                     Cost per item
                   </th>
                   <th className={'font-[600] font-inter text-[14px] text-center'}>
@@ -45,11 +45,11 @@ export const Refreshments = ({ isCheckOut }) => {
                 ? (bookCourt?.Refreshments.map((item, index) => {
                     return (
                       <tr key={index} id={item.id} className={'border-b-[1px] h-[44px]'}>
-                          <td className={'font-inter text-[14px] hidden md:table-cell'}>{item.name.split(' ')[0]}</td>
-                          <td className={'font-inter text-[14px] hidden md:table-cell'}>{item.name.match(/(\b\w+\b)\s*(?:,|$)/g)}</td>
-                          <td className={'font-inter text-[14px] md:hidden'}>{item.name}</td>
+                          <td className={'font-inter text-[12px] hidden sm:table-cell'}>{item.name.split(' ')[0]}</td>
+                          <td className={'font-inter text-[12px] hidden sm:table-cell'}>{item.name.match(/(\b\w+\b)\s*(?:,|$)/g)}</td>
+                          <td className={'font-inter text-[12px] w-[4rem] text-start pl-4 sm:hidden'}>{item.name}</td>
 
-                          <td className={'font-inter text-[14px] table-cell'}>
+                          <td className={'font-inter text-[12px] table-cell'}>
                             <div className='flex justify-center items-center'>
                             <div className="flex gap-2 border-[0.031rem] w-fit px-1 border-[#000] justify-center items-center rounded-xl">
                                 <button className={`${isCheckOut ? 'pointer-events-none' : ''}`} onClick={(e) => handleMinus(e)}>
@@ -63,8 +63,8 @@ export const Refreshments = ({ isCheckOut }) => {
                             </div>
                           </td>
 
-                          <td className={'font-inter text-[14px]'}>{formatPrice(item.price)} COP</td>
-                          <td className={'font-inter text-[14px]'}>{formatPrice(item.price * item.quantity)} COP</td>
+                          <td className={'font-inter text-[12px] hidden  sm:table-cell'}>{formatPrice(item.price)} COP</td>
+                          <td className={'font-inter text-[14px] '}>{formatPrice(item.price * item.quantity)} COP</td>
                           <td><img onClick={() => deleteRefreshments(item)} className={`${isCheckOut ? 'hidden' : ''} w-[12px] h-[12px] cursor-pointer `} src="/MyCartReservationImages/trash.svg" alt="" /></td>
                       </tr>
                     )
