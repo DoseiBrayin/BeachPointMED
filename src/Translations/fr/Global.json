@@ -76,6 +76,12 @@
     "LocationSelection": {
       "title": "Sélectionner un lieu",
       "noCountrySelected": "Vous devez sélectionner un lieu"
-    }
+    },
+    "Modals": {
+      "CourtsReservation": {
+        "ErrorMessage": "Nous sommes désolés, certaines des cours sélectionnés ne sont plus disponibles. Veuillez mettre à jour votre sélection.",
+        "SuccessMessage": "Réservation réussie ! Tous les cours sélectionnés sont disponibles."
+      }
+    }  
   }
   

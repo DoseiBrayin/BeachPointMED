@@ -76,6 +76,12 @@
     "LocationSelection": {
       "title": "Standort auswählen",
       "noCountrySelected": "Sie müssen einen Standort auswählen"
-  }  
+  },
+  "Modals": {
+    "CourtsReservation": {
+      "ErrorMessage": "Es tut uns leid, einige der ausgewählten Plätze sind nicht mehr verfügbar. Bitte aktualisieren Sie Ihre Auswahl.",
+      "SuccessMessage": "Reservierung erfolgreich! Alle ausgewählten Plätze sind verfügbar."
+    }
   }
+}
   

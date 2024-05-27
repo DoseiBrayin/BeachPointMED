@@ -76,5 +76,11 @@
     "LocationSelection":  {
         "title": "Select Location",
         "noCountrySelected": "You must select a location"
-    }
+    },
+    "Modals": {
+        "CourtsReservation": {
+          "ErrorMessage": "We're sorry, some of the selected courts are no longer available. Please update your selection.",
+          "SuccessMessage": "Reservation successful! All selected courts are available."
+        }
+      }    
 }

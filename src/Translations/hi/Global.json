@@ -76,6 +76,12 @@
     "LocationSelection": {
       "title": "स्थान चुनें",
       "noCountrySelected": "आपको एक स्थान का चयन करना चाहिए"
-  }  
+  } ,
+  "Modals": {
+    "CourtsReservation": {
+      "ErrorMessage": "हमें खेद है, चयनित में से कुछ कोर्ट अब उपलब्ध नहीं हैं। कृपया अपना चयन अपडेट करें।",
+      "SuccessMessage": "आरक्षण सफल! सभी चयनित कोर्ट उपलब्ध हैं।"
+    }
   }
+}
   

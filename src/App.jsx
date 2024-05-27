@@ -12,32 +12,34 @@ import { CourtReservationCalendar } from './OneTimeCourtReservation/Pages/court-
 import { ConfirmationPage } from './ConfimationPage/pages/ConfirmationPage.jsx'
 import { CheckOutConfirmation } from './MyCartReservation/Pages/CheckoutConfirmation.jsx'
 import { CourtDateProvider } from './context/CourtsDateContext.jsx'
+import { ModalCourtReservationProvider } from './context/ModalCourtReservationContext.jsx'
 
 function App () {
   return (
     <>
-    <StartCountProvider>
-      <BookYourCourtProvider>
-        <CourtDateProvider>
-        <BrowserRouter>
-        <Navbar />
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/reserve/:locationId" element={<CourtReservationCalendar />} />
-            <Route path="/MyCart" element={<MyCartReservationPage />} />
-            <Route path="/LocationSelection" element={<LocationSelection />} />
-            <Route path="/reserve" element={<CourtReservationCalendar />} />
-            <Route path='/confirmationPage' element={<ConfirmationPage />}/>
-            <Route path='/CheckOutConfirmation' element={<CheckOutConfirmation />}/>
-            <Route path="*" element={<Page404 />} />
-          </Routes>
-        </BrowserRouter>
-        </CourtDateProvider>
-      </BookYourCourtProvider>
-    </StartCountProvider>
+    <ModalCourtReservationProvider>
+      <StartCountProvider>
+        <BookYourCourtProvider>
+          <CourtDateProvider>
+          <BrowserRouter>
+          <Navbar />
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/reserve/:locationId" element={<CourtReservationCalendar />} />
+              <Route path="/MyCart" element={<MyCartReservationPage />} />
+              <Route path="/LocationSelection" element={<LocationSelection />} />
+              <Route path="/reserve" element={<CourtReservationCalendar />} />
+              <Route path='/confirmationPage' element={<ConfirmationPage />}/>
+              <Route path='/CheckOutConfirmation' element={<CheckOutConfirmation />}/>
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+          </BrowserRouter>
+          </CourtDateProvider>
+        </BookYourCourtProvider>
+      </StartCountProvider>
+    </ModalCourtReservationProvider>
     </>
   )
 }
-
 
 export default App
