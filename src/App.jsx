@@ -13,6 +13,10 @@ import { ConfirmationPage } from './ConfimationPage/pages/ConfirmationPage.jsx'
 import { CheckOutConfirmation } from './MyCartReservation/Pages/CheckoutConfirmation.jsx'
 import { CourtDateProvider } from './context/CourtsDateContext.jsx'
 import { ModalCourtReservationProvider } from './context/ModalCourtReservationContext.jsx'
+import { Login } from './auth/Login/pages/Login.jsx'
+import { SignUp } from './auth/SignUp/pages/SignUp.jsx'
+import { ForgotPw } from './auth/ForgotPassword/pages/ForgotPw.jsx'
+import { ResetPw } from './auth/ResetPassword/pages/ResetPw.jsx'
 
 function App () {
   return (
@@ -31,6 +35,10 @@ function App () {
               <Route path="/reserve" element={<CourtReservationCalendar />} />
               <Route path='/confirmationPage' element={<ConfirmationPage />}/>
               <Route path='/CheckOutConfirmation' element={<CheckOutConfirmation />}/>
+              <Route path='/login' element={<Login/>} />
+              <Route path='/signUp' element={<SignUp/>} />
+              <Route path='/forgotPassword' element={<ForgotPw />} />
+              <Route path='/resetPassword' element={<ResetPw />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </BrowserRouter>
