@@ -76,6 +76,13 @@
     "LocationSelection": {
       "title": "اختر الموقع",
       "noCountrySelected": "يجب عليك تحديد موقع"
-  }  
+  },
+  "Modals": {
+    "CourtsReservation": {
+      "ErrorMessage": "نأسف، بعض الملاعب المختارة لم تعد متاحة. يرجى تحديث اختيارك.",
+      "SuccessMessage": "تم الحجز بنجاح! جميع الملاعب المختارة متاحة."
+    }
   }
+  
+}
   
