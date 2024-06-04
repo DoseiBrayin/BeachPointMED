@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { NavHooks } from '../Hooks/NavHooks'
 import { LenguageSelector } from './LenguageSelector'
 import { useTranslation } from 'react-i18next'
@@ -55,6 +55,12 @@ export const Navbar = () => {
   const { t } = useTranslation('global')
   const { start } = useStartContext()
 
+  const Navigate = useNavigate()
+
+  const navigateSingIn = () => {
+    Navigate('/login')
+  }
+
   return (
     <nav className="flex justify-between items-center px-[15px] h-[56px] md:h-[110px] lg:px-[115px]">
       <NavLink to={'/'} className="w-[30px] h-[45px] md:w-[56px] md:h-[84px]">
@@ -81,7 +87,7 @@ export const Navbar = () => {
         </div>
         <LenguageSelector />
         <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
-          <img src="/LandingImages/profile.webp" alt="Spanish" />
+          <img src="/LandingImages/profile.webp" alt="Spanish" onClick={navigateSingIn} />
         </button>
       </div>
       {/* Este es el diseno qeu se ve en pantallas pequenas */}
