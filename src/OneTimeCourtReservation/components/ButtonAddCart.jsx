@@ -12,7 +12,6 @@ export const ButtonAddCart = ({ court }) => {
     setCartState(!cartState)
     if (cartState && bookCourt.Refreshments && bookCourt.Refreshments.length === 0) {
       // If there are no refreshments will add them to the global object
-      console.log('da #1')
 
       const url = import.meta.env.VITE_BEACHPOINT_API_URL
       const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
