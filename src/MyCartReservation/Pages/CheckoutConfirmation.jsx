@@ -18,20 +18,15 @@ export const CheckOutConfirmation = () => {
   const { bookCourt } = useBookYourCourtContext()
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   setStart(true)
-  //   if (bookCourt.location === null) {
-  //     resetCountdown()
-  //     setStart(false)
-  //     navigate('/LocationSelection')
-  //   }
-  // }, [setStart, bookCourt.location, resetCountdown, navigate])
-
   const PaymentStatus = () => {
     const [paymentData, setPaymentData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const location = useLocation()
+
+    useEffect(() => {
+      console.log(bookCourt)
+    }, [])
 
     const getQueryParam = (param) => {
       const searchParams = new URLSearchParams(location.search)
