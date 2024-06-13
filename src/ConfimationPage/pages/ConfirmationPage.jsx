@@ -51,13 +51,17 @@ export const ConfirmationPage = () => {
     setBookCourt({ ...bookCourt, user })
 
     createOrder()
-    createUser(user).then((res) => {
-      if (res) {
-        // navigate('/CheckOutConfirmation')
-      } else {
-        console.log('error')
-      }
-    })
+    try {
+      createUser(user).then((res) => {
+        if (res) {
+          // navigate('/CheckOutConfirmation')
+        } else {
+          console.log('error')
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
