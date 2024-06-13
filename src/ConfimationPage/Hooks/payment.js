@@ -38,7 +38,8 @@ export function Payment () {
       address_billing: '',
       type_doc_billing: 'cc',
       mobilephone_billing: bookCourt.user.number,
-      number_doc_billing: bookCourt.user.cedula
+      number_doc_billing: bookCourt.user.cedula,
+      x_extra1: bookCourt.courts
     }
     handler.open(data)
   }
