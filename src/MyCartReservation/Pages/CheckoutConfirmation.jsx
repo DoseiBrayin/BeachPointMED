@@ -3,30 +3,21 @@ import { Courts } from '../components/Courts'
 import { Refreshments } from '../components/Refreshments'
 import { useFormatePrices } from '../hooks/useFormatPrices'
 import { useTranslation } from 'react-i18next'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { useStartContext } from '../../context/StartCountdownContext'
+import { Link, useLocation } from 'react-router-dom'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
-import { useCountdown } from '../../Hooks/useCountdown'
 import { formatPrice } from '../../Hooks/formatPrice'
 import axios from 'axios'
 
 export const CheckOutConfirmation = () => {
   const { getGrandTotalPrice } = useFormatePrices()
   const { t } = useTranslation('global')
-  const { setStart } = useStartContext()
-  const { resetCountdown } = useCountdown()
   const { bookCourt } = useBookYourCourtContext()
-  const navigate = useNavigate()
 
   const PaymentStatus = () => {
     const [paymentData, setPaymentData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const location = useLocation()
-
-    useEffect(() => {
-      console.log(bookCourt)
-    }, [])
 
     const getQueryParam = (param) => {
       const searchParams = new URLSearchParams(location.search)
