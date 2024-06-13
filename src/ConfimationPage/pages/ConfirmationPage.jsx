@@ -50,6 +50,7 @@ export const ConfirmationPage = () => {
     )
     setBookCourt({ ...bookCourt, user })
 
+    createOrder()
     createUser(user).then((res) => {
       if (res) {
         // navigate('/CheckOutConfirmation')
@@ -57,7 +58,6 @@ export const ConfirmationPage = () => {
         console.log('error')
       }
     })
-    createOrder()
   }
 
   return (
