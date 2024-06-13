@@ -1,7 +1,11 @@
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 
 export function Payment () {
   const { bookCourt } = useBookYourCourtContext()
+  const { getItem } = useLocalStorage({ key: 'order' })
+
+  const order = getItem()
 
   function formatCOP () {
     let formatedTotal = bookCourt.GrandTotal * 1000
@@ -39,7 +43,7 @@ export function Payment () {
       type_doc_billing: 'cc',
       mobilephone_billing: bookCourt.user.number,
       number_doc_billing: bookCourt.user.cedula,
-      x_extra1: bookCourt.courts
+      x_extra1: order
     }
     handler.open(data)
   }
