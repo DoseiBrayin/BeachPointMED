@@ -3,6 +3,7 @@ export function Payment () {
     console.log(GrandTotal)
     let formatedTotal = GrandTotal * 1000
     formatedTotal = Math.round(formatedTotal)
+    console.log(formatedTotal)
     return formatedTotal.toString().replace('.', '')
   }
   const handler = ePayco.checkout.configure({
