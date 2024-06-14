@@ -4,6 +4,7 @@ import { InputPassword } from '../../components/InputPassword'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { getValidationRules } from '../../validations/validations'
+import { useLoginUserMutation } from '../../Services/authApi'
 
 export const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -13,10 +14,20 @@ export const Login = () => {
 
   const validationRules = getValidationRules()
 
+  const [loginUser, { data, isSuccess, isError, error }] = useLoginUserMutation()
+
+  const handleLogin = async () => {
+    if (email && password) {
+      await loginUser({ email, password })
+    } else {
+
+    }
+  }
+
   return (
     <section className='flex flex-col justify-between h-auto '>
     <main className='flex justify-center items-center h-[100%] gap-10 my-10 md:h-[45rem] md:m-10 md:mx-20 md:justify-between'>
-        <div className='w-[90%] border-[1px] border-[#878787] h-[95%] p-3 rounded-lg md:h-full md:w-[50%] md:p-7'>
+        <div className='w-[90%] border-[1px] border-[#878787] h-[a95%] p-3 rounded-lg md:h-full md:w-[50%] md:p-7'>
             <h2 className='text-lg md:text-2xl mb-4 mt-1 font-poppins font-normal'>Welcome !</h2>
             <h1 className='text-[23px] md:text-3xl font-poppins font-medium'>Login to Beach Point</h1>
             <h3 className='mb-3 md:mb-5 md:text-lg'>To manage your reservations</h3>
@@ -50,7 +61,7 @@ export const Login = () => {
                     <Link to={'/forgotPassword'}>Forgot password ?</Link>
                 </div>
 
-                <button className='h-[3rem] bg-black text-white rounded-lg mt-4'>Login</button>
+                <button className='h-[3rem] bg-black text-white rounded-lg mt-4' onClick={() => handleLogin()}>Login</button>
                 <span className='w-full text-center my-8'>Don&apos;t have an account?<Link to={'/signUp'}><strong className='ml-2'>Sign Up</strong> </Link></span>
             </form>
         </div>
