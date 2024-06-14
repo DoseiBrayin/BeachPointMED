@@ -35,10 +35,11 @@ export function Payment () {
       name_billing: order.user.name,
       address_billing: '',
       type_doc_billing: 'cc',
-      mobilephone_billing: order.user.number,
+      mobilephone_billing: order.user.phone_number,
       number_doc_billing: order.user.cedula,
       x_extra1: order.courts
     }
+    console.log(formatCOP(order.GrandTotal))
     console.log(data)
     // handler.open(data)
   }
