@@ -11,7 +11,7 @@ export function Payment () {
   })
 
   const createOrder = ({ order }) => {
-    console.log(order)
+    console.log(order.GrandTotal)
     const data = {
       // Parámetros de compra (obligatorios)
       name: `Courts: ${order.location.description}`,
