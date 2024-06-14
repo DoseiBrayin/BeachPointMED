@@ -1,9 +1,7 @@
 export function Payment () {
   function formatCOP (GrandTotal) {
-    console.log(GrandTotal)
     let formatedTotal = parseFloat(GrandTotal) * 1000
     formatedTotal = Math.round(formatedTotal)
-    console.log(formatedTotal)
     return formatedTotal.toString()
   }
 
@@ -13,7 +11,6 @@ export function Payment () {
   })
 
   const createOrder = ({ order }) => {
-    console.log(order.GrandTotal)
     const data = {
       // Parámetros de compra (obligatorios)
       name: `Courts: ${order.location.description}`,
@@ -41,9 +38,7 @@ export function Payment () {
       number_doc_billing: order.user.cedula,
       x_extra1: order.courts
     }
-    console.log(formatCOP(order.GrandTotal))
-    console.log(data)
-    // handler.open(data)
+    handler.open(data)
   }
 
   return {
