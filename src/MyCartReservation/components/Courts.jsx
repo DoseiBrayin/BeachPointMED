@@ -1,14 +1,17 @@
 import { useTranslation } from 'react-i18next'
 import { useFormatePrices } from '../hooks/useFormatPrices'
-import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { formatPrice } from '../../Hooks/formatPrice'
 import { formatTime } from '../../Hooks/formatTime'
 import { useCart } from '../hooks/useCart'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
+
 export const Courts = ({ isCheckOut }) => {
   const { getTotalPrice } = useFormatePrices()
   const { t } = useTranslation('global')
-  const { bookCourt } = useBookYourCourtContext()
+  const { getItem } = useLocalStorage({ key: 'order' })
   const { deleteCourts } = useCart()
+
+  const order = getItem()
 
   return (
       <div className=' mt-4 w-full max-w-[52.5rem]'>
@@ -26,11 +29,11 @@ export const Courts = ({ isCheckOut }) => {
           </thead>
           <tbody className='border-[1px] text-center'>
             {
-              bookCourt.courts && bookCourt.courts.length > 0
-                ? (bookCourt.courts.map((court, index) => {
+              order.courts && order.courts.length > 0
+                ? (order.courts.map((court, index) => {
                     return (
                       <tr key={index} className={'border-b-[1px] h-[44px]'}>
-                        <td className={`${'font-inter text-[14px]'} hidden md:table-cell`}>{bookCourt.location.description}</td>
+                        <td className={`${'font-inter text-[14px]'} hidden md:table-cell`}>{order.location.description}</td>
                         <td className={'font-inter text-[12px] sm:text-[14px]'}>{court.date}</td>
                         <td className={'font-inter text-[12px] sm:text-[14px]'}>{formatTime(court.hour)}</td>
                         <td className={'font-inter text-[12px] sm:text-[14px]'}>{court.description.split('-')[0]}</td>
@@ -51,9 +54,9 @@ export const Courts = ({ isCheckOut }) => {
         </table>
         <div className="flex justify-end gap-5 pr-5 mt-2">
             <h1 className="font-[600] text-[14px]">{t('MyCartReservation.Subtotal')}</h1>
-            { bookCourt.courts && bookCourt.courts.length > 0
+            { order.courts && order.courts.length > 0
               ? (
-                  <p className="text-[13px] font-[400]">{formatPrice(getTotalPrice({ list: bookCourt.courts }))} COP</p>
+                  <p className="text-[13px] font-[400]">{formatPrice(getTotalPrice({ list: order.courts }))} COP</p>
                 )
               : (
                   <p className="text-[13px] font-[400]"> -- COP</p>

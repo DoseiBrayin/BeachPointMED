@@ -1,26 +1,23 @@
-import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
-
 export function Payment () {
-  const { bookCourt } = useBookYourCourtContext()
-
-  function formatCOP () {
-    let formatedTotal = bookCourt.GrandTotal * 1000
+  function formatCOP (GrandTotal) {
+    let formatedTotal = parseFloat(GrandTotal) * 1000
     formatedTotal = Math.round(formatedTotal)
-    return formatedTotal.toString().replace('.', '')
+    return formatedTotal.toString()
   }
+
   const handler = ePayco.checkout.configure({
     key: '6e3cd97070f51ec9d8ea865d257eccc6',
     test: true
   })
 
-  const createOrder = () => {
+  const createOrder = ({ order }) => {
     const data = {
       // Parámetros de compra (obligatorios)
-      name: `Courts: ${bookCourt.location.description}`,
-      description: `Courts: ${bookCourt.location.description}`,
+      name: `Courts: ${order.location.description}`,
+      description: `Courts: ${order.location.description}`,
       invoice: `ref-${Date.now().toString()}`,
       currency: 'cop',
-      amount: `${formatCOP()}`,
+      amount: formatCOP(order.GrandTotal),
       tax_base: '4000',
       tax: '500',
       tax_ico: '500',
@@ -34,14 +31,16 @@ export function Payment () {
       response: 'beachpointmed.pages.dev/CheckOutConfirmation',
       confirmation: 'https://beachpointmed-back.onrender.com/payment',
       // Atributos del cliente
-      name_billing: bookCourt.user.name,
+      name_billing: order.user.name,
       address_billing: '',
       type_doc_billing: 'cc',
-      mobilephone_billing: bookCourt.user.number,
-      number_doc_billing: bookCourt.user.cedula
+      mobilephone_billing: order.user.phone_number,
+      number_doc_billing: order.user.cedula,
+      x_extra1: JSON.stringify(order)
     }
     handler.open(data)
   }
+
   return {
     createOrder
   }

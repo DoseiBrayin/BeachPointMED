@@ -8,7 +8,7 @@ import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { useCountdown } from '../../Hooks/useCountdown'
 import { useLocalStorage } from '../../Hooks/useLocalStorage'
 import { User } from '../../API/userBP/User'
-import { createUser } from '../../API/userBP/createUser'
+// import { createUser } from '../../API/userBP/createUser'
 import { Payment } from '../Hooks/payment'
 
 export const ConfirmationPage = () => {
@@ -18,7 +18,7 @@ export const ConfirmationPage = () => {
   const { setStart } = useStartContext()
   const { resetCountdown } = useCountdown()
   const { setBookCourt, bookCourt } = useBookYourCourtContext()
-  const { getItem } = useLocalStorage({ key: 'order' })
+  const { getItem, setItem } = useLocalStorage({ key: 'order' })
   const navigate = useNavigate()
   const { createOrder } = Payment()
 
@@ -49,15 +49,17 @@ export const ConfirmationPage = () => {
 
     )
     setBookCourt({ ...bookCourt, user })
+    setItem({ ...bookCourt, user })
 
-    createUser(user).then((res) => {
-      if (res) {
-        // navigate('/CheckOutConfirmation')
-      } else {
-        console.log('error')
-      }
-    })
-    createOrder()
+    // createUser(user).then((res) => {
+    //   if (res) {
+    //     // navigate('/CheckOutConfirmation')
+    //   } else {
+    //     console.log('error')
+    //   }
+    // })
+    const order = getItem()
+    createOrder({ order })
   }
 
   return (
