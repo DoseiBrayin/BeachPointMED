@@ -58,7 +58,8 @@ export const ConfirmationPage = () => {
     //     console.log('error')
     //   }
     // })
-    createOrder()
+    // createOrder()
+    console.log(getItem())
   }
 
   return (
