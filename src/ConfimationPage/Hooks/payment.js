@@ -1,10 +1,10 @@
 export function Payment () {
-  function formatCOP ({ GrandTotal }) {
+  function formatCOP (GrandTotal) {
     console.log(GrandTotal)
-    let formatedTotal = GrandTotal * 1000
+    let formatedTotal = parseFloat(GrandTotal) * 1000
     formatedTotal = Math.round(formatedTotal)
     console.log(formatedTotal)
-    return formatedTotal.toString().replace('.', '')
+    return formatedTotal.toString()
   }
   const handler = ePayco.checkout.configure({
     key: '6e3cd97070f51ec9d8ea865d257eccc6',
