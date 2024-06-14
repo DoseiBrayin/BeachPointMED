@@ -6,6 +6,7 @@ export function Payment () {
     console.log(formatedTotal)
     return formatedTotal.toString()
   }
+
   const handler = ePayco.checkout.configure({
     key: '6e3cd97070f51ec9d8ea865d257eccc6',
     test: true
@@ -19,7 +20,7 @@ export function Payment () {
       description: `Courts: ${order.location.description}`,
       invoice: `ref-${Date.now().toString()}`,
       currency: 'cop',
-      amount: `${formatCOP(order.GrandTotal)}`,
+      amount: formatCOP(order.GrandTotal),
       tax_base: '4000',
       tax: '500',
       tax_ico: '500',
@@ -44,6 +45,7 @@ export function Payment () {
     console.log(data)
     // handler.open(data)
   }
+
   return {
     createOrder
   }
