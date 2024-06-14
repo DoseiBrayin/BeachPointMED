@@ -16,7 +16,7 @@ export function Payment () {
       description: `Courts: ${order.location.description}`,
       invoice: `ref-${Date.now().toString()}`,
       currency: 'cop',
-      amount: `${formatCOP()}`,
+      amount: `${formatCOP(order.GrandTotal)}`,
       tax_base: '4000',
       tax: '500',
       tax_ico: '500',
