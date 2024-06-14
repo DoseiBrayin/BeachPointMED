@@ -1,12 +1,6 @@
-import { useLocalStorage } from '../../Hooks/useLocalStorage'
-
 export function Payment () {
-  const { getItem } = useLocalStorage({ key: 'order' })
-
-  const order = getItem()
-
-  function formatCOP () {
-    let formatedTotal = order.GrandTotal * 1000
+  function formatCOP ({ GrandTotal }) {
+    let formatedTotal = GrandTotal * 1000
     formatedTotal = Math.round(formatedTotal)
     return formatedTotal.toString().replace('.', '')
   }
@@ -15,7 +9,7 @@ export function Payment () {
     test: true
   })
 
-  const createOrder = () => {
+  const createOrder = ({ order }) => {
     const data = {
       // Parámetros de compra (obligatorios)
       name: `Courts: ${order.location.description}`,
