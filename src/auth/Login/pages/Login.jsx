@@ -5,36 +5,42 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { getValidationRules } from '../../validations/validations'
 import { useLoginUserMutation } from '../../Services/authApi'
-import toast from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import { useEffect } from 'react'
+import { setUser } from '../../AuthSlices/authSlice'
+import { useDispatch } from 'react-redux'
 
 export const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const validationRules = getValidationRules()
   const [loginUser, { data, isSuccess, isError, error }] = useLoginUserMutation()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const onSubmit = handleSubmit((data) => {
     handleLogin(data)
   })
 
   const handleLogin = async (formData) => {
-    try {
-      await loginUser(formData)
-    } catch (error) {
-      toast.error('An error has ocurred in the login', error)
-    }
+    await loginUser(formData)
   }
 
   useEffect(() => {
     if (isSuccess) {
       toast.success('User loged in successfully')
+      dispatch(
+        setUser({ token: data.data })
+      )
       navigate('/')
     }
-  }, [isSuccess])
+    if (isError || error) {
+      toast.error(error?.data?.message || 'An error has occurred in the login')
+    }
+  }, [isSuccess, isError, error, navigate])
 
   return (
     <section className='flex flex-col justify-between h-auto '>
+      <div><Toaster/></div>
     <main className='flex justify-center items-center h-[100%] gap-10 my-10 md:h-[45rem] md:m-10 md:mx-20 md:justify-between'>
         <div className='w-[90%] border-[1px] border-[#878787] h-[a95%] p-3 rounded-lg md:h-full md:w-[50%] md:p-7'>
             <h2 className='text-lg md:text-2xl mb-4 mt-1 font-poppins font-normal'>Welcome !</h2>

@@ -17,13 +17,20 @@ import { Login } from './auth/Login/pages/Login.jsx'
 import { SignUp } from './auth/SignUp/pages/SignUp.jsx'
 import { ForgotPw } from './auth/ForgotPassword/pages/ForgotPw.jsx'
 import { ResetPw } from './auth/ResetPassword/pages/ResetPw.jsx'
-import { Provider } from 'react-redux'
-import { store } from './app/store.js'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { setUser } from './auth/AuthSlices/authSlice.js'
 
 function App () {
+  const dispatch = useDispatch()
+  const user = JSON.parse(localStorage.getItem('user') || '{}')
+
+  useEffect(() => {
+    dispatch(setUser(user))
+  }, [])
+
   return (
     <>
-    <Provider store={store}>
     <ModalCourtReservationProvider>
       <StartCountProvider>
         <BookYourCourtProvider>
@@ -49,7 +56,6 @@ function App () {
         </BookYourCourtProvider>
       </StartCountProvider>
     </ModalCourtReservationProvider>
-    </Provider>
 
     </>
   )
