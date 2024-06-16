@@ -1,16 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const API_TOKEN = import.meta.env.VITE_BEACHPOINT_API_TOKEN
 
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://127.0.0.1:8000',
-    prepareHeaders: (headers) => {
-      if (API_TOKEN) {
-        headers.set('Authorization', `Bearer ${API_TOKEN}`)
-      }
-    }
+    baseUrl: 'http://127.0.0.1:8000'
   }),
   endpoints: (builder) => ({
     loginUser: builder.mutation({

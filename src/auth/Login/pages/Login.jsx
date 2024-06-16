@@ -2,27 +2,36 @@ import { Footer } from '../../../LandingPage/components/Footer'
 import { InputElement } from '../../components/InputElement'
 import { InputPassword } from '../../components/InputPassword'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getValidationRules } from '../../validations/validations'
 import { useLoginUserMutation } from '../../Services/authApi'
+import toast from 'react-hot-toast'
+import { useEffect } from 'react'
 
 export const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const validationRules = getValidationRules()
+  const [loginUser, { data, isSuccess, isError, error }] = useLoginUserMutation()
+  const navigate = useNavigate()
 
   const onSubmit = handleSubmit((data) => {
+    handleLogin(data)
   })
 
-  const validationRules = getValidationRules()
-
-  const [loginUser, { data, isSuccess, isError, error }] = useLoginUserMutation()
-
-  const handleLogin = async () => {
-    if (email && password) {
-      await loginUser({ email, password })
-    } else {
-
+  const handleLogin = async (formData) => {
+    try {
+      await loginUser(formData)
+    } catch (error) {
+      toast.error('An error has ocurred in the login', error)
     }
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('User loged in successfully')
+      navigate('/')
+    }
+  }, [isSuccess])
 
   return (
     <section className='flex flex-col justify-between h-auto '>
@@ -61,7 +70,7 @@ export const Login = () => {
                     <Link to={'/forgotPassword'}>Forgot password ?</Link>
                 </div>
 
-                <button className='h-[3rem] bg-black text-white rounded-lg mt-4' onClick={() => handleLogin()}>Login</button>
+                <button className='h-[3rem] bg-black text-white rounded-lg mt-4' type='submit'>Login</button>
                 <span className='w-full text-center my-8'>Don&apos;t have an account?<Link to={'/signUp'}><strong className='ml-2'>Sign Up</strong> </Link></span>
             </form>
         </div>

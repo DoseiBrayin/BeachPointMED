@@ -17,10 +17,13 @@ import { Login } from './auth/Login/pages/Login.jsx'
 import { SignUp } from './auth/SignUp/pages/SignUp.jsx'
 import { ForgotPw } from './auth/ForgotPassword/pages/ForgotPw.jsx'
 import { ResetPw } from './auth/ResetPassword/pages/ResetPw.jsx'
+import { Provider } from 'react-redux'
+import { store } from './app/store.js'
 
 function App () {
   return (
     <>
+    <Provider store={store}>
     <ModalCourtReservationProvider>
       <StartCountProvider>
         <BookYourCourtProvider>
@@ -46,6 +49,8 @@ function App () {
         </BookYourCourtProvider>
       </StartCountProvider>
     </ModalCourtReservationProvider>
+    </Provider>
+
     </>
   )
 }
