@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../AuthSlices/authSlice'
+import { v4 } from 'uuid'
 
 export const SignUp = () => {
   const dispatch = useDispatch()
@@ -30,12 +31,13 @@ export const SignUp = () => {
 
   const handleRegister = async (formData) => {
     if (formData.name && formData.password && formData.confirm_pwd && formData.email) {
-      await registerUser({ name: formData.name, password: formData.password, email: formData.email, phone: 3013782590, card_id: null})
+      await registerUser({ id: v4(), cedula: formData.ID, name: formData.name, password: formData.password, email: formData.email, phone_number: '3013782590', card_id: '', is_employee: false, fk_rol: 'USR' })
     }
   }
 
   useEffect(() => {
     if (isSuccess) {
+      console.log('hola exitoso')
       dispatch(
         setUser({ token: data.data })
       )
@@ -44,7 +46,7 @@ export const SignUp = () => {
     if (isError || error) {
       toast.error('An error has ocurred while sign up, try again later')
     }
-  }, [])
+  }, [isSuccess, isError, error])
 
   return (
     <section className='flex flex-col justify-between h-auto '>
