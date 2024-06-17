@@ -20,6 +20,7 @@ import { ResetPw } from './auth/ResetPassword/pages/ResetPw.jsx'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setUser } from './auth/AuthSlices/authSlice.js'
+import { DashboardAdmin } from './adminDashboard/pages/DashboardAdmin.jsx'
 
 function App () {
   const dispatch = useDispatch()
@@ -49,6 +50,7 @@ function App () {
               <Route path='/signUp' element={<SignUp/>} />
               <Route path='/forgotPassword' element={<ForgotPw />} />
               <Route path='/resetPassword' element={<ResetPw />} />
+              <Route path='/AdminDashboard' element={<DashboardAdmin />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </BrowserRouter>

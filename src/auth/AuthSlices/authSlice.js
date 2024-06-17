@@ -12,12 +12,16 @@ export const authSlice = createSlice({
       const { token } = action.payload
       localStorage.setItem('user', JSON.stringify({ token }))
       state.token = token
+    },
+    logout: (state) => {
+      localStorage.clear()
+      state.token = null
     }
   }
 })
 
 export const selectAuth = (state) => state.auth
 
-export const { setUser } = authSlice.actions
+export const { setUser, logout } = authSlice.actions
 
 export default authSlice.reducer

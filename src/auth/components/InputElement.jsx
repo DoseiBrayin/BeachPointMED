@@ -8,6 +8,7 @@ export const InputElement = ({ type, label, name, placeholder, hasError, id, reg
             type={type}
             placeholder={placeholder}
             name={name}
+            autoComplete={name}
             {...register(name, validation)}/>
             {hasError && <span className='text-red-500 text-sm'>{hasError.message}</span>}
     </>
