@@ -461,7 +461,6 @@ export const AdminUsers = () => {
           </div>
           </div>
         </div>
-        {/* Aquí renderizas tu tabla de usuarios */}
       </div>
         <UsersTable users={users} itemsPerPage={10} />
     </div>
