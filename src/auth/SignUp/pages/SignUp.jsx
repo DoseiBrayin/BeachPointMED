@@ -38,7 +38,6 @@ export const SignUp = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log('hola exitoso')
       dispatch(
         setUser({ token: data.data })
       )

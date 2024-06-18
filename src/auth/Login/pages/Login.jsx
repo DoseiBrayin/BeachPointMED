@@ -38,7 +38,6 @@ export const Login = () => {
       navigate('/AdminDashboard')
     }
     if (isError) {
-      console.log(error.data)
       toast.error(error?.data?.detail?.message || 'An error has ocurred in the login')
     }
   }, [isSuccess, isError, error, dispatch, navigate])
