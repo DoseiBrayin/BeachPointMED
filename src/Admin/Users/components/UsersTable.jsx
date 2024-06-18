@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useUserTable } from '../hooks/useUserTable'
 import { RenderTableRows } from './RenderTableRows'
 import { PaginationButtons } from './PaginationButtons'
@@ -7,7 +7,7 @@ const thStyle = 'text-start font-normal text-[12px] text-[#667085]'
 
 export const UsersTable = ({ users, itemsPerPage }) => {
   const { currentPage, totalPages, handleClick, prevPage, nextPage } = useUserTable({ itemsPerPage: 10, data: users })
-  const [isOpen, setIsOpen] = useState()
+  // const [isOpen, setIsOpen] = useState()
 
   if (users.length === 0) {
     return (
