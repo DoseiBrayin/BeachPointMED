@@ -1,65 +1,24 @@
-/* eslint-disable react/react-in-jsx-scope */
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Page404 } from '../src/404/page/404.jsx'
-import { Landing } from './LandingPage/pages/Landing.jsx'
-import { MyCartReservationPage } from './MyCartReservation/Pages/MyCartReservationPage.jsx'
-import { Navbar } from './components/Navbar.jsx'
-import { LocationSelection } from './LocationSelection/pages/LocationSelection.jsx'
-import { BookYourCourtProvider } from './context/BookYourCourtContext.jsx'
-import { StartCountProvider } from './context/StartCountdownContext.jsx'
-import { CourtReservationCalendar } from './OneTimeCourtReservation/Pages/court-reservation.jsx'
-import { ConfirmationPage } from './ConfimationPage/pages/ConfirmationPage.jsx'
-import { CheckOutConfirmation } from './MyCartReservation/Pages/CheckoutConfirmation.jsx'
-import { CourtDateProvider } from './context/CourtsDateContext.jsx'
-import { ModalCourtReservationProvider } from './context/ModalCourtReservationContext.jsx'
-import { Login } from './auth/Login/pages/Login.jsx'
-import { SignUp } from './auth/SignUp/pages/SignUp.jsx'
-import { ForgotPw } from './auth/ForgotPassword/pages/ForgotPw.jsx'
-import { ResetPw } from './auth/ResetPassword/pages/ResetPw.jsx'
+import { AdminRoutes } from './router/AdminRoutes'
+import UserRoutes from './router/UserRoutes'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { setUser } from './auth/AuthSlices/authSlice.js'
-import { DashboardAdmin } from './adminDashboard/pages/DashboardAdmin.jsx'
 
 function App () {
   const dispatch = useDispatch()
-  const user = JSON.parse(localStorage.getItem('user') || '{}')
+  const user2 = JSON.parse(localStorage.getItem('user') || '{}')
 
   useEffect(() => {
-    dispatch(setUser(user))
+    dispatch(setUser(user2))
   }, [])
 
+  const user = {
+    userType: 'admin' // Here you can change the user type to 'user' to see the user routes for the moment
+  }
   return (
-    <>
-    <ModalCourtReservationProvider>
-      <StartCountProvider>
-        <BookYourCourtProvider>
-          <CourtDateProvider>
-          <BrowserRouter>
-          <Navbar />
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/reserve/:locationId" element={<CourtReservationCalendar />} />
-              <Route path="/MyCart" element={<MyCartReservationPage />} />
-              <Route path="/LocationSelection" element={<LocationSelection />} />
-              <Route path="/reserve" element={<CourtReservationCalendar />} />
-              <Route path='/confirmationPage' element={<ConfirmationPage />}/>
-              <Route path='/CheckOutConfirmation' element={<CheckOutConfirmation />}/>
-              <Route path='/login' element={<Login/>} />
-              <Route path='/signUp' element={<SignUp/>} />
-              <Route path='/forgotPassword' element={<ForgotPw />} />
-              <Route path='/resetPassword' element={<ResetPw />} />
-              <Route path='/AdminDashboard' element={<DashboardAdmin />} />
-              <Route path="*" element={<Page404 />} />
-            </Routes>
-          </BrowserRouter>
-          </CourtDateProvider>
-        </BookYourCourtProvider>
-      </StartCountProvider>
-    </ModalCourtReservationProvider>
-
-    </>
+    user.userType === 'user'
+      ? <UserRoutes />
+      : <AdminRoutes />
   )
 }
 
