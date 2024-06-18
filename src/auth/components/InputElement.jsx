@@ -3,7 +3,7 @@ export const InputElement = ({ type, label, name, placeholder, hasError, id, reg
     <>
     <label htmlFor={id} className='font-inter font-normal'>{label}</label>
         <input
-            className='border border-[#282828] p-2 h-[3rem] rounded-[5px]'
+            className='border border-[#282828] p-1 h-[3rem] rounded-[5px] focus:outline-none focus:ring-0'
             id={id}
             type={type}
             placeholder={placeholder}

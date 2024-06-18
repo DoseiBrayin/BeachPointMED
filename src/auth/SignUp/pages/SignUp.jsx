@@ -22,7 +22,8 @@ export const SignUp = () => {
     data,
     isSuccess,
     isError,
-    error
+    error,
+    isLoading
   }] = useRegisterUserMutation()
 
   const onSubmit = handleSubmit((data) => {
@@ -43,19 +44,21 @@ export const SignUp = () => {
       )
       navigate('/AdminDashboard')
     }
-    if (isError || error) {
-      toast.error('An error has ocurred while sign up, try again later')
+    if (isError) {
+      if (error?.data?.detail?.status_code === 400) {
+        toast.error('This identification or email is already in use')
+      }
     }
   }, [isSuccess, isError, error])
 
   return (
     <section className='flex flex-col justify-between h-auto '>
         <Toaster />
-        <main className={`flex justify-center items-center h-[100%] gap-10 my-10 lg:h-[45rem] lg:m-10 lg:mx-20 lg:justify-between ${errors && Object.keys(errors).length > 0 ? 'lg:h-[50rem]' : ''}`}>
-            <div className='w-[90%] border-[1px] border-[#878787] h-[95%] p-3 rounded-lg lg:h-full lg:w-[50%] lg:p-7'>
+        <main className={`flex justify-center items-center h-[100%] gap-10 my-10 lg:h-[45rem] lg:m-10 lg:mx-20 lg:justify-between ${errors && Object.keys(errors).length > 0 ? 'lg:h-fit' : ''}`}>
+            <div className={'w-[90%] border-[1px] border-[#878787] h-[95%] p-3 rounded-lg lg:h-fit lg:w-[50%] lg:p-7'}>
                 <h1 className='text-2xl mb-3 font-poppins font-medium'>Sign Up</h1>
                 <h3 className='text-sm mb-5 font-poppins font-normal'>Create an account to manage your reservations</h3>
-                <form action="" onSubmit={onSubmit} className='flex flex-col justify-center gap-2 lg:gap-3 lg:h-[38rem]'>
+                <form action="" onSubmit={onSubmit} className='flex flex-col justify-center gap-2 lg:gap-3 lg:h-fit'>
 
                     <InputElement
                     register={register}
@@ -68,8 +71,8 @@ export const SignUp = () => {
 
                     <InputElement
                     register={register}
-                    validation={validationRules.name}
-                    hasError={errors.name} name={'ID'}
+                    validation={validationRules.ID}
+                    hasError={errors.ID} name={'ID'}
                     type={'text'}
                     placeholder={'Enter your identification card'}
                     id={'ID'}
@@ -105,11 +108,11 @@ export const SignUp = () => {
                     id={'confirm_pwd'}
                     label={'Confirm password'} />
 
-                    <button className='h-[3rem] bg-black text-white rounded-lg mt-4'>Sign Up</button>
+                    <button className={`h-[3rem] bg-black text-white rounded-lg mt-4 ${isLoading ? 'bg-gray-    300' : ''}`} disabled={isLoading}>Sign Up</button>
                     <span className='w-full text-center my-8'>Already have an account <Link to={'/login'}><strong>Login</strong> </Link> </span>
                 </form>
             </div>
-            <div className='w-[50%] hidden lg:block lg:h-full lg:w-[75%]'>
+            <div className='w-[50%] hidden lg:block lg:h-fit lg:w-[75%]'>
                 <img src="https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/Sign-up-image.webp" className='h-full w-full' alt="" />
             </div>
         </main>

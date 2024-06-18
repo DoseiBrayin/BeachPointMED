@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux'
 export const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const validationRules = getValidationRules()
-  const [loginUser, { data, isSuccess, isError, error }] = useLoginUserMutation()
+  const [loginUser, { data, isSuccess, isError, error, isLoading }] = useLoginUserMutation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -21,8 +21,12 @@ export const Login = () => {
     handleLogin(data)
   })
 
-  const handleLogin = async (forlgata) => {
-    await loginUser(forlgata)
+  const handleLogin = async (formData) => {
+    try {
+      await loginUser(formData)
+    } catch (err) {
+      toast.error('Failed to login', err)
+    }
   }
 
   useEffect(() => {
@@ -33,16 +37,17 @@ export const Login = () => {
       )
       navigate('/AdminDashboard')
     }
-    if (isError || error) {
-      toast.error(error?.data?.message || 'An error has occurred in the login')
+    if (isError) {
+      console.log(error.data)
+      toast.error(error?.data?.detail?.message || 'An error has ocurred in the login')
     }
-  }, [isSuccess, isError, error, navigate])
+  }, [isSuccess, isError, error, dispatch, navigate])
 
   return (
     <section className='flex flex-col justify-between h-auto '>
       <div><Toaster/></div>
     <main className='flex justify-center items-center h-[100%] gap-10 my-10 lg:h-[45rem] lg:m-10 lg:mx-20 lg:justify-between'>
-        <div className='w-[90%] border-[1px] border-[#878787] h-[a95%] p-3 rounded-lg lg:h-full lg:w-[50%] lg:p-7'>
+        <div className='w-[90%] border-[1px] border-[#878787] p-3 rounded-lg lg:h-full lg:w-[50%] lg:p-7'>
             <h2 className='text-lg lg:text-2xl mb-4 mt-1 font-poppins font-normal'>Welcome !</h2>
             <h1 className='text-[23px] lg:text-3xl font-poppins font-medium'>Login to Beach Point</h1>
             <h3 className='mb-3 lg:mb-5 lg:text-lg'>To manage your reservations</h3>
@@ -76,7 +81,7 @@ export const Login = () => {
                     <Link to={'/forgotPassword'}>Forgot password ?</Link>
                 </div>
 
-                <button className='h-[3rem] bg-black text-white rounded-lg mt-4' type='submit'>Login</button>
+                <button className={`h-[3rem] bg-black text-white rounded-lg mt-4 ${isLoading ? 'bg-gray-300' : ''}`} type='submit' disabled={isLoading}>Login</button>
                 <span className='w-full text-center my-8'>Don&apos;t have an account?<Link to={'/signUp'}><strong className='ml-2'>Sign Up</strong> </Link></span>
             </form>
         </div>
