@@ -1,7 +1,10 @@
 import React from 'react'
+import { AdminHeader } from '../../components/AdminHeader'
 
 export const AdminReservations = () => {
   return (
-    <div>AdminReservations</div>
+    <div>
+      <AdminHeader title='Reservations' />
+    </div>
   )
 }
