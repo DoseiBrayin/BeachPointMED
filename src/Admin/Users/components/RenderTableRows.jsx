@@ -10,7 +10,9 @@ export const RenderTableRows = ({ currentPage, itemsPerPage, data }) => {
         <td className='text-start text-[14px]'>{item.type_rol}</td>
         <td className={tdStyle}>August 10, 2024</td>
         <td className={tdStyle}>300.650 COP</td>
-        <td className={tdStyle}></td>
+        <td className={tdStyle}>
+          <img className="cursor-pointer" src="/three_dots.svg" alt="" />
+        </td>
       </tr>
   ))
 }
