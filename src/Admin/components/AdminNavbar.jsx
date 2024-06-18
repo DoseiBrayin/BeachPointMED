@@ -15,7 +15,7 @@ export const AdminNavbar = () => {
   const PRODUCTS_PATH = '/admin/products'
 
   return (
-    <div className='w-[220px] border-2 px-3'>
+    <div className='w-[220px] px-3'>
       <img className='w-[56px] h-[84px] mt-8 mb-8' src="https://pub-9ce9ae707f414f62ad3249af96d412df.r2.dev/BP-logo.webp" alt="" />
       <div className='flex flex-col gap-[16px]'>
 
