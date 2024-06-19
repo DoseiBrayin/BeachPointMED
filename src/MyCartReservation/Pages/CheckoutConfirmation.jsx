@@ -83,15 +83,15 @@ export const CheckOutConfirmation = () => {
     const renderPaymentStatus = (status) => {
       switch (status) {
         case 'Aceptada':
-          return <p className="text-green-500">Transacción aceptada</p>
+          return <h3 className="text-green-500 text-xl">Transacción aceptada</h3>
         case 'Rechazada':
-          return <p className="text-red-500">Transacción rechazada</p>
+          return <h3 className="text-red-500 text-xl">Transacción rechazada</h3>
         case 'Fallida':
-          return <p className="text-yellow-500">Transacción fallida</p>
+          return <h3 className="text-yellow-500 text-xl">Transacción fallida</h3>
         case 'Pendiente':
-          return <p className="text-blue-500">Transacción pendiente</p>
+          return <h3 className="text-blue-500 text-xl">Transacción pendiente</h3>
         default:
-          return <p className="text-gray-500">Estado desconocido</p>
+          return <h3 className="text-gray-500 text-xl">Estado desconocido</h3>
       }
     }
 
