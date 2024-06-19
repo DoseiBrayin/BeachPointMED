@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { Courts } from '../components/Courts'
+import { Refreshments } from '../components/Refreshments'
+import { useFormatePrices } from '../hooks/useFormatPrices'
+import { useTranslation } from 'react-i18next'
+import { Link, useLocation } from 'react-router-dom'
+import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { formatPrice } from '../../Hooks/formatPrice'
 import axios from 'axios'
-import useFormatePrices from 'path-to-your-useFormatePrices'
-import useTranslation from 'path-to-your-useTranslation'
-import useBookYourCourtContext from 'path-to-your-useBookYourCourtContext'
-import Courts from 'path-to-your-Courts'
-import Refreshments from 'path-to-your-Refreshments'
 
 export const CheckOutConfirmation = () => {
   const { getGrandTotalPrice } = useFormatePrices()
