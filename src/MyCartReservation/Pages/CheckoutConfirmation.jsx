@@ -37,9 +37,9 @@ export const CheckOutConfirmation = () => {
 
       axios.get(urlapp)
         .then(response => {
-          const data = response.data
-          if (data.success) {
-            setPaymentData(data.data)
+          const data = response.data.data // Asegúrate de acceder a data.data
+          if (data && data.x_response) {
+            setPaymentData(data)
           } else {
             setError('Error consultando la información')
           }
@@ -52,30 +52,47 @@ export const CheckOutConfirmation = () => {
     }, [location.search])
 
     if (loading) {
-      return (<main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-      <div className="text-center">
-        <p className="mt-6 text-base leading-7 text-gray-600">Cargando</p>
-      </div>
-    </main>)
+      return (
+        <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+          <div className="text-center">
+            <p className="mt-6 text-base leading-7 text-gray-600">Cargando</p>
+          </div>
+        </main>
+      )
     }
 
     if (error) {
       return (
         <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-        <div className="text-center">
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">It seems an error courred!</h1>
-          <p className="mt-6 text-base leading-7 text-gray-600">{error}</p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link
+          <div className="text-center">
+            <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">It seems an error occurred!</h1>
+            <p className="mt-6 text-base leading-7 text-gray-600">{error}</p>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
+              <Link
                 to="/"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Go back home
-            </Link>
+                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Go back home
+              </Link>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
       )
+    }
+
+    const renderPaymentStatus = (status) => {
+      switch (status) {
+        case 'Aceptada':
+          return <p className="text-green-500">Transacción aceptada</p>
+        case 'Rechazada':
+          return <p className="text-red-500">Transacción rechazada</p>
+        case 'Fallida':
+          return <p className="text-yellow-500">Transacción fallida</p>
+        case 'Pendiente':
+          return <p className="text-blue-500">Transacción pendiente</p>
+        default:
+          return <p className="text-gray-500">Estado desconocido</p>
+      }
     }
 
     return (
@@ -93,6 +110,7 @@ export const CheckOutConfirmation = () => {
               </button>
               <span className='text-[#2E2E2E] font-inter font-[600]'>to manage reservations</span>
             </div>
+            {renderPaymentStatus(paymentData.x_response)} {/* Muestra el estado de la transacción */}
             <Courts isCheckOut={true} />
             <Refreshments isCheckOut={true} />
             <div className="w-[100%] max-w-[52.5rem] flex justify-end items-center">
