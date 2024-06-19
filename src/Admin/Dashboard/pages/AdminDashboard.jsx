@@ -49,7 +49,6 @@ export const AdminDashboard = () => {
              <OverviewComponent date={'Made today'} text={'One-time reservations'} />
              <OverviewComponent date={'Made today'} text={'Recurring Reservations'} />
             </div>
-
           </div>
 
           <div className="h-[30%] bg-white rounded-lg mx-3 flex flex-col p-3">
