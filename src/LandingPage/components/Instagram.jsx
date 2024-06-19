@@ -11,9 +11,12 @@ export const Instagram = () => {
         md:grid-cols-4
         '>
         {
-          data && data.slice(0, 8).map((item, index) => (
-            <img key={index} className={`${index > 3 ? 'hidden md:block' : ''} h-[167px] md:h-[298px] w-[167px] md:w-[298px]`} src={item.media_url} alt="" />
-          ))
+          data && data
+            .filter(item => item.media_type === 'IMAGE' || item.media_type === 'CAROUSEL_ALBUM')
+            .slice(0, 8)
+            .map((item, index) => (
+              <img key={index} className={`${index > 3 ? 'hidden md:block' : ''} h-[167px] md:h-[298px] w-[167px] md:w-[298px]`} src={item.media_url} alt="" />
+            ))
         }
       </div>
     </section>
