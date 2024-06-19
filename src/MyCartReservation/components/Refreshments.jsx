@@ -12,7 +12,7 @@ export const Refreshments = ({ isCheckOut }) => {
   const { deleteRefreshments } = useCart()
 
   return (
-        <div className='mt-4 w-full max-w-[52.5rem]'>
+        <div className='mt-4 w-full max-w-[52.5rem] hidden'>
           <h1 className="text-[#2E2E2E] font-[700] text-[20px] md:text-[28px] md:text-[#000]">{t('MyCartReservation.Refreshments')}</h1>
           <table className='w-full shadow-lg rounded-lg'>
             <thead className='text-left'>
