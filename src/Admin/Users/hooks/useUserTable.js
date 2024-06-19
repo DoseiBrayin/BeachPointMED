@@ -23,6 +23,7 @@ export const useUserTable = ({ data, itemsPerPage }) => {
     totalPages,
     handleClick,
     nextPage,
-    prevPage
+    prevPage,
+    setCurrentPage
   }
 }

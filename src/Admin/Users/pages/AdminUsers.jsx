@@ -1,7 +1,8 @@
 import React from 'react'
 import { AdminHeader } from '../../components/AdminHeader'
-import { Filters } from '../components/Filters'
 import { UsersTable } from '../components/UsersTable'
+import { useFilters } from '../hooks/useFilters'
+import { Filters } from '../components/Filters'
 
 const users = [
   {
@@ -11,7 +12,7 @@ const users = [
     name: 'Jane Doe',
     password: 'securepass2',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000003',
@@ -20,7 +21,7 @@ const users = [
     name: 'John Smith',
     password: 'mypassword3',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000004',
@@ -29,7 +30,7 @@ const users = [
     name: 'Emily Johnson',
     password: 'password4',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000005',
@@ -38,7 +39,7 @@ const users = [
     name: 'Michael Brown',
     password: 'brownmike5',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000006',
@@ -47,7 +48,7 @@ const users = [
     name: 'Sarah Davis',
     password: 'davis_sarah6',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000007',
@@ -56,7 +57,7 @@ const users = [
     name: 'David Wilson',
     password: 'wilson7',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000008',
@@ -65,7 +66,7 @@ const users = [
     name: 'Laura Moore',
     password: 'moorelaura8',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000009',
@@ -74,7 +75,7 @@ const users = [
     name: 'Daniel Taylor',
     password: 'taylor9',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000010',
@@ -83,7 +84,7 @@ const users = [
     name: 'Jessica Lee',
     password: 'jessicalee10',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'admin'
   },
   {
     cedula: '10000011',
@@ -92,7 +93,7 @@ const users = [
     name: 'Robert Clark',
     password: 'clarkrobert11',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000012',
@@ -101,7 +102,7 @@ const users = [
     name: 'Patricia Lewis',
     password: 'lewis12',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000013',
@@ -110,7 +111,7 @@ const users = [
     name: 'Christopher Walker',
     password: 'walkerchris13',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000014',
@@ -119,7 +120,7 @@ const users = [
     name: 'Amanda Hall',
     password: 'hallamanda14',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000015',
@@ -128,7 +129,7 @@ const users = [
     name: 'Joshua Young',
     password: 'young15',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000016',
@@ -137,15 +138,16 @@ const users = [
     name: 'Melissa Hernandez',
     password: 'hernandezmel16',
     is_employee: true,
-    type_rol: 'Temporal'
-  }, {
+    type_rol: 'admin'
+  },
+  {
     cedula: '10000017',
     phone_number: '345-678-9013',
     email: 'oliver.martinez@example.com',
     name: 'Oliver Martinez',
     password: 'martinezoliver17',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000018',
@@ -154,7 +156,7 @@ const users = [
     name: 'Chloe King',
     password: 'kingchloe18',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000019',
@@ -163,7 +165,7 @@ const users = [
     name: 'Liam Wright',
     password: 'wrightliam19',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000020',
@@ -172,7 +174,7 @@ const users = [
     name: 'Mia Green',
     password: 'greenmia20',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000021',
@@ -181,7 +183,7 @@ const users = [
     name: 'Noah Carter',
     password: 'carternoa21',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000022',
@@ -190,7 +192,7 @@ const users = [
     name: 'Ava Collins',
     password: 'collinsava22',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000023',
@@ -199,7 +201,7 @@ const users = [
     name: 'Jackson Morris',
     password: 'morrisjackson23',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000024',
@@ -208,7 +210,7 @@ const users = [
     name: 'Sophia Lee',
     password: 'leesophia24',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000025',
@@ -217,7 +219,7 @@ const users = [
     name: 'Aiden Turner',
     password: 'turneraiden25',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000026',
@@ -226,7 +228,7 @@ const users = [
     name: 'Isabella Baker',
     password: 'bakerisabella26',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000027',
@@ -235,7 +237,7 @@ const users = [
     name: 'James Jenkins',
     password: 'jenkinsjames27',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000028',
@@ -244,7 +246,7 @@ const users = [
     name: 'Emma Rogers',
     password: 'rogersemma28',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000029',
@@ -253,7 +255,7 @@ const users = [
     name: 'Lucas Harris',
     password: 'harris29',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000030',
@@ -262,7 +264,7 @@ const users = [
     name: 'Sophia Walker',
     password: 'walker30',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000031',
@@ -271,7 +273,7 @@ const users = [
     name: 'Mason Anderson',
     password: 'anderson31',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000032',
@@ -280,7 +282,7 @@ const users = [
     name: 'Ella Thompson',
     password: 'thompson32',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000033',
@@ -289,7 +291,7 @@ const users = [
     name: 'Daniel Johnson',
     password: 'johnsondaniel33',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000034',
@@ -298,7 +300,7 @@ const users = [
     name: 'Ava Mitchell',
     password: 'mitchellava34',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000035',
@@ -307,7 +309,7 @@ const users = [
     name: 'Benjamin Taylor',
     password: 'taylorbenjamin35',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000036',
@@ -316,7 +318,7 @@ const users = [
     name: 'Mia Clark',
     password: 'clarkmia36',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000037',
@@ -325,7 +327,7 @@ const users = [
     name: 'Lucas Lewis',
     password: 'lewislucas37',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000038',
@@ -334,7 +336,7 @@ const users = [
     name: 'Sophia Robinson',
     password: 'robinsonsophia38',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000039',
@@ -343,7 +345,7 @@ const users = [
     name: 'Oliver Lee',
     password: 'leeoliver39',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000040',
@@ -352,7 +354,7 @@ const users = [
     name: 'Emma White',
     password: 'whiteemma40',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000041',
@@ -361,7 +363,7 @@ const users = [
     name: 'Jackson Hall',
     password: 'halljackson41',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000042',
@@ -370,7 +372,7 @@ const users = [
     name: 'Isabella Young',
     password: 'youngisabella42',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000043',
@@ -379,7 +381,7 @@ const users = [
     name: 'Liam Allen',
     password: 'allenliam43',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000044',
@@ -388,7 +390,7 @@ const users = [
     name: 'Ava King',
     password: 'kingava44',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000045',
@@ -397,7 +399,7 @@ const users = [
     name: 'Benjamin Scott',
     password: 'scottbenjamin45',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000046',
@@ -406,7 +408,7 @@ const users = [
     name: 'Mia Campbell',
     password: 'campbellmia46',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   },
   {
     cedula: '10000047',
@@ -415,7 +417,7 @@ const users = [
     name: 'Lucas Edwards',
     password: 'edwardslucas47',
     is_employee: true,
-    type_rol: 'Empleado'
+    type_rol: 'employee'
   },
   {
     cedula: '10000048',
@@ -424,7 +426,7 @@ const users = [
     name: 'Sophia Collins',
     password: 'collinssophia48',
     is_employee: true,
-    type_rol: 'Admin'
+    type_rol: 'admin'
   },
   {
     cedula: '10000049',
@@ -433,7 +435,7 @@ const users = [
     name: 'Oliver Stewart',
     password: 'stewartoliver49',
     is_employee: true,
-    type_rol: 'Temporal'
+    type_rol: 'employee'
   },
   {
     cedula: '10000050',
@@ -442,27 +444,20 @@ const users = [
     name: 'Emma Sanchez',
     password: 'sanchezemma50',
     is_employee: false,
-    type_rol: 'Usuario'
+    type_rol: 'customer'
   }
 ]
 
 export const AdminUsers = () => {
+  const { filteredUsers, changeFilter, selected, onSearch } = useFilters({ users })
+
   return (
     <div>
       <AdminHeader />
-      <div className='flex px-5 mt-10'>
-        <div className='flex w-full justify-between'>
-        <Filters />
-          <div className='flex gap-3'>
-          <button className='bg-[#1570EF] text-white text-[14px] px-6 py-2 rounded-lg'>Create User</button>
-          <div className='border-2 flex items-center rounded-md px-2 gap-1'>
-            <img src="/Search.svg" className='w-[24p] h-[24px]' alt="" />
-            <input className='focus:outline-none' type="text" placeholder='Search by name'/>
-          </div>
-          </div>
-        </div>
+      <div className="flex px-5 mt-10">
+        <Filters changeFilter={changeFilter} selected={selected} onSearch={onSearch} />
       </div>
-        <UsersTable users={users} itemsPerPage={10} />
+      <UsersTable users={filteredUsers} itemsPerPage={10} />
     </div>
   )
 }
