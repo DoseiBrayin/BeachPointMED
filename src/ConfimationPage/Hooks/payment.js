@@ -4,9 +4,10 @@ export function Payment () {
     formatedTotal = Math.round(formatedTotal)
     return formatedTotal.toString()
   }
+  const PUBLIC_KEY_EPAYCO = import.meta.env.VITE_BEAHPOINT_PUBLIC_KEY_EPAYCO
 
   const handler = ePayco.checkout.configure({
-    key: '6e3cd97070f51ec9d8ea865d257eccc6',
+    key: PUBLIC_KEY_EPAYCO,
     test: true
   })
 

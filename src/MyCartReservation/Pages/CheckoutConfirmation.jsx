@@ -104,7 +104,7 @@ export const CheckOutConfirmation = () => {
                 {t('MyCartReservation.ConfirmYourSelections')}
               </h1>
             </div>
-            <div className='max-w-[64.75rem] w-[100%] flex justify-center md:justify-start gap-2'>
+            <div className='max-w-[64.75rem] w-[100%] flex justify-center md:justify-start gap-2 hidden'>
               <button className='bg-[#29845A] rounded-lg py-1 px-2 text-[#FFFFFF] font-inter font-[600] text-[12px]'>
                 Sign in
               </button>
