@@ -9,8 +9,10 @@ export async function fetchInstagram () {
         access_token: token
       }
     })
+    data = response.data.data.filter((item)=> item.media_url.includes('jpg'))
     return response
   } catch (error) {
     console.error(error) // Imprime el error completo
   }
 };
+
