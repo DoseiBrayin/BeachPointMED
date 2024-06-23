@@ -45,7 +45,9 @@ export const CheckOutConfirmation = () => {
           const data = response.data.data
           if (data && data.x_response) {
             setPaymentData(data)
-            if (paymentData.x_response === 'Aceptada') {
+            console.log(data)
+            console.log(paymentData)
+            if (data.x_response === 'Aceptada') {
               // Cambio del estado de la court a unavailable
               try {
                 await axios.get(
