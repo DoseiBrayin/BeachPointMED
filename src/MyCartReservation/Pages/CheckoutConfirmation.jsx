@@ -64,8 +64,9 @@ export const CheckOutConfirmation = () => {
           }
           setLoading(false)
         })
-        .catch(() => {
+        .catch((error) => {
           setError('Error en la solicitud')
+          console.log(error)
           setLoading(false)
         })
     }, [location.search])
