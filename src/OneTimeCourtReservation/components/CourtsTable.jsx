@@ -72,7 +72,7 @@ export const CourtsTable = () => {
         }
       )
       setBookCourt({ ...bookCourt, reservedCourts: reserveCourt.data.data[1].task_id })
-      setItem({ ...bookCourt, reservedCourts: reserveCourt.data.data[1].task_id })
+      setItem({ ...bookCourt })
     } catch (error) {
       console.log(error)
     }
