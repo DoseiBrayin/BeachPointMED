@@ -48,9 +48,10 @@ export const CheckOutConfirmation = () => {
             setPaymentData(data)
             if (data.x_response === 'Aceptada') {
               // Cambio del estado de la court a unavailable
+              const orderIds = order.courts.map((court) => court.id).join(',')
               try {
                 await axios.get(
-                  `${url}timeCourts/Unavalible/${order.reservedCourts}`,
+                  `${url}timeCourts/Unavalible/${orderIds}`,
                   {
                     headers: {
                       Authorization: `Bearer ${token}`
