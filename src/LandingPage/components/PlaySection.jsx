@@ -7,7 +7,7 @@ export function PlaySection ({ img, header, paragraph }) {
   return (
     <>
       <section className="flex flex-col items-center mt-[25px]">
-      <h2 className="bold-heading-mobile font-[700] text-[25px] md:text-[32px]">{t('LandingPage.WhyPlayWithUs.title')}</h2>
+      <h2 className="bold-heading-mobile font-[700] text-[25px] md:text-[32px] text-center">{t('LandingPage.WhyPlayWithUs.title')}</h2>
       <h3 className="font-inter font-normal text-[16px] w-[60%] text-center mt-5">{t('LandingPage.WhyPlayWithUs.Subtitle')}</h3>
       <main className="w-full flex justify-center items-center mt-[25px]">
         <div
