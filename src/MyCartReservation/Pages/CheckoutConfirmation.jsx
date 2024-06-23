@@ -20,6 +20,7 @@ export const CheckOutConfirmation = () => {
     const [error, setError] = useState(null)
     const location = useLocation()
     const { getItem } = useLocalStorage({ key: 'order' })
+    const order = getItem()
 
     const getQueryParam = (param) => {
       const searchParams = new URLSearchParams(location.search)
@@ -28,6 +29,7 @@ export const CheckOutConfirmation = () => {
 
     useEffect(() => {
       const refPayco = getQueryParam('ref_payco')
+      console.log(order)
 
       if (!refPayco) {
         setError('Referencia de pago no encontrada')
@@ -38,7 +40,6 @@ export const CheckOutConfirmation = () => {
       const urlapp = `https://secure.epayco.co/validation/v1/reference/${refPayco}`
       const url = import.meta.env.VITE_BEACHPOINT_API_URL
       const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
-      const orderId = getItem()
 
       axios.get(urlapp)
         .then(async (response) => {
@@ -49,7 +50,7 @@ export const CheckOutConfirmation = () => {
               // Cambio del estado de la court a unavailable
               try {
                 await axios.get(
-                  `${url}timeCourts/Unavalible/${orderId.reservedCourts}`,
+                  `${url}timeCourts/Unavalible/${order.reservedCourts}`,
                   {
                     headers: {
                       Authorization: `Bearer ${token}`
