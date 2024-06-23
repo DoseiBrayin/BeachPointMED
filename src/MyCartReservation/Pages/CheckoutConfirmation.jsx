@@ -45,13 +45,11 @@ export const CheckOutConfirmation = () => {
           const data = response.data.data
           if (data && data.x_response) {
             setPaymentData(data)
-            console.log(data)
-            console.log(paymentData)
             if (data.x_response === 'Aceptada') {
               // Cambio del estado de la court a unavailable
               try {
                 await axios.get(
-                  `${url}timeCourts/Reserverd/${orderId.reservedCourts}`,
+                  `${url}timeCourts/Unavalible/${orderId.reservedCourts}`,
                   {
                     headers: {
                       Authorization: `Bearer ${token}`
