@@ -37,7 +37,8 @@ export function Payment () {
       type_doc_billing: 'cc',
       mobilephone_billing: order.user.phone_number,
       number_doc_billing: order.user.cedula,
-      x_extra1: JSON.stringify(order)
+      x_extra1: JSON.stringify(order),
+      x_extra2: order.reservedCourt
     }
     handler.open(data)
   }
