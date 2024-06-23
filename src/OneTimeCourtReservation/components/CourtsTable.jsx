@@ -71,8 +71,9 @@ export const CourtsTable = () => {
           }
         }
       )
-      setBookCourt({ ...bookCourt, reservedCourts: reserveCourt.data.data[1].task_id })
-      setItem({ ...bookCourt })
+      const updatedBookCourt = { ...bookCourt, reservedCourts: reserveCourt.data.data[1].task_id }
+      setBookCourt(updatedBookCourt)
+      setItem(updatedBookCourt)
     } catch (error) {
       console.log(error)
     }
