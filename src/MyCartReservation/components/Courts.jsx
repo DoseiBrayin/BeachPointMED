@@ -29,8 +29,8 @@ export const Courts = ({ isCheckOut }) => {
           </thead>
           <tbody className='border-[1px] text-center'>
             {
-              order.courts && order.courts.length > 0
-                ? (order.courts.map((court, index) => {
+              order?.courts && Array.isArray(order.courts) && order?.courts?.length > 0
+                ? (order?.courts?.map((court, index) => {
                     return (
                       <tr key={index} className={'border-b-[1px] h-[44px]'}>
                         <td className={`${'font-inter text-[14px]'} hidden md:table-cell`}>{order.location.description}</td>
@@ -54,7 +54,7 @@ export const Courts = ({ isCheckOut }) => {
         </table>
         <div className="flex justify-end gap-5 pr-5 mt-2">
             <h1 className="font-[600] text-[14px]">{t('MyCartReservation.Subtotal')}</h1>
-            { order.courts && order.courts.length > 0
+            { order?.courts && Array.isArray(order.courts) && order?.courts?.length > 0
               ? (
                   <p className="text-[13px] font-[400]">{formatPrice(getTotalPrice({ list: order.courts }))} COP</p>
                 )

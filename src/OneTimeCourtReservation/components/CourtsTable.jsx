@@ -14,11 +14,12 @@ import { ButtonAddCart } from './ButtonAddCart'
 import { useCourtDateContext } from '../../context/CourtsDateContext'
 import { ModalCourtReservation } from '../../components/ModalCourtReservation'
 import { useModalCourtReservationContext } from '../../context/ModalCourtReservationContext'
+import axios from 'axios'
 
 export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
-  const { removeItem, getItem } = useLocalStorage({ key: 'order' })
+  const { removeItem, getItem, setItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { dataCourtDate } = useCourtDateContext()
   const { setStart } = useStartContext()
@@ -29,7 +30,6 @@ export const CourtsTable = () => {
     removeItem()
     resetCountdown()
   }
-
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
@@ -53,14 +53,29 @@ export const CourtsTable = () => {
     }
   }, [bookCourt.courts])
 
-  const nextPage = () => {
+  const nextPage = async () => {
     if (bookCourt.courts.length === 0) {
       setNotCourtSelected(true)
       return
     }
 
-    // Here we should send the request to the server with the list of ids of the selected courts
-    // const orderIds = bookCourt.courts.map((court) => court.id)
+    const url = import.meta.env.VITE_BEACHPOINT_API_URL
+    const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+    const orderIds = bookCourt.courts.map((court) => court.id).join(',')
+    try {
+      const reserveCourt = await axios.get(
+        `${url}timeCourts/Reserverd/${orderIds}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      setBookCourt({ ...bookCourt, reservedCourts: reserveCourt.data.data[1].task_id })
+      setItem({ ...bookCourt, reservedCourts: reserveCourt.data.data[1].task_id })
+    } catch (error) {
+      console.log(error)
+    }
 
     const isOk = true
     if (isOk) {

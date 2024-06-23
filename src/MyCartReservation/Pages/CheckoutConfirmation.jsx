@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
 import { formatPrice } from '../../Hooks/formatPrice'
 import axios from 'axios'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const CheckOutConfirmation = () => {
   const { getGrandTotalPrice } = useFormatePrices()
@@ -18,6 +19,7 @@ export const CheckOutConfirmation = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const location = useLocation()
+    const { getItem } = useLocalStorage({ key: 'order' })
 
     const getQueryParam = (param) => {
       const searchParams = new URLSearchParams(location.search)
@@ -34,12 +36,29 @@ export const CheckOutConfirmation = () => {
       }
 
       const urlapp = `https://secure.epayco.co/validation/v1/reference/${refPayco}`
+      const url = import.meta.env.VITE_BEACHPOINT_API_URL
+      const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+      const orderId = getItem()
 
       axios.get(urlapp)
-        .then(response => {
-          const data = response.data.data // Asegúrate de acceder a data.data
+        .then(async (response) => {
+          const data = response.data.data
           if (data && data.x_response) {
             setPaymentData(data)
+            if (paymentData.x_response === 'Aceptada') {
+              // Cambio del estado de la court a unavailable
+              try {
+                await axios.get(
+                  `${url}timeCourts/Reserverd/${orderId.reservedCourts}`,
+                  {
+                    headers: {
+                      Authorization: `Bearer ${token}`
+                    }
+                  }
+                )
+              } catch (error) {
+              }
+            }
           } else {
             setError('Error consultando la información')
           }
