@@ -29,7 +29,6 @@ export const CheckOutConfirmation = () => {
 
     useEffect(() => {
       const refPayco = getQueryParam('ref_payco')
-      console.log(order)
 
       if (!refPayco) {
         setError('Referencia de pago no encontrada')

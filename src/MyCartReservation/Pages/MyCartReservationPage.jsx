@@ -21,7 +21,6 @@ export const MyCartReservationPage = () => {
   const { setBookCourt, bookCourt } = useBookYourCourtContext()
 
   useEffect(() => {
-    console.log(bookCourt)
     setStart(true)
     const item = getItem()
     setBookCourt(item)
