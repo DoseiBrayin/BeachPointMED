@@ -6,11 +6,13 @@ import { AdminLocations } from '../Admin/Locations/pages/AdminLocations'
 import { AdminUsers } from '../Admin/Users/pages/AdminUsers'
 import { AdminProducts } from '../Admin/Products/pages/AdminProducts'
 import { AdminNavbar } from '../Admin/components/AdminNavbar'
+import { CourtDateProvider } from '../context/CourtsDateContext'
 
 export const AdminRoutes = () => {
   return (
     <BrowserRouter>
       <div className='flex min-h-screen'>
+        <CourtDateProvider>
         <AdminNavbar />
         <div className='w-full'>
           <Routes>
@@ -22,6 +24,7 @@ export const AdminRoutes = () => {
               <Route path="*" element={<Navigate to={'/admin/dashboard'} />} />
           </Routes>
         </div>
+        </CourtDateProvider>
       </div>
     </BrowserRouter>
   )
