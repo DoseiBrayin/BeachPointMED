@@ -1,11 +1,17 @@
 import { useBookYourCourtContext } from '../../context/BookYourCourtContext'
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
 
 export const useCart = () => {
   const { bookCourt, setBookCourt } = useBookYourCourtContext()
+  const { getItem, setItem } = useLocalStorage({ key: 'order' })
+  const order = getItem()
 
   const deleteCourts = (court) => {
-    const filteredCourts = bookCourt.courts.filter((courtItem) => court.id !== courtItem.id)
-    setBookCourt({ ...bookCourt, courts: filteredCourts })
+    if (order.courts.length > 1) {
+      const filteredCourts = bookCourt.courts.filter((courtItem) => court.id !== courtItem.id)
+      setBookCourt({ ...bookCourt, courts: filteredCourts })
+      setItem({ ...bookCourt, courts: filteredCourts })
+    }
   }
 
   const deleteRefreshments = (refreshment) => {
@@ -16,6 +22,7 @@ export const useCart = () => {
       return refreshmentItem
     })
     setBookCourt({ ...bookCourt, Refreshments: filteredRefreshments })
+    setItem({ ...bookCourt, Refreshments: filteredRefreshments })
   }
 
   const handleMinus = (event) => {

@@ -25,6 +25,9 @@ export const CourtsTable = () => {
   const { setStart } = useStartContext()
   const { isOpen, onOpen, setClose, setApproved, setNotApproved, isApproved } = useModalCourtReservationContext()
   const [notCourtSelected, setNotCourtSelected] = useState(false)
+  const url = import.meta.env.VITE_BEACHPOINT_API_URL
+  const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+  const order = getItem()
 
   const handleBackPage = () => {
     removeItem()
@@ -33,7 +36,6 @@ export const CourtsTable = () => {
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
-    const order = getItem()
     setClose()
 
     setBookCourt(order)
@@ -58,11 +60,23 @@ export const CourtsTable = () => {
       setNotCourtSelected(true)
       return
     }
+    // Guardar Refrescos en el objeto global
 
-    const url = import.meta.env.VITE_BEACHPOINT_API_URL
-    const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+    // const response = await axios.get(`${url}products`, {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`
+    //   }
+    // })
+
+    // const Refreshments = response.data.data.map(refreshObject => {
+    //   refreshObject = { ...refreshObject, quantity: 0 }
+    //   return refreshObject
+    // })
+
+    // Obtener todos los ids de la courts
     const orderIds = bookCourt.courts.map((court) => court.id).join(',')
     try {
+      // Peticion de reserva
       const reserveCourt = await axios.get(
         `${url}timeCourts/Reserverd/${orderIds}`,
         {
@@ -71,11 +85,14 @@ export const CourtsTable = () => {
           }
         }
       )
-      const updatedBookCourt = { ...bookCourt, reservedCourts: reserveCourt.data.data[1].task_id }
+      // Aquí se guarda toda la informacion completa, cuando se añada la funcionalidad
+      // de refrescos se debe agregar "Refrshments"
+      const updatedBookCourt = { ...bookCourt, reservedCourts: reserveCourt.data.data[reserveCourt.data.data.length - 1].task_id }
+      // Guardar toda la información en el objeto global
       setBookCourt(updatedBookCourt)
+      // Guardar toda la información en el localStorage
       setItem(updatedBookCourt)
     } catch (error) {
-      console.log(error)
     }
 
     const isOk = true
