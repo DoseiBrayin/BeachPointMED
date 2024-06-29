@@ -73,6 +73,9 @@ export const calendarHooks = () => {
       setDataCourtDate([])
     }
   }
+  function adminFilterDate (day) {
+    console.log(day)
+  }
 
   return (
     {
@@ -83,7 +86,8 @@ export const calendarHooks = () => {
       handlePastDay,
       handleNextDay,
       handlePastMonth,
-      handleNextMonth
+      handleNextMonth,
+      adminFilterDate
     }
   )
 }
