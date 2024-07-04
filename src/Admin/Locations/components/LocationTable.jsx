@@ -28,7 +28,7 @@ export const LocationTable = () => {
                 <td className={tdStyle}>{reservation.court}</td>
                 <td className={tdStyle}>{reservation.initial_hour} - {reservation.final_hour}</td>
                 <td className={tdStyle}>{reservation.status}</td>
-                <td className={`${tdStyle} cursor-pointer`}><img src="/public/three_dots.svg" alt="" /></td>
+                <td className={`${tdStyle} cursor-pointer`}><img src="/three_dots.svg" alt="" /></td>
               </tr>
             ))}
           </tbody>

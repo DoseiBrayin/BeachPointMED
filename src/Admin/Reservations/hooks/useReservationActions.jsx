@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setShowModal } from '../reservationsSlice'
+import { setDay } from '../services/reservationsSlice'
 
 export const useReservationActions = () => {
   const dispatch = useDispatch()
   const reservationState = useSelector(state => state.adminReservations)
-  const showModalAction = (isShow) => {
-    dispatch(setShowModal(isShow))
+  const setFilterDay = (day) => {
+    dispatch(setDay(day))
   }
 
-  return { showModalAction, reservationState }
+  return { reservationState, setFilterDay }
 }

@@ -1,0 +1,13 @@
+.custom-checkbox {
+  @apply w-[20px] h-[20px] bg-white border-2 border-[#8A8A8A] rounded-md cursor-pointer relative appearance-none;
+}
+
+.custom-checkbox:checked {
+  @apply bg-[#303030] border-[#303030];
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  @apply absolute top-1/4 left-1/2 w-1 h-2.5 border-white border-r-2 border-b-2;
+  transform: translateX(-50%) translateY(-20%) rotate(45deg);
+}

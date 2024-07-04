@@ -3,16 +3,19 @@ import dayjs from 'dayjs'
 
 const today = dayjs().format('YYYY-MM-DD')
 const initialState = {
-  filteredReservations: [],
-  today
+  filterByDay: today,
+  filterByLocation: 'all',
+  reservation: {},
+  usuario: {}
 }
 
 const reservationSlice = createSlice({
-  name: 'reservations',
+  name: 'adminReservation',
   initialState,
   reducers: {
-    setShowModal: (state, action) => {
-      state.showModal = action.payload
+    setDay: (state, action) => {
+      const day = action.payload
+      state.filterByDay = day
     }
   }
 })
@@ -20,5 +23,5 @@ const reservationSlice = createSlice({
 export default reservationSlice.reducer
 
 export const {
-  setShowModal
+  setDay
 } = reservationSlice.actions
