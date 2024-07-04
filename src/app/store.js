@@ -5,11 +5,11 @@ import AuthReducer from '../auth/AuthSlices/authSlice'
 import ReservationsReducer from '../Admin/Reservations/services/reservationsSlice'
 import { adminReservationApi } from '../Admin/Reservations/services/reservationApi'
 
-const debbugMiddleWare = (store) => (next) => (action) => {
-  console.log(store.getState())
-  console.log(next(action))
-  console.log(store.getState())
-}
+// const debbugMiddleWare = (store) => (next) => (action) => {
+//   console.log(store.getState())
+//   console.log(next(action))
+//   console.log(store.getState())
+// }
 
 // Configuración del store
 export const store = configureStore({
@@ -21,7 +21,7 @@ export const store = configureStore({
   },
   // Añadir el middleware de authApi y adminReservationApi, se concatenan a los middlewares por defecto de RTK :)
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware, adminReservationApi.middleware, debbugMiddleWare)
+    getDefaultMiddleware().concat(authApi.middleware, adminReservationApi.middleware)
 })
 
 // Configuración de los listeners para la invalidación de caché y refetching

@@ -48,7 +48,6 @@ export const LocationTable = () => {
         <LocationModal isOpen={false} onClose={() => false}>
           <LocationModal.Header>Header del modelo</LocationModal.Header>
           <LocationModal.Body classNamePadre='flex justify-center' classNameHijo='border border-gray-300 rounded-lg flex flex-col justify-center items-center ' >
-            <h1>Ome carechimba</h1>
           </LocationModal.Body>
           <LocationModal.Footer className='gap-4 flex items-center'>
           </LocationModal.Footer>
