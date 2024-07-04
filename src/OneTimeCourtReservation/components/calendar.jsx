@@ -2,13 +2,16 @@ import { generateDate, months, days } from '../Hooks/Calendar'
 import dayjs from 'dayjs'
 import { calendarHooks } from '../Hooks/calendarHooks'
 
-export const Calendar = () => {
+// Propiedad para revisar si estamos en el flujo de registro de administrador
+// Esto sirve para activar o desactivar ciertas acciones
+export const Calendar = ({ isAdmin }) => {
   const {
     todayState,
     handlePastMonth,
     handleNextMonth,
     selectDay,
-    handleSelectDay
+    handleSelectDay,
+    handleAdminSelectDay
   } = calendarHooks()
 
   return (
@@ -46,7 +49,7 @@ export const Calendar = () => {
             const isToday = today && !isSelected
             return (
               <li
-                onClick={() => handleSelectDay(dayjs(date))}
+                onClick={isAdmin ? () => handleAdminSelectDay(dayjs(date)) : () => handleSelectDay(dayjs(date))}
                 key={`item-${index}`}
                 className={`
           my-[0.2rem] list-none w-[1rem] text-center h-[1rem]
@@ -86,7 +89,7 @@ export const Calendar = () => {
           </div>
         </li>
         {
-          // Getting the days, you can use a similar approach to make the months and you just get the current month - 1 and display it
+          // Mostar los dias en la parte superior
           days.map((day, index) => {
             return (
               <li
@@ -104,7 +107,7 @@ export const Calendar = () => {
             const isToday = today && !isSelected
             return (
               <li
-                onClick={() => handleSelectDay(dayjs(date))}
+                onClick={isAdmin ? () => handleAdminSelectDay(dayjs(date)) : () => handleSelectDay(dayjs(date))}
                 key={`item-${index}`}
                 className={`
         my-[0.2rem] list-none w-[1rem] text-center h-[1rem]

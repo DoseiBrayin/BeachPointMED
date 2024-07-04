@@ -1,0 +1,242 @@
+[
+    {
+        "id": 1,
+        "location": "Dalam",
+        "court": 1,
+        "initial_hour": "4/17/2024",
+        "final_hour": "8/3/2023",
+        "status": "F"
+    },
+    {
+        "id": 2,
+        "location": "Porkhov",
+        "court": 2,
+        "initial_hour": "9/14/2023",
+        "final_hour": "11/5/2023",
+        "status": "F"
+    },
+    {
+        "id": 3,
+        "location": "Lagoa Santa",
+        "court": 1,
+        "initial_hour": "8/6/2023",
+        "final_hour": "3/18/2024",
+        "status": "M"
+    },
+    {
+        "id": 4,
+        "location": "Jiantiao",
+        "court": 2,
+        "initial_hour": "3/14/2024",
+        "final_hour": "11/5/2023",
+        "status": "F"
+    },
+    {
+        "id": 5,
+        "location": "Sarukhan",
+        "court": 2,
+        "initial_hour": "2/29/2024",
+        "final_hour": "6/19/2024",
+        "status": "F"
+    },
+    {
+        "id": 6,
+        "location": "Vukojevci",
+        "court": 2,
+        "initial_hour": "3/2/2024",
+        "final_hour": "11/21/2023",
+        "status": "F"
+    },
+    {
+        "id": 7,
+        "location": "Birsa",
+        "court": 2,
+        "initial_hour": "6/18/2024",
+        "final_hour": "3/22/2024",
+        "status": "M"
+    },
+    {
+        "id": 8,
+        "location": "Watergrasshill",
+        "court": 1,
+        "initial_hour": "6/2/2024",
+        "final_hour": "3/27/2024",
+        "status": "F"
+    },
+    {
+        "id": 9,
+        "location": "Yangjia",
+        "court": 1,
+        "initial_hour": "5/9/2024",
+        "final_hour": "1/15/2024",
+        "status": "M"
+    },
+    {
+        "id": 10,
+        "location": "Lunel",
+        "court": 2,
+        "initial_hour": "3/24/2024",
+        "final_hour": "5/21/2024",
+        "status": "F"
+    },
+    {
+        "id": 11,
+        "location": "Tangerang",
+        "court": 1,
+        "initial_hour": "12/7/2023",
+        "final_hour": "10/1/2023",
+        "status": "M"
+    },
+    {
+        "id": 12,
+        "location": "Ar Rawḑ",
+        "court": 1,
+        "initial_hour": "12/21/2023",
+        "final_hour": "11/3/2023",
+        "status": "F"
+    },
+    {
+        "id": 13,
+        "location": "Dongqianhu",
+        "court": 2,
+        "initial_hour": "10/8/2023",
+        "final_hour": "7/15/2023",
+        "status": "M"
+    },
+    {
+        "id": 14,
+        "location": "Ribeira Quente",
+        "court": 1,
+        "initial_hour": "8/3/2023",
+        "final_hour": "11/13/2023",
+        "status": "F"
+    },
+    {
+        "id": 15,
+        "location": "Nowshahr",
+        "court": 1,
+        "initial_hour": "3/11/2024",
+        "final_hour": "5/11/2024",
+        "status": "M"
+    },
+    {
+        "id": 16,
+        "location": "Hoàn Kiếm",
+        "court": 2,
+        "initial_hour": "9/11/2023",
+        "final_hour": "9/3/2023",
+        "status": "M"
+    },
+    {
+        "id": 17,
+        "location": "Glad",
+        "court": 2,
+        "initial_hour": "9/24/2023",
+        "final_hour": "11/11/2023",
+        "status": "F"
+    },
+    {
+        "id": 18,
+        "location": "Yongjiahe",
+        "court": 1,
+        "initial_hour": "4/23/2024",
+        "final_hour": "8/3/2023",
+        "status": "M"
+    },
+    {
+        "id": 19,
+        "location": "Hezheng Chengguanzhen",
+        "court": 2,
+        "initial_hour": "10/27/2023",
+        "final_hour": "11/21/2023",
+        "status": "M"
+    },
+    {
+        "id": 20,
+        "location": "Irbit",
+        "court": 2,
+        "initial_hour": "3/22/2024",
+        "final_hour": "2/19/2024",
+        "status": "M"
+    },
+    {
+        "id": 21,
+        "location": "Lao Suea Kok",
+        "court": 2,
+        "initial_hour": "5/5/2024",
+        "final_hour": "12/25/2023",
+        "status": "M"
+    },
+    {
+        "id": 22,
+        "location": "Nerópolis",
+        "court": 2,
+        "initial_hour": "10/7/2023",
+        "final_hour": "10/17/2023",
+        "status": "F"
+    },
+    {
+        "id": 23,
+        "location": "Ribeira",
+        "court": 1,
+        "initial_hour": "9/22/2023",
+        "final_hour": "1/15/2024",
+        "status": "F"
+    },
+    {
+        "id": 24,
+        "location": "Argelia",
+        "court": 2,
+        "initial_hour": "1/18/2024",
+        "final_hour": "4/8/2024",
+        "status": "F"
+    },
+    {
+        "id": 25,
+        "location": "Baimaqiao",
+        "court": 2,
+        "initial_hour": "12/26/2023",
+        "final_hour": "1/4/2024",
+        "status": "M"
+    },
+    {
+        "id": 26,
+        "location": "Marki",
+        "court": 2,
+        "initial_hour": "7/10/2023",
+        "final_hour": "1/14/2024",
+        "status": "F"
+    },
+    {
+        "id": 27,
+        "location": "Bochum",
+        "court": 1,
+        "initial_hour": "12/29/2023",
+        "final_hour": "7/25/2023",
+        "status": "F"
+    },
+    {
+        "id": 28,
+        "location": "Alaghsas",
+        "court": 1,
+        "initial_hour": "8/12/2023",
+        "final_hour": "10/8/2023",
+        "status": "F"
+    },
+    {
+        "id": 29,
+        "location": "Dogbo",
+        "court": 1,
+        "initial_hour": "7/19/2023",
+        "final_hour": "2/6/2024",
+        "status": "F"
+    },
+    {
+        "id": 30,
+        "location": "Nakano",
+        "court": 1,
+        "initial_hour": "12/17/2023",
+        "final_hour": "4/9/2024",
+        "status": "F"
+    }
+]

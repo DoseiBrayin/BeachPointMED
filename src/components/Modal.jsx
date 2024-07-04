@@ -5,7 +5,7 @@ const ModalContext = createContext()
 
 const ModalClass = 'p-[1rem]'
 
-const Modal = ({ children, isOpen, onClose, className }) => {
+const Modal = ({ children, isOpen, onClose, className, classNamePadre }) => {
   const handleEscape = e => {
     if (e.keyCode === 27) {
       onClose()
@@ -37,8 +37,8 @@ const Modal = ({ children, isOpen, onClose, className }) => {
 
   return modalTransition((styles, isOpen) => isOpen && (
     <animated.div style={styles} className='p-10 overlay fixed h-full w-full top-0 left-0 overflow-x-hidden overflow-y-hidden bg-[#00000080] z-10' onClick={onClose}>
-        <animated.div style={springs} className="max-w-[500px] my-[2rem] mx-auto" onClick={e => e.stopPropagation()}>
-            <div className="relative bg-white border-[1px] border-solid border-gray-200 bg-clip-padding rounded-xl flex flex-col">
+        <animated.div style={springs} className={classNamePadre || 'max-w-[500px] my-[2rem] mx-auto'} onClick={e => e.stopPropagation()}>
+            <div className={className || 'relative bg-white border-[1px] border-solid border-gray-200 bg-clip-padding rounded-xl flex flex-col'}>
                 <ModalContext.Provider value={{ onClose }}>
                 {children}
                 </ModalContext.Provider>
@@ -57,12 +57,11 @@ const DissmissButton = ({ children, className }) => {
   )
 }
 
-const ModalHeader = ({ children, className }) => {
+const ModalHeader = ({ children, className, closeVisible }) => {
   return (
-        <div className={`${ModalClass} ${className} flex items-center justify-between border-b-[1px]`}>
+        <div className={`${ModalClass} ${className}`}>
             <div className='leading-4 font-base'>{children}</div>
-            <DissmissButton onclose={onclose} className='border-none text-base p-[0.25rem] cursor-pointer text-[#00000080
-] font-bold bg-transparent'>
+            <DissmissButton onclose={onclose} className={closeVisible ? 'border-none text-base p-[0.25rem] cursor-pointer text-[#00000080] font-bold bg-transparent' : 'hidden'}>
                 &times;
             </DissmissButton>
         </div>
