@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeFilter, onSearch } from '../UsersSlices/userAdminSlice'
 
 const notSelectedStyle =
   'px-4 py-1 rounded-[20px] text-[#5D6679] border-[1px] text-[14px] cursor-pointer h-fit'
@@ -7,17 +9,20 @@ const SelectedStyle =
 
 const userTypes = {
   ALL: 'all',
-  CUSTOMERS: 'customer',
-  EMPLOYEES: 'employee',
-  ADMIN: 'admin'
+  CUSTOMERS: 'Usuario',
+  EMPLOYEES: 'Empleado',
+  ADMIN: 'Admin'
 }
 
-export const Filters = ({ changeFilter, selected, onSearch }) => {
+export const Filters = () => {
+  const selected = useSelector((state) => state.userFiltersAdmin.selected)
+
+  const dispatch = useDispatch()
   return (
     <div className="flex w-full justify-between">
       <div className="flex gap-[10px]">
         <div
-          onClick={() => changeFilter(userTypes.ALL)}
+          onClick={() => dispatch(changeFilter(userTypes.ALL))}
           className={
             selected === userTypes.ALL ? SelectedStyle : notSelectedStyle
           }
@@ -25,7 +30,7 @@ export const Filters = ({ changeFilter, selected, onSearch }) => {
           All
         </div>
         <div
-          onClick={() => changeFilter(userTypes.CUSTOMERS)}
+          onClick={() => dispatch(changeFilter(userTypes.CUSTOMERS))}
           className={
             selected === userTypes.CUSTOMERS ? SelectedStyle : notSelectedStyle
           }
@@ -33,7 +38,7 @@ export const Filters = ({ changeFilter, selected, onSearch }) => {
           Customers
         </div>
         <div
-          onClick={() => changeFilter(userTypes.EMPLOYEES)}
+          onClick={() => dispatch(changeFilter(userTypes.EMPLOYEES))}
           className={
             selected === userTypes.EMPLOYEES ? SelectedStyle : notSelectedStyle
           }
@@ -41,7 +46,7 @@ export const Filters = ({ changeFilter, selected, onSearch }) => {
           Employees
         </div>
         <div
-          onClick={() => changeFilter(userTypes.ADMIN)}
+          onClick={() => dispatch(changeFilter(userTypes.ADMIN))}
           className={
             selected === userTypes.ADMIN ? SelectedStyle : notSelectedStyle
           }
@@ -56,7 +61,7 @@ export const Filters = ({ changeFilter, selected, onSearch }) => {
         <div className="border-2 flex items-center rounded-md px-2 gap-1">
           <img src="/Search.svg" className="w-[24p] h-[24px]" alt="" />
           <input
-            onChange={(e) => onSearch(e)}
+            onChange={(e) => dispatch(onSearch(e.target.value))}
             className="focus:outline-none"
             type="text"
             placeholder="Search by name"

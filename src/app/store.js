@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import { authApi } from '../auth/Services/authApi'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import AuthReducer from '../auth/AuthSlices/authSlice'
+import userAdminSlice from '../Admin/Users/UsersSlices/userAdminSlice'
 
 // Configuración del store
 export const store = configureStore({
   reducer: {
     auth: AuthReducer,
-    [authApi.reducerPath]: authApi.reducer // Añadir el reducer de authApi, lo que lo globaliza
+    [authApi.reducerPath]: authApi.reducer, // Añadir el reducer de authApi, lo que lo globaliza
+    userFiltersAdmin: userAdminSlice
   },
   // Añadir el middleware de authApi, se concatenan a los middlewares por defecto de RTK :)
   middleware: (getDefaultMiddleware) =>

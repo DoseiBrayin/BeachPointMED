@@ -3,7 +3,7 @@ const tdStyle = 'text-start font-normal text-[14px] text-[#5D6679]'
 export const RenderTableRows = ({ currentPage, itemsPerPage, data }) => {
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const itemsToDisplay = data.slice(startIndex, endIndex)
+  const itemsToDisplay = data?.slice(startIndex, endIndex)
   return itemsToDisplay.map((item) => (
       <tr className='h-[55px] border-[1px] border-[#E8F1FD]' key={item.cedula}>
         <td className={`${tdStyle} pl-6`}>{item.name}</td>
