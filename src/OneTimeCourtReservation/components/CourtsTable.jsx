@@ -14,26 +14,28 @@ import { ButtonAddCart } from './ButtonAddCart'
 import { useCourtDateContext } from '../../context/CourtsDateContext'
 import { ModalCourtReservation } from '../../components/ModalCourtReservation'
 import { useModalCourtReservationContext } from '../../context/ModalCourtReservationContext'
+import axios from 'axios'
 
 export const CourtsTable = () => {
   const { resetCountdown } = useCountdown()
   const navigate = useNavigate()
-  const { removeItem, getItem } = useLocalStorage({ key: 'order' })
+  const { removeItem, getItem, setItem } = useLocalStorage({ key: 'order' })
   const { setBookCourt, bookCourt } = useBookYourCourtContext()
   const { dataCourtDate } = useCourtDateContext()
   const { setStart } = useStartContext()
   const { isOpen, onOpen, setClose, setApproved, setNotApproved, isApproved } = useModalCourtReservationContext()
   const [notCourtSelected, setNotCourtSelected] = useState(false)
+  const url = import.meta.env.VITE_BEACHPOINT_API_URL
+  const token = import.meta.env.VITE_BEACHPOINT_API_TOKEN
+  const order = getItem()
 
   const handleBackPage = () => {
     removeItem()
     resetCountdown()
   }
-
   useEffect(() => {
     // If there is no location selected, the user is redirected to the location selection page
     // or there is no order, the user is redirected to the location selection page
-    const order = getItem()
     setClose()
 
     setBookCourt(order)
@@ -53,14 +55,45 @@ export const CourtsTable = () => {
     }
   }, [bookCourt.courts])
 
-  const nextPage = () => {
+  const nextPage = async () => {
     if (bookCourt.courts.length === 0) {
       setNotCourtSelected(true)
       return
     }
+    // Guardar Refrescos en el objeto global
 
-    // Here we should send the request to the server with the list of ids of the selected courts
-    // const orderIds = bookCourt.courts.map((court) => court.id)
+    // const response = await axios.get(`${url}products`, {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`
+    //   }
+    // })
+
+    // const Refreshments = response.data.data.map(refreshObject => {
+    //   refreshObject = { ...refreshObject, quantity: 0 }
+    //   return refreshObject
+    // })
+
+    // Obtener todos los ids de la courts
+    const orderIds = bookCourt.courts.map((court) => court.id).join(',')
+    try {
+      // Peticion de reserva
+      const reserveCourt = await axios.get(
+        `${url}timeCourts/Reserverd/${orderIds}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      // Aquí se guarda toda la informacion completa, cuando se añada la funcionalidad
+      // de refrescos se debe agregar "Refrshments"
+      const updatedBookCourt = { ...bookCourt, reservedCourts: reserveCourt.data.data[reserveCourt.data.data.length - 1].task_id }
+      // Guardar toda la información en el objeto global
+      setBookCourt(updatedBookCourt)
+      // Guardar toda la información en el localStorage
+      setItem(updatedBookCourt)
+    } catch (error) {
+    }
 
     const isOk = true
     if (isOk) {

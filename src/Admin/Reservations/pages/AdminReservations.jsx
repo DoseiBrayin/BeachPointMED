@@ -1,10 +1,10 @@
-import React from 'react'
-import { AdminHeader } from '../../components/AdminHeader'
+import { TableReservations } from '../components/TableReservations'
+import mockReservations from '../../mocks/reserveData.json'
 
 export const AdminReservations = () => {
   return (
     <div>
-      <AdminHeader title='Reservations' />
+      <TableReservations reservations={mockReservations} itemsPerPage={8} />
     </div>
   )
 }

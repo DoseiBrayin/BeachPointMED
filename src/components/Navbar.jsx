@@ -27,21 +27,21 @@ export const HamburguerMenu = ({ isVisible, close }) => {
           </NavLink>
           <NavLink
             className={navLinkStyle}
-            to="/selectlocation"
+            to="/LocationSelection"
             onClick={close}
           >
             {t('Navbar.ReserveNow')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={`${navLinkStyle} hidden`} to="/">
             {t('Navbar.MyReservations')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={`${navLinkStyle} hidden`} to="/">
             {t('Navbar.AboutUs')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={`${navLinkStyle} hidden`} to="/">
             {t('Navbar.ContactUs')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={`${navLinkStyle} hidden`} to="/">
             {t('Navbar.SignIn')}
           </NavLink>
         </div>
@@ -72,21 +72,21 @@ export const Navbar = () => {
           <NavLink className={navLinkStyle} to="/">
             {t('Navbar.Home')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={navLinkStyle} to="/LocationSelection">
             {t('Navbar.ReserveNow')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={`${navLinkStyle} hidden`} to="/">
             {t('Navbar.AboutUs')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={`${navLinkStyle} hidden`} to="/">
             {t('Navbar.ContactUs')}
           </NavLink>
-          <NavLink className={navLinkStyle} to="/">
+          <NavLink className={`${navLinkStyle} hidden`} to="/">
             {t('Navbar.MyReservations')}
           </NavLink>
         </div>
         <LenguageSelector />
-        <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px]">
+        <button className="w-[24px] h-[24px] md:w-[40px] md:h-[40px] hidden">
           <img src="/LandingImages/profile.webp" alt="Spanish" onClick={navigateSingIn} />
         </button>
       </div>

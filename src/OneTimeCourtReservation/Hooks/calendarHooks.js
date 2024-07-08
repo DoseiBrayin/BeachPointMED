@@ -3,6 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useCourtDateContext } from '../../context/CourtsDateContext'
+import { useReservationActions } from '../../Admin/Reservations/hooks/useReservationActions'
 
 export const calendarHooks = () => {
   const currentDate = dayjs()
@@ -10,6 +11,9 @@ export const calendarHooks = () => {
   const [todayState, setToday] = useState(currentDate)
   const [selectDay, setSelectDay] = useState(null)
   const { locationId } = useParams()
+
+  // Admin functions
+  const { setFilterDay } = useReservationActions()
 
   function handlePastMonth () {
     setToday(todayState.month(todayState.month() - 1))
@@ -74,6 +78,11 @@ export const calendarHooks = () => {
     }
   }
 
+  // Admin functions, funciones hechas solo para el use del componente en el admin dashboard
+  const handleAdminSelectDay = (day) => {
+    setFilterDay(day.format('YYYY-MM-DD'))
+  }
+
   return (
     {
       currentDate,
@@ -83,7 +92,9 @@ export const calendarHooks = () => {
       handlePastDay,
       handleNextDay,
       handlePastMonth,
-      handleNextMonth
+      handleNextMonth,
+      // Admin functions
+      handleAdminSelectDay
     }
   )
 }

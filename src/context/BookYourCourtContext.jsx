@@ -12,7 +12,8 @@ export const BookYourCourtProvider = ({ children }) => {
     GrandTotal: null,
     uuid: null,
     reserveDate: null,
-    userId: null
+    userId: null,
+    reservedCourts: ''
   })
 
   return (
