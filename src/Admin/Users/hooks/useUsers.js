@@ -1,24 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { getUsers } from './getUsers'
+import { useGetUsersQuery } from '../UsersSlices/userAdminAPI'
 
 export const useUsers = () => {
   const [users, setUsers] = useState([])
   const userTypeFilter = useSelector((state) => state.userFiltersAdmin.selected)
   const search = useSelector((state) => state.userFiltersAdmin.search)
+  const { data, isError, isLoading } = useGetUsersQuery()
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await getUsers() // Asumiendo que getUsers retorna una respuesta con data
-        setUsers(response.data) // Asumiendo que response.data es un array de usuarios
-      } catch (error) {
-        console.error('Error fetching users:', error)
-      }
-    }
-
-    fetchUsers()
-  }, [])
+    setUsers(data?.data)
+  }, [data])
 
   const filters = ({ userType, searchValue }) => {
     if (userType === 'all' && searchValue === '') return users
@@ -36,6 +28,8 @@ export const useUsers = () => {
   const usersFiltered = filters({ userType: userTypeFilter, searchValue: search }) // Pasar filter directamente, asumiendo que es una propiedad de user
 
   return {
-    usersFiltered
+    usersFiltered,
+    isLoading,
+    isError
   }
 }

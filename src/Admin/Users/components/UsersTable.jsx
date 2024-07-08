@@ -7,19 +7,19 @@ import { useUsers } from '../hooks/useUsers'
 const thStyle = 'text-start font-normal text-[12px] text-[#667085]'
 
 export const UsersTable = () => {
-  const { usersFiltered: users } = useUsers()
+  const { usersFiltered: users, isLoading } = useUsers()
   const { currentPage, totalPages, handleClick, prevPage, nextPage } = useUserTable({ itemsPerPage: 10, data: users })
   const itemsPerPage = 10
 
-  // if (status === 'loading') {
-  //   return (
-  //     <div className='w-full justify-center flex items-center h-[400px]'>
-  //       <p>Loading...</p>
-  //     </div>
-  //   )
-  // }
+  if (isLoading) {
+    return (
+      <div className='w-full justify-center flex items-center h-[400px]'>
+        <p>Loading...</p>
+      </div>
+    )
+  }
 
-  if (users.length === 0) {
+  if (users?.length === 0) {
     return (
       <div className='w-full justify-center flex items-center h-[400px]'>
         <p>No data available</p>
