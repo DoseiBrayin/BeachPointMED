@@ -2,12 +2,22 @@ import React from 'react'
 import { useUserTable } from '../hooks/useUserTable'
 import { RenderTableRows } from './RenderTableRows'
 import { PaginationButtons } from './PaginationButtons'
+import { useUsers } from '../hooks/useUsers'
 
 const thStyle = 'text-start font-normal text-[12px] text-[#667085]'
 
-export const UsersTable = ({ users, itemsPerPage }) => {
+export const UsersTable = () => {
+  const { usersFiltered: users } = useUsers()
   const { currentPage, totalPages, handleClick, prevPage, nextPage } = useUserTable({ itemsPerPage: 10, data: users })
-  // const [isOpen, setIsOpen] = useState()
+  const itemsPerPage = 10
+
+  // if (status === 'loading') {
+  //   return (
+  //     <div className='w-full justify-center flex items-center h-[400px]'>
+  //       <p>Loading...</p>
+  //     </div>
+  //   )
+  // }
 
   if (users.length === 0) {
     return (
