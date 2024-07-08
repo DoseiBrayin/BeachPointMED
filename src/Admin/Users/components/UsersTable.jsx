@@ -7,9 +7,17 @@ import { useUsers } from '../hooks/useUsers'
 const thStyle = 'text-start font-normal text-[12px] text-[#667085]'
 
 export const UsersTable = () => {
-  const { usersFiltered: users, isLoading } = useUsers()
+  const { usersFiltered: users, isLoading, error } = useUsers()
   const { currentPage, totalPages, handleClick, prevPage, nextPage } = useUserTable({ itemsPerPage: 10, data: users })
   const itemsPerPage = 10
+
+  if (error && error.data.detail.message === "404: {'message': 'There are no users registered', 'data': None, 'status': 'error', 'status_code': 404}") {
+    return (
+      <div className='w-full justify-center flex items-center h-[400px]'>
+        <p>There are no users</p>
+      </div>
+    )
+  }
 
   if (isLoading) {
     return (

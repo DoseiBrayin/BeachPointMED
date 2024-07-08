@@ -6,7 +6,7 @@ export const useUsers = () => {
   const [users, setUsers] = useState([])
   const userTypeFilter = useSelector((state) => state.userFiltersAdmin.selected)
   const search = useSelector((state) => state.userFiltersAdmin.search)
-  const { data, isError, isLoading } = useGetUsersQuery()
+  const { data, isError, isLoading, error } = useGetUsersQuery()
 
   useEffect(() => {
     setUsers(data?.data)
@@ -30,6 +30,7 @@ export const useUsers = () => {
   return {
     usersFiltered,
     isLoading,
-    isError
+    isError,
+    error
   }
 }
