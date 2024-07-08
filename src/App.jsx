@@ -13,7 +13,7 @@ function App () {
   }, [])
 
   const user = {
-    userType: 'user' // Here you can change the user type to 'user' to see the user routes for the moment
+    userType: 'ADMIN' // Here you can change the user type to 'user' to see the user routes for the moment
   }
   return (
     user.userType === 'user'

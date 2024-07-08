@@ -1,7 +1,6 @@
 import '../styles/customCheckbox.css'
 import { useGetReservationsQuery } from '../Admin/Reservations/services/reservationApi'
 
-const locations = ['Barranquilla', 'Bogota', 'Bucaramanga']
 export const LocationFilter = () => {
   const { data: reservaciones, isError, isLoading, error } = useGetReservationsQuery()
   if (isLoading) {
