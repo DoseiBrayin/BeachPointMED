@@ -4,7 +4,7 @@ import { RenderTableRows } from './RenderTableRows'
 import { PaginationButtons } from './PaginationButtons'
 import { useUsers } from '../hooks/useUsers'
 import Modal from '../../../components/Modal'
-import { CreateUser } from './CreateUser'
+import { ShowUser } from './ShowUser'
 
 const thStyle = 'text-start font-normal text-[12px] text-[#667085]'
 
@@ -47,7 +47,7 @@ export const UsersTable = () => {
             </svg>
           </Modal.Header>
           <Modal.Body classNamePadre='flex justify-center w-full' classNameHijo='flex flex-col justify-center items-center w-full'>
-            <CreateUser />
+            <ShowUser />
           </Modal.Body>
       </Modal>
       <table className='w-full border-[1px] border-[#E8F1FD] mt-7'>
