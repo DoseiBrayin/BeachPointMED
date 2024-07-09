@@ -18,8 +18,16 @@ export const userAdminAPI = createApi({
     getUsers: builder.query({
       query: () => 'user',
       providesTags: ['Users']
+    }),
+    createUser: builder.mutation({
+      query: (body) => ({
+        url: 'user/create',
+        method: 'POST',
+        body
+      }),
+      invalidatesTags: ['Users']
     })
   })
 })
 
-export const { useGetUsersQuery } = userAdminAPI
+export const { useGetUsersQuery, useCreateUserMutation } = userAdminAPI

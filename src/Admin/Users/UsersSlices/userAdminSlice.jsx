@@ -5,11 +5,12 @@ const initialState = {
   search: '',
   status: '',
   users: [],
-  error: null
+  error: null,
+  userById: null
 }
 
 export const userAdminSlice = createSlice({
-  name: 'userFiltersAdmin',
+  name: 'userAdmin',
   initialState,
   reducers: {
     changeFilter: (state, action) => {
@@ -22,12 +23,15 @@ export const userAdminSlice = createSlice({
     },
     onSearch: (state, action) => {
       state.search = action.payload
+    },
+    setUserById: (state, action) => {
+      state.userById = action.payload
     }
   }
 })
 
 export const selectUserFiltersAdmin = (state) => state.userFiltersAdmin
 
-export const { changeFilter, onSearch } = userAdminSlice.actions
+export const { changeFilter, onSearch, setUserById } = userAdminSlice.actions
 
 export default userAdminSlice.reducer

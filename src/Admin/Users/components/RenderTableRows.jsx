@@ -1,6 +1,10 @@
+import { useDispatch } from 'react-redux'
+import { setUserById } from '../UsersSlices/userAdminSlice'
+
 const tdStyle = 'text-start font-normal text-[14px] text-[#5D6679]'
 
-export const RenderTableRows = ({ currentPage, itemsPerPage, data }) => {
+export const RenderTableRows = ({ currentPage, itemsPerPage, data, onClose, open }) => {
+  const dispatch = useDispatch()
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const itemsToDisplay = data?.slice(startIndex, endIndex)
@@ -10,7 +14,13 @@ export const RenderTableRows = ({ currentPage, itemsPerPage, data }) => {
         <td className='text-start text-[14px]'>{item.type_rol}</td>
         <td className={tdStyle}>August 10, 2024</td>
         <td className={tdStyle}>300.650 COP</td>
-        <td className={tdStyle}>
+        <td className={tdStyle}
+        onClick={() => {
+          open()
+          dispatch(setUserById(item))
+        }}
+
+        >
           <img className="cursor-pointer" src="/three_dots.svg" alt="" />
         </td>
       </tr>

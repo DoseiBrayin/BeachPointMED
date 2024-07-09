@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeFilter, onSearch } from '../UsersSlices/userAdminSlice'
+import Modal from '../../../components/Modal'
+import { CreateUser } from './CreateUser'
 
 const notSelectedStyle =
   'px-4 py-1 rounded-[20px] text-[#5D6679] border-[1px] text-[14px] cursor-pointer h-fit'
@@ -16,10 +18,18 @@ const userTypes = {
 
 export const Filters = () => {
   const selected = useSelector((state) => state.userFiltersAdmin.selected)
+  const [showCreateUserModal, setShowCreateUserModal] = useState(false)
 
   const dispatch = useDispatch()
   return (
     <div className="flex w-full justify-between">
+      <Modal isOpen={showCreateUserModal} onClose={() => setShowCreateUserModal(false)}>
+      <Modal.Header className='flex justify-center'>
+          </Modal.Header>
+          <Modal.Body classNamePadre='flex justify-center w-full' classNameHijo='flex flex-col justify-center items-center w-full'>
+            <CreateUser />
+          </Modal.Body>
+      </Modal>
       <div className="flex gap-[10px]">
         <div
           onClick={() => dispatch(changeFilter(userTypes.ALL))}
@@ -55,7 +65,9 @@ export const Filters = () => {
         </div>
       </div>
       <div className="flex gap-3">
-        <button className="bg-[#1570EF] text-white text-[14px] px-6 py-2 rounded-lg">
+        <button className="bg-[#1570EF] text-white text-[14px] px-6 py-2 rounded-lg"
+          onClick={() => setShowCreateUserModal(true)}
+        >
           Create User
         </button>
         <div className="border-2 flex items-center rounded-md px-2 gap-1">
